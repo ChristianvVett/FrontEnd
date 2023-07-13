@@ -1,0 +1,26 @@
+.nav{
+  background-color:#D15800;
+}
+
+.log-button{
+  border-radius: 7px;
+  padding: 7px;
+  background-color: white;
+  text-decoration: none;
+  color: black;
+}
+
+.link-list{
+  color: white;
+  text-decoration: none;
+}
+
+.logo{
+  width: 5%;
+  margin: 20px;
+}
+a{
+  margin: 100px;
+  font-family: 'Play', sans-serif;
+}
+
