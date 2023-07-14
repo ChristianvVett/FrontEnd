@@ -42,8 +42,13 @@
 
 }
 .logo{
-  width: 5%;
-  margin: 20px;
+  width: 100%;
+  transition: 0.4s ease-in-out;
+  cursor: pointer;
+}
+
+.logo:hover{
+  transform: scale(1.1);
 }
 a{
   margin: 100px;
