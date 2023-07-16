@@ -10,6 +10,19 @@ article{
   font-size: 1.2rem;
   text-align: center;
   padding: 10px;
+
+}
+
+.hovers:hover article{
+  color: white;
+}
+.hovers{
+  background-color: white;
+  transition: 0.6s ease-in-out;
+}
+
+.hovers:hover{
+  background-color: #D15800
 }
 
 .imagesubject{
