@@ -1,0 +1,17 @@
+.background{
+  background-color:#BAF1F1 ;
+  height: 100%;
+  padding: 1.1rem;
+}
+article{
+  font-family: 'Play', sans-serif;
+  font-weight: bold;
+  color: #f38639;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 10px;
+}
+
+.imagesubject{
+  width: 40%;
+}
