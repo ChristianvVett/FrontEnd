@@ -4,7 +4,13 @@
 
 .logo-footer{
     width: clamp(120px, 25%, 150px);
+    transition: 0.4s ease-in-out;
+    cursor: pointer;
 }
+
+.logo-footer:hover{
+    transform: scale(1.1);
+  }
 
 
 .f-item-content{
