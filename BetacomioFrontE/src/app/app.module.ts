@@ -9,6 +9,7 @@ import { NavbarComponent } from './Navbar/navbar/navbar.component';
 import { FooterComponent } from './Footer/footer/footer.component';
 import { AboutUsComponent } from './About_us/about-us/about-us.component';
 import { CatalogueComponent } from './Catalogue/catalogue/catalogue.component';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CatalogueComponent } from './Catalogue/catalogue/catalogue.component';
   imports: [
     BrowserModule,
     NgbModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -7,105 +7,19 @@
     <!-- card -->
     <div class="d-flex justify-content-center flex-wrap flex-row">
 
-      <div class="card" style="width: 18rem;">
-        <img src="../../../assets/images/tizio_con_la_bici.jpg" class="card-img-top" alt="...">
+      <div *ngFor="let elem of blist" class="card" style="width: 18rem;">
+        <img src="https://picsum.photos/500/300?random=1" class="card-img-top" alt="...">
         <div class="card-body text-center">
           <div>
-            <p class="card-title">Mountain bike pippo</p>
-            <p>200€</p>
-            <a href="#" class="btn button">Maggiori dettagli</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="card" style="width: 18rem;">
-        <img src="../../../assets/images/tizio_con_la_bici.jpg" class="card-img-top" alt="...">
-        <div class="card-body text-center">
-          <div>
-            <p class="card-title">Mountain bike pippo</p>
-            <p>200€</p>
+            <p class="card-title">{{elem.name}}</p>
+            <p *ngIf="(elem.products[0].standardCost > 0)">{{arrotondo(elem.products[0].standardCost)}}€</p>
+            <p *ngElseIf="(elem.products[0].standardCost == null)">prezzo non disponibile</p>
             <a href="#" class="btn button">Maggiori dettagli</a>
           </div>
         </div>
       </div>
 
 
-      <div class="card" style="width: 18rem;">
-        <img src="../../../assets/images/tizio_con_la_bici.jpg" class="card-img-top" alt="...">
-        <div class="card-body text-center">
-          <div>
-            <p class="card-title">Mountain bike pippo</p>
-            <p>200€</p>
-            <a href="#" class="btn button">Maggiori dettagli</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="card" style="width: 18rem;">
-        <img src="../../../assets/images/tizio_con_la_bici.jpg" class="card-img-top" alt="...">
-        <div class="card-body text-center">
-          <div>
-            <p class="card-title">Mountain bike pippo</p>
-            <p>200€</p>
-            <a href="#" class="btn button">Maggiori dettagli</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="card" style="width: 18rem;">
-        <img src="../../../assets/images/tizio_con_la_bici.jpg" class="card-img-top" alt="...">
-        <div class="card-body text-center">
-          <div>
-            <p class="card-title">Mountain bike pippo</p>
-            <p>200€</p>
-            <a href="#" class="btn button">Maggiori dettagli</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="card" style="width: 18rem;">
-        <img src="../../../assets/images/tizio_con_la_bici.jpg" class="card-img-top" alt="...">
-        <div class="card-body text-center">
-          <div>
-            <p class="card-title">Mountain bike pippo</p>
-            <p>200€</p>
-            <a href="#" class="btn button">Maggiori dettagli</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="card" style="width: 18rem;">
-        <img src="../../../assets/images/tizio_con_la_bici.jpg" class="card-img-top" alt="...">
-        <div class="card-body text-center">
-          <div>
-            <p class="card-title">Mountain bike pippo</p>
-            <p>200€</p>
-            <a href="#" class="btn button">Maggiori dettagli</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="card" style="width: 18rem;">
-        <img src="../../../assets/images/tizio_con_la_bici.jpg" class="card-img-top" alt="...">
-        <div class="card-body text-center">
-          <div>
-            <p class="card-title">Mountain bike pippo</p>
-            <p>200€</p>
-            <a href="#" class="btn button">Maggiori dettagli</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="card" style="width: 18rem;">
-        <img src="../../../assets/images/tizio_con_la_bici.jpg" class="card-img-top" alt="...">
-        <div class="card-body text-center">
-          <div>
-            <p class="card-title">Mountain bike pippo</p>
-            <p>200€</p>
-            <a href="#" class="btn button">Maggiori dettagli</a>
-          </div>
-        </div>
-      </div>
 
     </div>
 
