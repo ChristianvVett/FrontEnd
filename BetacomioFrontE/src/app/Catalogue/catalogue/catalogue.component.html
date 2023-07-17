@@ -7,7 +7,7 @@
     <!-- card -->
     <div class="d-flex justify-content-center flex-wrap flex-row">
 
-      <div *ngFor="let elem of blist" class="card" style="width: 18rem;">
+      <div *ngFor="let elem of blist|paginate:{itemsPerPage:24,currentPage:p}" class="card" style="width: 18rem;">
         <img src="https://picsum.photos/500/300?random=1" class="card-img-top" alt="...">
         <div class="card-body text-center">
           <div>
@@ -20,8 +20,8 @@
       </div>
 
 
-
     </div>
+    <pagination-controls (pageChange)="p=$event"></pagination-controls>
 
   </div>
 </div>

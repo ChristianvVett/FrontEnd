@@ -7,6 +7,7 @@ import{HttpClient} from '@angular/common/http'
   styleUrls: ['./catalogue.component.css']
 })
 export class CatalogueComponent {
+  p:number=1;
   blist:bici[]=[];
   constructor(private http:HttpClient){}
   ngOnInit(){
