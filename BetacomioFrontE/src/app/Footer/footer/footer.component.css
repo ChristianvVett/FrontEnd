@@ -1,0 +1,58 @@
+#footer{
+    background-color: #D15800;
+}
+
+.logo-footer{
+    width: clamp(120px, 25%, 150px);
+}
+
+
+.f-item-content{
+    font-size: clamp(.65rem, 1.8vw, .9rem);
+}
+
+.f-title{
+    font-size: clamp(.75rem, 3.2vw, 1.6rem);
+}
+
+.f-follow-title{
+    color: white;
+}
+
+.f-team-title{
+    color: white;
+}
+
+.f-links-title{
+    color: white;
+}
+
+.social-icons{
+
+}
+
+.icon-container{
+
+}
+
+.scritte{
+    color: white;
+    text-decoration: none;
+    transition: all .5s;
+}
+
+.hover-detail:hover{
+    color: white;
+    text-decoration: underline;
+}
+
+.copyright{
+	text-align: center;
+	font-size: clamp(.65rem, 1.6vw, .8rem);
+    font-weight: 300;
+    color: white;
+}
+
+.linea-divisione{
+	color: white;
+}
