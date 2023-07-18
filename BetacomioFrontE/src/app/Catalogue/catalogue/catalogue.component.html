@@ -4,10 +4,26 @@
     <div>
       <h2 class="text-center">LE NOSTRE BICI</h2>
     </div>
+    <!-- searchbar -->
+    <div class="d-flex justify-content-center boxs">
+      <input #input class="searchbar" type="text" (keyup.enter)="serchArticles(input)" placeholder="Cerca...">
+      <fa-icon class="glass" (click)="serchArticles(input)" [icon]="magnifyGlass"></fa-icon>
+    </div>
     <!-- card -->
-    <div class="d-flex justify-content-center flex-wrap flex-row">
-
+    <div *ngIf="input.value == ''" class="d-flex justify-content-center flex-wrap flex-row">
       <div *ngFor="let elem of blist|paginate:{itemsPerPage:24,currentPage:p}" class="card" style="width: 18rem;">
+        <img src="https://picsum.photos/500/300?random=1" class="card-img-top" alt="...">
+        <div class="card-body text-center">
+          <div>
+            <p class="card-title">{{elem.name}}</p>
+            <p *ngIf="(elem.products[0].standardCost > 0)">{{arrotondo(elem.products[0].standardCost)}}€</p>
+            <a href="#" class="btn button">Maggiori dettagli</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="searchOn" class="d-flex justify-content-center flex-wrap flex-row">
+      <div *ngFor="let elem of searchlist|paginate:{itemsPerPage:24,currentPage:p}" class="card" style="width: 18rem;">
         <img src="https://picsum.photos/500/300?random=1" class="card-img-top" alt="...">
         <div class="card-body text-center">
           <div>
