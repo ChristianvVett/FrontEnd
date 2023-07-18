@@ -13,15 +13,17 @@
           <div>
             <p class="card-title">{{elem.name}}</p>
             <p *ngIf="(elem.products[0].standardCost > 0)">{{arrotondo(elem.products[0].standardCost)}}€</p>
-            <p *ngElseIf="(elem.products[0].standardCost == null)">prezzo non disponibile</p>
             <a href="#" class="btn button">Maggiori dettagli</a>
           </div>
         </div>
       </div>
     </div>
 
-    <pagination-controls (pageChange)="p=$event"></pagination-controls>
-    <fa-icon [icon]="icon"></fa-icon>
+    <div class="d-flex justify-content-center align-items-center">
+      <fa-icon class="arrow-right" (click)="decreasePage(p)" [icon]="icon2"></fa-icon>
+      <pagination-controls (pageChange)="p=$event"></pagination-controls>
+      <fa-icon class="arrow-right" (click)="increasePage(p)" [icon]="icon"></fa-icon>
+    </div>
 
   </div>
 </div>

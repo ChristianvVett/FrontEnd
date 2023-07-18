@@ -40,7 +40,34 @@ transition: 0.3s ease-in-out;
   transform: scale(1.2);
 }
 
-:ng-deep{
-
+// pagination
+::ng-deep{
+  .ngx-pagination{
+    padding: 0px !important;
+  }
+  .current{
+    text-align: center;
+    width: 50px;
+    font-size: 1.7rem !important;
+    margin-top: 10px !important;
+    border-radius: 100px !important;
+    background-color: #D15800 !important;
+  }
+  .current ~ li{
+    display: none !important;
+  }
+  .pagination-next{
+    display: none !important;
+  }
+  .pagination-previous{
+    display: none !important;
+  }
 }
+
+.arrow-right{
+  font-size: 2rem;
+  margin: 50px 10px;
+  cursor: pointer;
+}
+
 

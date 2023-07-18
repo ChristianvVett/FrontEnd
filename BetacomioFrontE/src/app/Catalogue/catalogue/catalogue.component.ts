@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import{HttpClient} from '@angular/common/http'
 import {faChevronRight} from '@fortawesome/free-solid-svg-icons'
+import {faChevronLeft} from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-catalogue',
@@ -9,6 +10,7 @@ import {faChevronRight} from '@fortawesome/free-solid-svg-icons'
 })
 export class CatalogueComponent {
   icon=faChevronRight
+  icon2=faChevronLeft
   p:number=1;
   blist:bici[]=[];
   constructor(private http:HttpClient){}
@@ -23,8 +25,14 @@ arrotondo(num:any){
   return  Math.floor(num);
 }
 
+increasePage(p:number){
+   this.p++;
 
+}
 
+decreasePage(p:number){
+this.p--;
+}
 
 }
 
