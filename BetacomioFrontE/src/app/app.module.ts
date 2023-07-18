@@ -8,7 +8,9 @@ import { HomeComponent } from './Home/home/home.component';
 import { NavbarComponent } from './Navbar/navbar/navbar.component';
 import { FooterComponent } from './Footer/footer/footer.component';
 import { AboutUsComponent } from './About_us/about-us/about-us.component';
-import { FormsModule } from '@angular/forms';
+import { CatalogueComponent } from './Catalogue/catalogue/catalogue.component';
+import { HttpClientModule } from '@angular/common/http';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -17,12 +19,14 @@ import { FormsModule } from '@angular/forms';
     NavbarComponent,
     FooterComponent,
     AboutUsComponent,
+    CatalogueComponent
   ],
   imports: [
     BrowserModule,
     NgbModule,
     AppRoutingModule,
-    FormsModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,28 @@
+<div class="body container-fluid py-5">
+
+  <div class="box flex-column">
+    <div>
+      <h2 class="text-center">LE NOSTRE BICI</h2>
+    </div>
+    <!-- card -->
+    <div class="d-flex justify-content-center flex-wrap flex-row">
+
+      <div *ngFor="let elem of blist|paginate:{itemsPerPage:24,currentPage:p}" class="card" style="width: 18rem;">
+        <img src="https://picsum.photos/500/300?random=1" class="card-img-top" alt="...">
+        <div class="card-body text-center">
+          <div>
+            <p class="card-title">{{elem.name}}</p>
+            <p *ngIf="(elem.products[0].standardCost > 0)">{{arrotondo(elem.products[0].standardCost)}}€</p>
+            <p *ngElseIf="(elem.products[0].standardCost == null)">prezzo non disponibile</p>
+            <a href="#" class="btn button">Maggiori dettagli</a>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    <pagination-controls (pageChange)="p=$event"></pagination-controls>
+
+  </div>
+</div>
+
