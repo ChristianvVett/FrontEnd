@@ -11,6 +11,7 @@ import { AboutUsComponent } from './About_us/about-us/about-us.component';
 import { CatalogueComponent } from './Catalogue/catalogue/catalogue.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { LoginComponent } from './Login/login/login.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     NavbarComponent,
     FooterComponent,
     AboutUsComponent,
-    CatalogueComponent
+    CatalogueComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
