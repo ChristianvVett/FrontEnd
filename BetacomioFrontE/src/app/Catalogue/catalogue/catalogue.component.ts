@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import{HttpClient} from '@angular/common/http'
+import {faChevronRight} from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-catalogue',
@@ -7,6 +8,7 @@ import{HttpClient} from '@angular/common/http'
   styleUrls: ['./catalogue.component.scss']
 })
 export class CatalogueComponent {
+  icon=faChevronRight
   p:number=1;
   blist:bici[]=[];
   constructor(private http:HttpClient){}
