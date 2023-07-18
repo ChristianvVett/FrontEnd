@@ -4,7 +4,7 @@ import{HttpClient} from '@angular/common/http'
 @Component({
   selector: 'app-catalogue',
   templateUrl: './catalogue.component.html',
-  styleUrls: ['./catalogue.component.css']
+  styleUrls: ['./catalogue.component.scss']
 })
 export class CatalogueComponent {
   p:number=1;
