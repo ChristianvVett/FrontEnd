@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { LoginComponent } from './Login/login/login.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SignupComponent } from './Signup/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FooterComponent,
     AboutUsComponent,
     CatalogueComponent,
-    LoginComponent
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
