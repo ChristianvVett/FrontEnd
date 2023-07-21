@@ -1,5 +1,4 @@
 <div class="body container-fluid py-5">
-
   <div class="box flex-column">
     <div>
       <h2 class="text-center">LE NOSTRE BICI</h2>
@@ -9,26 +8,52 @@
       <input #input class="searchbar" type="text" (keyup.enter)="serchArticles(input)" placeholder="Cerca...">
       <fa-icon class="glass" (click)="serchArticles(input)" [icon]="magnifyGlass"></fa-icon>
     </div>
+    <div class="d-flex justify-content-center my-3">
+
+
+      <div class="plusdiv" [style.padding-right.px]="widthplus">
+        <ng-template *ngIf="istrue; then pluses else minuses"></ng-template>
+
+        <ng-template #pluses>
+          <!-- Contenuto della prima ng-template qui -->
+          <div (click)="transformPlus()">
+            <fa-icon [icon]="plus" class="plus" [style.display]="'block'"></fa-icon>
+            <fa-icon [icon]="minus" class="minus" [style.display]="'none'"></fa-icon>
+          </div>
+        </ng-template>
+
+        <ng-template #minuses>
+          <!-- Contenuto della seconda ng-template qui -->
+          <div (click)="transformMinus()">
+            <fa-icon [icon]="plus" class="plus" [style.display]="'none'"></fa-icon>
+            <fa-icon [icon]="minus" class="minus" [style.display]="'block'"></fa-icon>
+            <input type="range">
+          </div>
+        </ng-template>
+      </div>
+
+    </div>
     <!-- card -->
     <div *ngIf="input.value == ''" class="d-flex justify-content-center flex-wrap flex-row">
-      <div *ngFor="let elem of blist|paginate:{itemsPerPage:24,currentPage:p}" class="card" style="width: 18rem;">
+      <div *ngFor="let elem of blist|paginate:{itemsPerPage:10,currentPage:p}" class="card" style="width: 18rem;">
         <img src="https://picsum.photos/500/300?random=1" class="card-img-top" alt="...">
         <div class="card-body text-center">
           <div>
             <p class="card-title">{{elem.name}}</p>
-            <p *ngIf="(elem.products[0].standardCost > 0)">{{arrotondo(elem.products[0].standardCost)}}€</p>
+            <p>{{arrotondo(elem.listPrice)}}€</p>
             <a href="#" class="btn button">Maggiori dettagli</a>
           </div>
         </div>
       </div>
     </div>
+    <!-- search -->
     <div *ngIf="searchOn" class="d-flex justify-content-center flex-wrap flex-row">
       <div *ngFor="let elem of searchlist|paginate:{itemsPerPage:24,currentPage:p}" class="card" style="width: 18rem;">
         <img src="https://picsum.photos/500/300?random=1" class="card-img-top" alt="...">
         <div class="card-body text-center">
           <div>
             <p class="card-title">{{elem.name}}</p>
-            <p *ngIf="(elem.products[0].standardCost > 0)">{{arrotondo(elem.products[0].standardCost)}}€</p>
+            <p>{{arrotondo(elem.listPrice)}}€</p>
             <a href="#" class="btn button">Maggiori dettagli</a>
           </div>
         </div>
@@ -42,5 +67,7 @@
     </div>
 
   </div>
+
 </div>
+
 

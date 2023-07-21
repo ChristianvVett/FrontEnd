@@ -59,6 +59,24 @@ transition: 0.3s ease-in-out;
   right: 50px;
   cursor: pointer;
 }
+.plusdiv{
+  width: 50px;
+  background-color: #D15800;
+  border-radius:50px 10px;
+  color: white;
+  cursor: pointer;
+  transition: 1s ease-in-out;
+}
+.plus{
+  padding: 0.5rem;
+  font-size: 2rem;
+}
+
+.minus{
+  padding: 0.5rem;
+  font-size: 2rem;
+
+}
 // pagination
 ::ng-deep{
   .ngx-pagination{
@@ -81,6 +99,7 @@ transition: 0.3s ease-in-out;
   .pagination-previous{
     display: none !important;
   }
+
 }
 
 .arrow-right{
