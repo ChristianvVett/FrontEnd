@@ -7,12 +7,15 @@ import { NgbPaginationFirst, NgbPaginationLast } from '@ng-bootstrap/ng-bootstra
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faMinus } from '@fortawesome/free-solid-svg-icons';
 
+
 @Component({
   selector: 'app-catalogue',
   templateUrl: './catalogue.component.html',
   styleUrls: ['./catalogue.component.scss']
 })
 export class CatalogueComponent {
+
+  rangeValue: number = 0;
 
     // font awesome icons
   istrue:boolean=true;
@@ -44,6 +47,10 @@ transformPlus(){
     this.widthplus+=600;
     console.log(`plus${this.istrue}`)
   }
+}
+updateValue(event: Event) {
+  const target = event.target as HTMLInputElement;
+  this.rangeValue = parseInt(target.value);
 }
 
 transformMinus(){
@@ -93,7 +100,15 @@ serchArticles(input :HTMLInputElement){
   }
 
 }
+searchbyprice(priceinput:HTMLInputElement,input:HTMLInputElement){
+    this.searchOn = true
+     var lista =  this.blist.filter(elem => elem.listPrice < +priceinput.value && elem.name.toLowerCase().includes(input.value.toLowerCase()));
+     this.searchlist = lista
+     console.log(this.searchlist)
+
 }
+}
+
 
 
 interface bici{

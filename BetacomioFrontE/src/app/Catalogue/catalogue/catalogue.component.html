@@ -6,7 +6,7 @@
     <!-- searchbar -->
     <div class="d-flex justify-content-center boxs">
       <input #input class="searchbar" type="text" (keyup.enter)="serchArticles(input)" placeholder="Cerca...">
-      <fa-icon class="glass" (click)="serchArticles(input)" [icon]="magnifyGlass"></fa-icon>
+      <fa-icon class="glass" (click)="serchArticles(input)"  [icon]="magnifyGlass"></fa-icon>
     </div>
     <div class="d-flex justify-content-center my-3">
 
@@ -22,19 +22,30 @@
           </div>
         </ng-template>
 
-        <ng-template #minuses>
+        <ng-template #minuses class="boxinput">
           <!-- Contenuto della seconda ng-template qui -->
           <div (click)="transformMinus()">
             <fa-icon [icon]="plus" class="plus" [style.display]="'none'"></fa-icon>
             <fa-icon [icon]="minus" class="minus" [style.display]="'block'"></fa-icon>
-            <input type="range">
           </div>
+            <div>
+              <label class="positioninput pricelabel" for="inputs">Prezzo:</label>
+              <input #inputprice class="positioninput"  id="inputs" type="range" step="0" min="0" max="3000" (input)="updateValue($event)" (keyup.enter)="searchbyprice(inputprice,input)">
+              <label class="positioninput pricelabel" for="inputs">{{rangeValue}}€</label>
+              <button class="buttonfilter" (click)="searchbyprice(inputprice,input)">Filtra</button>
+            </div>
+
         </ng-template>
       </div>
 
     </div>
     <!-- card -->
-    <div *ngIf="input.value == ''" class="d-flex justify-content-center flex-wrap flex-row">
+    <ng-template *ngIf="blist.length > 0;then mainlist else notfound"></ng-template>
+    <ng-template #notfound>
+      <p>non trovato</p>
+    </ng-template>
+    <ng-template #mainlist>
+    <div *ngIf="input.value == '' " class="d-flex justify-content-center flex-wrap flex-row">
       <div *ngFor="let elem of blist|paginate:{itemsPerPage:10,currentPage:p}" class="card" style="width: 18rem;">
         <img src="https://picsum.photos/500/300?random=1" class="card-img-top" alt="...">
         <div class="card-body text-center">
@@ -46,19 +57,24 @@
         </div>
       </div>
     </div>
+  </ng-template>
     <!-- search -->
-    <div *ngIf="searchOn" class="d-flex justify-content-center flex-wrap flex-row">
-      <div *ngFor="let elem of searchlist|paginate:{itemsPerPage:24,currentPage:p}" class="card" style="width: 18rem;">
-        <img src="https://picsum.photos/500/300?random=1" class="card-img-top" alt="...">
-        <div class="card-body text-center">
-          <div>
-            <p class="card-title">{{elem.name}}</p>
-            <p>{{arrotondo(elem.listPrice)}}€</p>
-            <a href="#" class="btn button">Maggiori dettagli</a>
+    <ng-template *ngIf="searchlist.length > 0;then searchlista else notfound"></ng-template>
+    <ng-template #searchlista>
+
+      <div *ngIf="searchOn" class="d-flex justify-content-center flex-wrap flex-row">
+        <div *ngFor="let elem of searchlist|paginate:{itemsPerPage:24,currentPage:p}" class="card" style="width: 18rem;">
+          <img src="https://picsum.photos/500/300?random=1" class="card-img-top" alt="...">
+          <div class="card-body text-center">
+            <div>
+              <p class="card-title">{{elem.name}}</p>
+              <p>{{arrotondo(elem.listPrice)}}€</p>
+              <a href="#" class="btn button">Maggiori dettagli</a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </ng-template>
 
     <div class="d-flex justify-content-center align-items-center">
       <fa-icon class="arrow-right" (click)="decreasePage(p)" [icon]="icon2"></fa-icon>

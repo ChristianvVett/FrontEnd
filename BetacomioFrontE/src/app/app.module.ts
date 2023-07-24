@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './Home/home/home.component';
@@ -14,6 +13,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { LoginComponent } from './Login/login/login.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SignupComponent } from './Signup/signup/signup.component';
+import {FormsModule} from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -32,7 +32,8 @@ import { SignupComponent } from './Signup/signup/signup.component';
     AppRoutingModule,
     HttpClientModule,
     NgxPaginationModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
