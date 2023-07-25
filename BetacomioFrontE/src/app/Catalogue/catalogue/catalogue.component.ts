@@ -33,6 +33,7 @@ export class CatalogueComponent {
   searchOn:boolean=false;
   searchlist:bici[]=[]
   constructor(private http:HttpClient){}
+
   ngOnInit(){
   this.http.get<any>('https://localhost:7284/api/Products1').subscribe((result)=>{
     this.blist=result;
@@ -45,7 +46,7 @@ transformPlus(){
 
     this.istrue = false;
     this.widthplus+=600;
-    console.log(`plus${this.istrue}`)
+
   }
 }
 updateValue(event: Event) {
