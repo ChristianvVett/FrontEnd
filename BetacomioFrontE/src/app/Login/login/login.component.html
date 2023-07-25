@@ -3,11 +3,18 @@
         <input type="checkbox" id="chk" aria-hidden="true">
     
         <div class="login">
-            <form>
+            <form >
                 <label for="chk" aria-hidden="true">Login</label>
-                <input type="email" name="email" placeholder="Email">
-                <input type="password" name="pswd" placeholder="Password">
-                <button>Login</button>
+                <div>
+                    <input type="email" id="email" formControlName="email" placeholder="Email">
+                    
+                </div>
+
+                <div>
+                    <input type="password" name="pswd" placeholder="Password">
+                </div>
+                
+                <button type="submit">Login</button>
             </form>
         </div>
     </div>
