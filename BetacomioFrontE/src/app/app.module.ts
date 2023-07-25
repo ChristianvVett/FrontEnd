@@ -13,7 +13,11 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { LoginComponent } from './Login/login/login.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SignupComponent } from './Signup/signup/signup.component';
+<<<<<<< HEAD
+
+=======
 import {FormsModule} from '@angular/forms'
+>>>>>>> 156d963e758aa7e9ac2dee729a5dddfc7144b638
 
 @NgModule({
   declarations: [
@@ -33,7 +37,11 @@ import {FormsModule} from '@angular/forms'
     HttpClientModule,
     NgxPaginationModule,
     FontAwesomeModule,
+<<<<<<< HEAD
+    //FormsModule
+=======
     FormsModule
+>>>>>>> 156d963e758aa7e9ac2dee729a5dddfc7144b638
   ],
   providers: [],
   bootstrap: [AppComponent]
