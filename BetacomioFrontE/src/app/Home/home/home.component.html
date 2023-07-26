@@ -1,1 +1,51 @@
-<p>home works!</p>
+<div class="body">
+    <div class="banner">
+        <div class="content">
+            <h1 class="mb-5">Scopri il nostro catalogo <br/> con un click</h1>
+            <a routerLink="/Catalogue">Catalogo<i class="bi bi-arrow-right"></i></a>
+        </div>
+    </div>
+    <!-- step  -->
+    <div class="container mt-5 mb-5">
+        <h1 class="text-center">Come comprare <span class="highlight">la tua nuova bici</span></h1>
+        <div class="row mt-5">
+            <!-- one  -->
+            <div class="col-lg-4 mt-2">
+                <div class="stepBox">
+                    <h1>1</h1>
+                    <p>Seleziona la bici</p>
+                </div>
+            </div>
+    <!-- two -->
+            <div class="col-lg-4 mt-2">
+                <div class="stepBox">
+                    <h1>2</h1>
+                    <p>Scorpi i dettgli</p>
+                </div>
+            </div>
+            <!-- three  -->
+            <div class="col-lg-4 mt-2">
+                <div class="stepBox">
+                    <h1>3</h1>
+                    <p>La tua bici arriverà in 3 giorni</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- foodbox  -->
+    <div class="container mt-4">
+        <h1 class="text-center">Le bici <span class="highlight">più vendute</span></h1>
+        <div class="row">
+            <div class="col-lg-3 mt-3" *ngFor="let bk of bikeData;index as i">
+                <div class="bikebox" *ngIf="i<=3">
+                    <img src="{{bk.bikeImg}}" />
+                    <h1>{{bk.bikeName}}</h1>
+                    <p>{{bk.bikePrice | currency:'EUR'}}</p>
+                </div>
+            </div>
+        </div>
+        <a routerLink="/Catalogue" class="viewmorebtn">Scopri più bici <fa-icon class="bi" [icon]="icon"></fa-icon></a>
+    </div>
+</div>
+
