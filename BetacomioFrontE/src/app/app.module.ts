@@ -13,13 +13,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { LoginComponent } from './Login/login/login.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SignupComponent } from './Signup/signup/signup.component';
-<<<<<<< HEAD
 import { FormsModule } from '@angular/forms';
 import { ContactsComponent } from './Contacts/contacts/contacts.component';
-=======
-import { CataloguedetailComponent } from './cataloguedetail/cataloguedetail.component';
-
->>>>>>> c50d627cb5639cff1cecad5b6287eb116c3c1796
 
 @NgModule({
   declarations: [
@@ -31,11 +26,7 @@ import { CataloguedetailComponent } from './cataloguedetail/cataloguedetail.comp
     CatalogueComponent,
     LoginComponent,
     SignupComponent,
-<<<<<<< HEAD
     ContactsComponent
-=======
-    CataloguedetailComponent
->>>>>>> c50d627cb5639cff1cecad5b6287eb116c3c1796
   ],
   imports: [
     BrowserModule,
@@ -44,11 +35,7 @@ import { CataloguedetailComponent } from './cataloguedetail/cataloguedetail.comp
     HttpClientModule,
     NgxPaginationModule,
     FontAwesomeModule,
-<<<<<<< HEAD
     FormsModule, // Aggiungi FormsModule qui
-=======
-
->>>>>>> c50d627cb5639cff1cecad5b6287eb116c3c1796
   ],
   providers: [],
   bootstrap: [AppComponent]
