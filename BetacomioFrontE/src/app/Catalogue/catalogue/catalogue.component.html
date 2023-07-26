@@ -45,9 +45,9 @@
       <p>non trovato</p>
     </ng-template>
     <ng-template #mainlist>
-    <div *ngIf="input.value == '' " class="d-flex justify-content-center flex-wrap flex-row">
+    <div *ngIf="input.value == '' && !searchOn" class="d-flex justify-content-center flex-wrap flex-row">
       <div *ngFor="let elem of blist|paginate:{itemsPerPage:10,currentPage:p}" class="card" style="width: 18rem;">
-        <img src="https://picsum.photos/500/300?random=1" class="card-img-top" alt="...">
+        <img src="https://picsum.photos/500/300?random=1" class="card-img-top" alt="random photo">
         <div class="card-body text-center">
           <div>
             <p class="card-title">{{elem.name}}</p>
@@ -64,7 +64,7 @@
 
       <div *ngIf="searchOn" class="d-flex justify-content-center flex-wrap flex-row">
         <div *ngFor="let elem of searchlist|paginate:{itemsPerPage:24,currentPage:p}" class="card" style="width: 18rem;">
-          <img src="https://picsum.photos/500/300?random=1" class="card-img-top" alt="...">
+          <img src="https://picsum.photos/500/300?random=1" class="card-img-top" alt="random photo">
           <div class="card-body text-center">
             <div>
               <p class="card-title">{{elem.name}}</p>
