@@ -1,0 +1,25 @@
+<h1>Contattaci:</h1>
+<div class="d-flex justify-content-center ">
+
+    <form #inputform="ngForm" (submit)="submitform(inputform)" class="formcontainer">
+        <label for="EmailInput">Email</label><br>
+        <input type="email" id="EmailInput" name="email" required [(ngModel)]="person.email"><br>
+
+        <label for="NameInput">Nome</label><br>
+        <input type="text" id="NameInput" required ><br>
+
+        <label for="CauseInput">Oggetto della richiesta</label><br>
+        <input type="text" id="CauseInput" required><br>
+
+        <label for="DetailsInput">Dettaglio della richiesta</label><br>
+        <textarea id="DetailsInput"></textarea>
+
+        <label for="DetailsInput">allega un file</label><br>
+        <input class="nostyle" type="file" (change)="fileselected($event)">
+        <div *ngIf="okFile" class="alert">
+            <p>Il file inserito non è valido</p>
+        </div>
+
+        <button type="submit">Invia</button>
+    </form>
+</div>

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './Home/home/home.component';
@@ -13,11 +13,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { LoginComponent } from './Login/login/login.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SignupComponent } from './Signup/signup/signup.component';
-<<<<<<< HEAD
-
-=======
-import {FormsModule} from '@angular/forms'
->>>>>>> 156d963e758aa7e9ac2dee729a5dddfc7144b638
+import { FormsModule } from '@angular/forms';
+import { ContactsComponent } from './Contacts/contacts/contacts.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +25,8 @@ import {FormsModule} from '@angular/forms'
     AboutUsComponent,
     CatalogueComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    ContactsComponent
   ],
   imports: [
     BrowserModule,
@@ -37,11 +35,7 @@ import {FormsModule} from '@angular/forms'
     HttpClientModule,
     NgxPaginationModule,
     FontAwesomeModule,
-<<<<<<< HEAD
-    //FormsModule
-=======
-    FormsModule
->>>>>>> 156d963e758aa7e9ac2dee729a5dddfc7144b638
+    FormsModule, // Aggiungi FormsModule qui
   ],
   providers: [],
   bootstrap: [AppComponent]
