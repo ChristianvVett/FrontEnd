@@ -4,15 +4,72 @@ import {NgForm} from '@angular/forms';
 @Component({
   selector: 'app-contacts',
   templateUrl: './contacts.component.html',
-  styleUrls: ['./contacts.component.css']
+  styleUrls: ['./contacts.component.scss']
 })
 export class ContactsComponent {
   okFile: boolean = false;
-  person:persona[]=[]
+
+  person: persona = {
+    email: '',
+    name: '',
+    request: '',
+    detail: '',
+    file:''
+  };
+
+   lenghtnotok = false;
+   charnotok = false;
+
+   rlength=false;
+
+   dlength=false;
+  
+   nlength=false;
+   allok=false;
+
+  
+  checkemail(){
+    this.lenghtnotok=this.person.email.length<5
+    this.charnotok=!this.person.email.includes('@');
+    if(this.lenghtnotok||this.charnotok){
+      this.allok=true;
+    }else{
+      this.allok=false
+    }
+  }
+
+  checkname(){
+  this.nlength=this.person.name.length<5
+  if(this.nlength){
+    this.allok=true;
+  }else{
+    this.allok=false
+  }
+}
+
+checkrequired(){
+  this.rlength=this.person.name.length == 0
+  if(this.rlength){
+    this.allok=true;
+  }else{
+    this.allok=false
+  }
+}
+
+checkdetail(){
+  this.dlength=this.person.name.length == 0
+  if(this.dlength){
+    this.allok=true;
+  }else{
+    this.allok=false
+  }
+}
+
+  
 
   submitform(input:NgForm){
     
-
+    this.person = input.value
    
   }
 
@@ -41,5 +98,6 @@ interface persona{
   name:string,
   request:string,
   detail:string,
+  file:string
 
 }
