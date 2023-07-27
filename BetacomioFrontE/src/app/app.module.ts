@@ -16,6 +16,7 @@ import { SignupComponent } from './Signup/signup/signup.component';
 import { FormsModule } from '@angular/forms';
 import { ContactsComponent } from './Contacts/contacts/contacts.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
