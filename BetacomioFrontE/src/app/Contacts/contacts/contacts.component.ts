@@ -1,5 +1,6 @@
 import {Component } from '@angular/core';
 import {NgForm} from '@angular/forms';
+import { EmailsenderService } from 'src/app/Services/emailsender.service';
 
 @Component({
   selector: 'app-contacts',
@@ -7,6 +8,9 @@ import {NgForm} from '@angular/forms';
   styleUrls: ['./contacts.component.scss']
 })
 export class ContactsComponent {
+  constructor(private emailsender:EmailsenderService){
+
+  }
   okFile: boolean = false;
 
   person: persona = {
@@ -23,11 +27,11 @@ export class ContactsComponent {
    rlength=false;
 
    dlength=false;
-  
+
    nlength=false;
    allok=false;
 
-  
+
   checkemail(){
     this.lenghtnotok=this.person.email.length<5
     this.charnotok=!this.person.email.includes('@');
@@ -65,12 +69,13 @@ checkdetail(){
   }
 }
 
-  
+
 
   submitform(input:NgForm){
-    
-    this.person = input.value
-   
+
+    this.person = input.value;
+    console.log(this.person)
+    this.emailsender.sendEmail(this.person.name,this.person.request,this.person.detail);
   }
 
   fileselected(event: any) {

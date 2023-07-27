@@ -41,7 +41,6 @@ nav ul li a{
   color: white;
   font-size: 17px;
   padding: 7px 13px;
-  border-radius: 3px;
   text-transform: uppercase;
   transform: scale(1.1);
 }
@@ -49,19 +48,17 @@ nav ul li a{
 
 
 a.active:hover{
-  
-  transition: .5s;
   transform: scale(1.1);
 }
 
 .active{
-  background-color: #1b9bff;
+  background-color: #b04900;
+  border-radius: 10px;
 }
 .link-list{
   color: white;
   text-decoration: none;
   position: relative;
-  padding-bottom: 5px;
 }
 
 .link-list::after{
@@ -74,11 +71,11 @@ a.active:hover{
   background-color: #ffffff; /* Colore della linea */
   transform: scaleX(0);
   transform-origin: center;
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.3s ease-in-out;
 }
 
 .link-list:hover::after{
-  transform: scaleX(0.8);
+  transform: scaleX(0.6);
 
 }
 
@@ -99,7 +96,7 @@ a.active:hover{
 @media (max-width: 952px){
   .logo{
     font-size: 30px;
-    
+
   }
 
   nav ul li a{
@@ -109,7 +106,7 @@ a.active:hover{
 
 @media (max-width: 858px){
   .checkbtn{
-    display: block; 
+    display: block;
     position: static;
   }
 
@@ -128,20 +125,17 @@ a.active:hover{
     display: block;
     margin: 50px 0;
     line-height: 30px;
-    
+
 
   }
 
   nav ul li a{
     font-size: 20px;
-    
+
   }
 
-  a:hover,a.active{
-    
-    color: #1b9bff;
-  }
- 
+
+
   #check:checked ~ ul{
     left: 0;
   }

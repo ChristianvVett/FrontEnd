@@ -1,4 +1,4 @@
-<h1>Contattaci:</h1>
+<h1 class="mt-5">Contattaci:</h1>
 <div class="d-flex justify-content-center ">
 
     <form #inputform="ngForm"  (submit)="submitform(inputform)" class="formcontainer">
@@ -9,9 +9,9 @@
             <p class="alert" *ngIf="lenghtnotok">L'email è troppo corta</p>
             <p class="alert" *ngIf="charnotok">Inserisci un email valida</p>
         </div>
-          
-            
-          
+
+
+
 
         <label for="NameInput">Nome</label><br>
         <input type="text" id="NameInput" name="name" required [(ngModel)]="person.name" (blur)="checkname()"><br>
@@ -27,7 +27,7 @@
         </div>
 
         <label for="DetailsInput">Dettaglio della richiesta</label><br>
-        <textarea id="DetailsInput" name="details" (blur)="checkdetail()" required [(ngModel)]="person.detail"></textarea>
+        <textarea id="DetailsInput" name="detail" (blur)="checkdetail()" required [(ngModel)]="person.detail"></textarea>
         <div>
             <p class="alert" *ngIf="dlength">La descrizione della richiesta non può essere vuota</p>
         </div>
@@ -38,7 +38,7 @@
             <p>Il file inserito non è valido</p>
         </div>
 
-        <button class="buttonactive" type="submit" [disabled]="!inputform.valid || allok" [ngClass]="{'opacity':!inputform.valid || allok}">Invia</button>
+        <button class="buttonactive mb-5" type="submit" [disabled]="!inputform.valid || allok" [ngClass]="{'opacity':!inputform.valid || allok}">Invia</button>
 
     </form>
 </div>
