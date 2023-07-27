@@ -7,6 +7,7 @@ import { CatalogueComponent } from './Catalogue/catalogue/catalogue.component';
 import { LoginComponent } from './Login/login/login.component';
 import { SignupComponent } from './Signup/signup/signup.component';
 import { ContactsComponent } from './Contacts/contacts/contacts.component';
+import {Cataloguedetails} from './Cataloguedetails/cataloguedetails/cataloguedetails.component';
 
 const routes:Routes=[
   {path:'',component:HomeComponent},
@@ -14,7 +15,8 @@ const routes:Routes=[
   {path:'Catalogue',component:CatalogueComponent},
   {path:'Login', component:LoginComponent},
   {path:'Signup', component:SignupComponent},
-  {path:'Contacts', component:ContactsComponent}
+  {path:'Contacts', component:ContactsComponent},
+  {path:'Cataloguedetails/:id', component:Cataloguedetails}
 ];
 
 @NgModule({
