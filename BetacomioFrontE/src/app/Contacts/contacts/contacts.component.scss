@@ -24,13 +24,28 @@ label{
     font-weight: bold;
 }
 
-button{
+.buttonactive{
     font-size: 1.3rem;
-    background-color: #D15800;
+    background-color: #D15800  ;
     color: white;
     border:none;
     border-radius: 5px;
     margin-bottom: 10px;
+
+   
+}
+
+.warning{
+    display: block;
+    background-color: white;
+    border-radius: 10px;
+    color: black;
+    border:1px solid black;
+    padding: 10px;
+}
+
+.opacity{
+    opacity: 50%;
 }
 
 .nostyle{
