@@ -4,10 +4,10 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class OrderDetailsService {
-
+//dddd
   constructor() { }
 
-  // bikedetails 
+  // bikedetails
 
   bikeDetails = [
     {
