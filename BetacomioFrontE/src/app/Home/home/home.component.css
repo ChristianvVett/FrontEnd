@@ -1,14 +1,58 @@
 *{
     font-family: 'Play', sans-serif;
   }
-  
+  .bckslide{
+    opacity:0.6;
+    background-color:#d45900;
+  }
 
-.banner
-{
-    background-image: url('../../../assets/images/coen-van-de-broek-OFyh9TpMyM8-unsplash.jpg');
-    height: 600px;
-    background-position: center end;
-    background-size: cover;
+
+  .slideimg{
+    display: block;
+     width: 100%;
+     opacity: 55%;
+     transition: 0.5s ease-in-out;
+    }
+
+    .slidepos{
+    position:relative;
+    bottom:350px;
+
+  }
+
+  .carousel-caption{
+    bottom:12rem !important;
+  }
+
+
+  .textslide{
+    opacity: 0%;
+    transition: 0.5s ease-in-out;
+  }
+
+  .slidecontainer{
+    cursor: pointer;
+  }
+
+  .slidecontainer:hover .slideimg{
+    opacity: 0%;
+  }
+
+  .slidecontainer:hover .textslide{
+    opacity: 100%;
+  }
+
+
+  .slideposimg1{
+    position:relative;
+    bottom:220px;
+  }
+
+
+.caro{
+  width: auto;
+  height: 500px;
+  position: relative;
 }
 .content
 {
@@ -16,13 +60,13 @@
     left: 20%;
     position: absolute;
 }
-.content h1 
+.content h1
 {
     color: #fff;
     font-size: 60px;
     font-weight: bold;
 }
-.content a 
+.content a
 {
     text-decoration: none;
     background-color: #fff;
@@ -31,7 +75,7 @@
     border-radius: 5px;
 }
 
-.content a:hover 
+.content a:hover
 {
     background-color: var(--primary-color);
     color: #fff;
@@ -41,20 +85,20 @@
     background-color:#BAF1F1 ;
 }
 
-.stepBox 
+.stepBox
 {
     background-color: #D15800;
     padding: 20px 20px;
     border-radius: 5px;
     text-align: center;
 }
-.stepBox h1 
+.stepBox h1
 {
     font-size: 50px;
     font-weight: bold;
     color:var(--primary-color);
 }
-.stepBox p 
+.stepBox p
 {
     font-size: 20px;
     font-style: italic;
@@ -68,10 +112,10 @@
     text-decoration: underline;
 }
 
-.bikebox 
+.bikebox
 {
     padding: 10px 5px;
-} 
+}
 .bikebox img
 {
     width: 100%;
@@ -79,7 +123,7 @@
     object-fit: cover;
     border-radius: 5px;
 }
-.bikebox h1 
+.bikebox h1
 {
     font-size: 18px;
     margin-top: 20px;
@@ -94,6 +138,11 @@
     border-radius: 5px;
     font-size: 18px;
 
+}
+
+.imgcar{
+  width: 50%;
+  margin: 0 auto;
 }
 
 @media screen and (max-width:600px)

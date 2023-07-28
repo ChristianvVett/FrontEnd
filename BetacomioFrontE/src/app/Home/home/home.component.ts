@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { faRightLong } from '@fortawesome/free-solid-svg-icons';
 import { OrderDetailsService } from 'src/app/Services/order-details.service';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
