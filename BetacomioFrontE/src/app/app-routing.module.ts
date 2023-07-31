@@ -7,6 +7,7 @@ import { CatalogueComponent } from './Catalogue/catalogue/catalogue.component';
 import { LoginComponent } from './Login/login/login.component';
 import { SignupComponent } from './Signup/signup/signup.component';
 import { ContactsComponent } from './Contacts/contacts/contacts.component';
+import { CataloguedtComponent } from './CatalogueDt/cataloguedt/cataloguedt.component';
 
 
 const routes:Routes=[
@@ -16,7 +17,7 @@ const routes:Routes=[
   {path:'Login', component:LoginComponent},
   {path:'Signup', component:SignupComponent},
   {path:'Contacts', component:ContactsComponent},
-  
+  {path:'Cataloguedt/:id', component:CataloguedtComponent}
 ];
 
 @NgModule({
