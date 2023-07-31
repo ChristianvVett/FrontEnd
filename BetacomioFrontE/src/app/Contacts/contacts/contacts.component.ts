@@ -1,6 +1,7 @@
 import {Component } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import { EmailsenderService } from 'src/app/Services/emailsender.service';
+import { PostContactsService } from 'src/app/Services/postMethods.service';
 
 @Component({
   selector: 'app-contacts',
@@ -8,7 +9,7 @@ import { EmailsenderService } from 'src/app/Services/emailsender.service';
   styleUrls: ['./contacts.component.scss']
 })
 export class ContactsComponent {
-  constructor(private emailsender:EmailsenderService){
+  constructor(private emailsender:EmailsenderService, private srvpost:PostContactsService){
 
   }
   okFile: boolean = false;
@@ -31,7 +32,7 @@ export class ContactsComponent {
    nlength=false;
    allok=false;
 
-
+  
   checkemail(){
     this.lenghtnotok=this.person.email.length<5
     this.charnotok=!this.person.email.includes('@');

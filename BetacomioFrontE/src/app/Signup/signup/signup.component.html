@@ -3,12 +3,15 @@
         <input type="checkbox" id="chk" aria-hidden="true">
     
             <div class="signup">
-                <form>
+                <form #inputform="ngForm" (submit)="aaa(inputform)">
                     <label for="chk" aria-hidden="true">Sign up</label>
-                    <input type="text" name="txt" placeholder="User name">
-                    <input type="email" name="email" placeholder="Email">
-                    <input type="password" name="pswd" placeholder="Password">
-                    <button>Sign up</button>
+                    <input type="text" name="Name" placeholder="inserisci un nome" [(ngModel)]="loglist.Name">
+                    <input type="text" name="Surname" placeholder="inserisci un cognome" [(ngModel)]="loglist.Surname">
+                    <input type="text" name="Phone" placeholder="inserisci un numero di telefono" [(ngModel)]="loglist.Phone">
+                    <input type="text" name="Username" placeholder="User name" [(ngModel)]="loglist.Username">
+                    <input type="email" name="Email" placeholder="Email" [(ngModel)]="loglist.Email" >
+                    <input type="password" name="Password_Hash" placeholder="Password" [(ngModel)]="loglist.Password_Hash">
+                    <button type="submit">Sign up</button>
                 </form>
             </div>
     </div>
