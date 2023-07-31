@@ -15,7 +15,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SignupComponent } from './Signup/signup/signup.component';
 import { FormsModule } from '@angular/forms';
 import { ContactsComponent } from './Contacts/contacts/contacts.component';
-import { CataloguedtComponent } from './CatalogueDt/cataloguedt/cataloguedt.component';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+
 
 @NgModule({
   declarations: [
@@ -28,8 +29,6 @@ import { CataloguedtComponent } from './CatalogueDt/cataloguedt/cataloguedt.comp
     LoginComponent,
     SignupComponent,
     ContactsComponent,
-    CataloguedtComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -38,7 +37,8 @@ import { CataloguedtComponent } from './CatalogueDt/cataloguedt/cataloguedt.comp
     HttpClientModule,
     NgxPaginationModule,
     FontAwesomeModule,
-    FormsModule, // Aggiungi FormsModule qui
+    FormsModule,
+    CarouselModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
