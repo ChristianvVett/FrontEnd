@@ -13,4 +13,8 @@ export class NavbarComponent {
   //icon3=faUserPlus;
   //icon4=faAddressBook;
   //icon5=faXmark;
+  closeMobileMenu() {
+    const mobileMenuCheckbox = document.getElementById('check') as HTMLInputElement;
+    mobileMenuCheckbox.checked = false;
+  }
 }

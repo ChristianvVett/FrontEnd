@@ -1,68 +1,74 @@
 <div class="body">
 
   <div class="bckslide">
-      <carousel class="slidecontainer">
-        <slide class="caro">
-          <img src="../../../assets/images/coen-van-de-broek-OFyh9TpMyM8-unsplash.jpg" alt="first slide"  class="slideimg slideposimg1">
-          <div class="carousel-caption d-none d-md-block">
-            <h3 class="textslide">Scopri la nostra nuova bicicletta da corsa per un'esperienza di guida emozionante!</h3>
-          </div>
-        </slide>
-        <slide class="caro">
-          <img src="../../../assets/images/daniel-salcius-RRcYcdGY630-unsplash.jpg" alt="second slide" class="slideimg slidepos">
-          <div class="carousel-caption d-none d-md-block">
-            <h3 class="textslide">Esplora la natura con la nostra linea di biciclette da montagna - pronte per ogni avventura.</h3>
-          </div>
-        </slide>
-        <slide class="caro">
-          <img src="../../../assets/images/laboratorio_bici.jpg" alt="third slide" class="slideimg slidepos" >
-          <div class="carousel-caption d-none d-md-block">
-            <h3 class="textslide">Scopri la rivoluzione della mobilità con le nostre biciclette elettriche - il modo perfetto per muoversi in città!</h3>
-          </div>
-        </slide>
-      </carousel>
-</div>
-    <!-- step  -->
-    <div class="container mt-5 mb-5">
-        <h1 class="text-center">Come comprare <span class="highlight">la tua nuova bici</span></h1>
-        <div class="row mt-5">
-            <!-- one  -->
-            <div class="col-lg-4 mt-2">
-                <div class="stepBox">
-                    <h1>1</h1>
-                    <p>Seleziona la bici</p>
-                </div>
-            </div>
-    <!-- two -->
-            <div class="col-lg-4 mt-2">
-                <div class="stepBox">
-                    <h1>2</h1>
-                    <p>Scorpi i dettgli</p>
-                </div>
-            </div>
-            <!-- three  -->
-            <div class="col-lg-4 mt-2">
-                <div class="stepBox">
-                    <h1>3</h1>
-                    <p>La tua bici arriverà in 3 giorni</p>
-                </div>
-            </div>
+    <carousel class="slidecontainer">
+      <slide class="caro">
+        <img src="../../../assets/images/coen-van-de-broek-OFyh9TpMyM8-unsplash.jpg" alt="first slide"
+          class="slideimg slideposimg1">
+        <div class="carousel-caption d-none d-md-block">
+          <h3 class="textslide">Scopri la nostra nuova bicicletta da corsa per un'esperienza di guida emozionante!</h3>
         </div>
-    </div>
-
-    <!-- foodbox  -->
-    <div class="container mt-4">
-        <h1 class="text-center">Le bici <span class="highlight">più vendute</span></h1>
-        <div class="row">
-            <div class="col-lg-3 mt-3" *ngFor="let bk of bikeData;index as i">
-                <div class="bikebox" *ngIf="i<=3">
-                    <img src="{{bk.bikeImg}}" />
-                    <h1>{{bk.bikeName}}</h1>
-                    <p>{{bk.bikePrice | currency:'EUR'}}</p>
-                </div>
-            </div>
+      </slide>
+      <slide class="caro">
+        <img src="../../../assets/images/daniel-salcius-RRcYcdGY630-unsplash.jpg" alt="second slide"
+          class="slideimg slidepos">
+        <div class="carousel-caption d-none d-md-block">
+          <h3 class="textslide">Esplora la natura con la nostra linea di biciclette da montagna - pronte per ogni
+            avventura.</h3>
         </div>
-        <a routerLink="/Catalogue" class="viewmorebtn">Scopri più bici <fa-icon class="bi" [icon]="icon"></fa-icon></a>
+      </slide>
+      <slide class="caro">
+        <img src="../../../assets/images/laboratorio_bici.jpg" alt="third slide" class="slideimg slidepos">
+        <div class="carousel-caption d-none d-md-block">
+          <h3 class="textslide">Scopri la rivoluzione della mobilità con le nostre biciclette elettriche - il modo
+            perfetto per muoversi in città!</h3>
+        </div>
+      </slide>
+    </carousel>
+  </div>
+  <!-- step  -->
+  <div class="container mt-5 mb-5">
+    <h1 class="text-title">Comprare la tua nuova bici non è mai stato cosi <span class="highlight">emozionante</span>
+    </h1>
+    <div class="row mt-5">
+      <!-- one  -->
+      <div class="col-lg-4 mt-2">
+        <div class="stepBox">
+          <h1>1</h1>
+          <p>Seleziona la bici</p>
+          <fa-icon class="iconsstyle" [icon]="arrowpointer"></fa-icon>
+        </div>
+      </div>
+      <!-- two -->
+      <div class="col-lg-4 mt-2">
+        <div class="stepBox">
+          <h1>2</h1>
+          <p>Scorpi i dettgli</p>
+          <fa-icon class="iconsstyle" [icon]="list"></fa-icon>
+        </div>
+      </div>
+      <!-- three  -->
+      <div class="col-lg-4 mt-2">
+        <div class="stepBox">
+          <h1>3</h1>
+          <p>La tua bici arriverà in 3 giorni</p>
+          <fa-icon class="iconsstyle" [icon]="dolly"></fa-icon>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
 
+  <!-- foodbox  -->
+
+  <h1 class="text-title">Le nostre bici <span class="highlight">più vendute</span></h1>
+  <carousel [itemsPerSlide]="itemsPerSlide" [singleSlideOffset]="false" [interval]="0" [indicatorsByChunk]="true">
+    <slide *ngFor="let slide of slides">
+      <img [src]="slide.image" alt="image slide" style="display: block; width: 100%;max-height: 500px;">
+      <div class="carousel-caption">
+        <h4>Slide</h4>
+      </div>
+    </slide>
+  </carousel>
+  <a routerLink="/Catalogue" class="viewmorebtn">Scopri più bici <fa-icon class="bi" [icon]="icon"></fa-icon></a>
+
+</div>

@@ -24,7 +24,7 @@
     bottom:12rem !important;
   }
 
-
+  
   .textslide{
     opacity: 0%;
     transition: 0.5s ease-in-out;
@@ -82,7 +82,7 @@
 }
 
 .body{
-    background-color:#BAF1F1 ;
+    background-color:white ;
 }
 
 .stepBox
@@ -106,11 +106,11 @@
 }
 .highlight
 {
-    color: var(--primary-color);
+    color:#D15800;
     font-weight: bold;
     font-style: italic;
-    text-decoration: underline;
 }
+    
 
 .bikebox
 {
@@ -128,6 +128,15 @@
     font-size: 18px;
     margin-top: 20px;
     font-weight: bold;
+}
+.text-title{
+  text-align: center;
+  color: #D15800;
+}
+
+.iconsstyle{
+  font-size: 3rem;
+  color: white;
 }
 .viewmorebtn
 {

@@ -9,10 +9,10 @@
 
 
   <ul class="col-6 pad">
-    <li><a routerLink="" class="link-list">Home</a></li>
-    <li><a routerLink="/Catalogue" class="link-list">Catalogo</a></li>
-    <li><a routerLink="/About_us" class="link-list">Dicono di noi</a></li>
-    <li><a routerLink="/Contacts" class="link-list">Contatti</a></li>
+    <li><a routerLink="" (click)="closeMobileMenu()"  class="link-list">Home</a></li>
+    <li><a routerLink="/Catalogue" (click)="closeMobileMenu()" class="link-list">Catalogo</a></li>
+    <li><a routerLink="/About_us" (click)="closeMobileMenu()"  class="link-list">Dicono di noi</a></li>
+    <li><a routerLink="/Contacts" (click)="closeMobileMenu()" class="link-list">Contatti</a></li>
     <li><a class="active hd" routerLink="/Login">Login</a></li>
     <li><a class="active hd" routerLink="/Signup">Registrazione</a></li>
   </ul>
