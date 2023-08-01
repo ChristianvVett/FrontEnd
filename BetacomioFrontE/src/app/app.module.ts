@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { ContactsComponent } from './Contacts/contacts/contacts.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { LandingPageComponent } from './Contacts/landing-page/landing-page.component';
+import { ScrollUpComponent } from './ScrollUp/scroll-up/scroll-up.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { LandingPageComponent } from './Contacts/landing-page/landing-page.compo
     SignupComponent,
     ContactsComponent,
     LandingPageComponent,
+    ScrollUpComponent,
   ],
   imports: [
     BrowserModule,
