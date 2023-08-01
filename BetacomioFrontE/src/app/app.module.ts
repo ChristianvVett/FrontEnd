@@ -16,6 +16,7 @@ import { SignupComponent } from './Signup/signup/signup.component';
 import { FormsModule } from '@angular/forms';
 import { ContactsComponent } from './Contacts/contacts/contacts.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { LandingPageComponent } from './Contacts/landing-page/landing-page.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
     LoginComponent,
     SignupComponent,
     ContactsComponent,
+    LandingPageComponent,
   ],
   imports: [
     BrowserModule,
