@@ -34,11 +34,45 @@
 }
 
 .social-icons{
-
+    display: flex;
+    justify-content: left;
+    margin-top: 1rem;
+    font-size: clamp(.7rem, 2.8vw, 1.4rem);
 }
 
 .icon-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	color: #000;
+	background: #fff;
+	cursor: pointer;
+    margin: .5rem;
+    padding: .65em;
+    border: 2px solid transparent;
+}
 
+.fab{
+    font-size: 20px;
+}
+
+@media screen and (max-width:600px){
+    .social-icons{
+        width: 20px;
+        height: 20px;
+    }
+
+    .icon-container{
+        width: 25px;
+        height: 30px;
+    }
+
+    .fab{
+        font-size: 20px;
+    }
 }
 
 .scritte{
