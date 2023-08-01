@@ -141,12 +141,19 @@
 .viewmorebtn
 {
     text-decoration: none;
-    background-color:white;
-    color: #000;
+    text-align: center;
+    background-color:#D15800;
+    color: white;
     padding: 10px 10px;
     border-radius: 5px;
     font-size: 18px;
+    transition: 0.5s ease-in-out;
+}
 
+.viewmorebtn:hover{
+  color: #D15800;
+  background-color: #fff;
+  border: 1px solid black;
 }
 
 .imgcar{

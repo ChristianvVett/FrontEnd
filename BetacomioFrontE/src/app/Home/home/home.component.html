@@ -62,13 +62,16 @@
 
   <h1 class="text-title">Le nostre bici <span class="highlight">più vendute</span></h1>
   <carousel [itemsPerSlide]="itemsPerSlide" [singleSlideOffset]="false" [interval]="0" [indicatorsByChunk]="true">
-    <slide *ngFor="let slide of slides">
+    <slide class="mx-2" *ngFor="let slide of slides">
       <img [src]="slide.image" alt="image slide" style="display: block; width: 100%;max-height: 500px;">
       <div class="carousel-caption">
         <h4>Slide</h4>
       </div>
     </slide>
   </carousel>
-  <a routerLink="/Catalogue" class="viewmorebtn">Scopri più bici <fa-icon class="bi" [icon]="icon"></fa-icon></a>
+  <div class="my-5 d-flex justify-content-center">
+
+    <a routerLink="/Catalogue" class="viewmorebtn">Scopri più bici <fa-icon class="bi" [icon]="icon"></fa-icon></a>
+  </div>
 
 </div>
