@@ -50,9 +50,10 @@
         <img src="https://picsum.photos/500/300?random=1" class="card-img-top" alt="random photo">
         <div class="card-body text-center">
           <div>
+            <p>{{elem.productId}}</p>
             <p class="card-title">{{elem.name}}</p>
             <p>{{arrotondo(elem.listPrice)}}€</p>
-            <a href="/Cataloguedetails" class="btn button">Maggiori dettagli</a>
+            <a href="/Cataloguedt/{{elem.productId}}" class="btn button">Maggiori dettagli</a>
           </div>
         </div>
       </div>

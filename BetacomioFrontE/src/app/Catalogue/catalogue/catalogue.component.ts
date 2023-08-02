@@ -35,7 +35,7 @@ export class CatalogueComponent {
   constructor(private http:HttpClient){}
 
   ngOnInit(){
-  this.http.get<any>('https://localhost:7284/api/Products1').subscribe((result)=>{
+  this.http.get<any>('https://localhost:7284/api/UserProductsViews').subscribe((result)=>{
     this.blist=result;
     console.log(this.blist);
   })
@@ -113,8 +113,7 @@ searchbyprice(priceinput:HTMLInputElement,input:HTMLInputElement){
 
 
 interface bici{
+  productId:Number,
   name:string,
   listPrice:number
-
-
 }
