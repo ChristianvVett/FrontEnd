@@ -9,6 +9,7 @@ import { SignupComponent } from './Signup/signup/signup.component';
 import { ContactsComponent } from './Contacts/contacts/contacts.component';
 import { CataloguedtComponent } from './CatalogueDt/cataloguedt/cataloguedt.component';
 import { LandingPageComponent } from './Contacts/landing-page/landing-page.component';
+import { SuperadminComponent } from './superadmin/superadmin.component';
 
 
 const routes:Routes=[
@@ -19,7 +20,8 @@ const routes:Routes=[
   {path:'Signup', component:SignupComponent},
   {path:'Contacts', component:ContactsComponent},
   {path:'LandingPage', component:LandingPageComponent},
-  {path:'Cataloguedt/:id', component:CataloguedtComponent}
+  {path:'Cataloguedt/:id', component:CataloguedtComponent},
+  {path:'superadmin', component:SuperadminComponent }
 ];
 
 @NgModule({

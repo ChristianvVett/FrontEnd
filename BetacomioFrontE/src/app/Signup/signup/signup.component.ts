@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-
+import { HttpClient , HttpResponse , HttpStatusCode} from '@angular/common/http';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -13,8 +12,13 @@ export class SignupComponent {
   singleUser: register | null = null
   InsertUser(elem: NgForm) {
     this.singleUser = elem.value;
-    this.Http.post<register>('https://localhost:7284/api/Users', elem.value).subscribe(
-      (result) => {}
+    this.Http.post<register>('https://localhost:7284/api/Users', elem.value, {observe: 'response'}).subscribe(
+      (response: HttpResponse<register>) => 
+      {
+        if (HttpStatusCode.Ok) {
+          console.log("registrazione effettuata con successo" + response.status)
+        }else if(HttpStatusCode.BadRequest){ console.log("errore in fase di registrazione  " + response.status)}
+      }
     );
   }
 }

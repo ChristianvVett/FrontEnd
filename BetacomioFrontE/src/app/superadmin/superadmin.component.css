@@ -1,0 +1,28 @@
+.title-admin{
+    color: transparent;
+    background: #666666;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    text-shadow: 0px 3px 3px rgba(255,255,255,0.5);
+}
+.property{
+    font-size: 18px;
+}
+.icon-dimension{
+    font-size: 30px;
+}
+.property{
+    border-left: 5px solid #69A413;
+    border-radius: 50px 50px 50px 50px;
+    background-color: azure;
+    padding: 20px;
+    margin-bottom: 5px;
+}
+button{
+    background-color: azure;
+    border-color: azure;
+}
+.utentiRegistrati{
+    display: block;
+}
