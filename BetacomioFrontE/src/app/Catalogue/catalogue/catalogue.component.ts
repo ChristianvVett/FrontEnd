@@ -71,22 +71,17 @@ arrotondo(num:any){
 }
 
 increasePage(p:number){
-  if(NgbPaginationLast){
-    this.p+=0
-  }else{
-
+  
     this.p++;
-  }
+  
 
 }
 
 decreasePage(p:number){
-  if(NgbPaginationFirst){
-    this.p-=0
-  }else{
+  
 
     this.p--;
-  }
+  
 }
 
 serchArticles(input :HTMLInputElement){

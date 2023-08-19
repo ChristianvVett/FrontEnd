@@ -1,16 +1,13 @@
 *{
     font-family: 'Play', sans-serif;
   }
-  .bckslide{
-    opacity:0.6;
-    background-color:#d45900;
-  }
+ 
 
 
   .slideimg{
     display: block;
      width: 100%;
-     opacity: 55%;
+     opacity: 100%;
      transition: 0.5s ease-in-out;
     }
 
@@ -26,20 +23,20 @@
 
   
   .textslide{
-    opacity: 0%;
+    opacity: 100%;
+    position: absolute;
+    width: fit-content;
+    bottom: -150px;
     transition: 0.5s ease-in-out;
+    background-color: #d45900;
+    border-radius: 10px;
+    padding: 10px;
+    opacity: 90%;
   }
 
   .slidecontainer{
     cursor: pointer;
-  }
-
-  .slidecontainer:hover .slideimg{
-    opacity: 0%;
-  }
-
-  .slidecontainer:hover .textslide{
-    opacity: 100%;
+    transition: 0.5s ease-in-out;
   }
 
 
