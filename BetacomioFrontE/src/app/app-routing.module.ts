@@ -21,7 +21,8 @@ const routes:Routes=[
   {path:'Contacts', component:ContactsComponent},
   {path:'LandingPage', component:LandingPageComponent},
   {path:'Cataloguedt/:id', component:CataloguedtComponent},
-  {path:'superadmin', component:SuperadminComponent }
+  {path:'superadmin', component:SuperadminComponent },
+  { path: 'product/:productname', component:CataloguedtComponent}
 ];
 
 @NgModule({
