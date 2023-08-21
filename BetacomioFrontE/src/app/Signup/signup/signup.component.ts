@@ -12,7 +12,7 @@ export class SignupComponent {
   singleUser: register | null = null
   InsertUser(elem: NgForm) {
     this.singleUser = elem.value;
-    this.Http.post<register>('https://localhost:7284/api/Users', elem.value, {observe: 'response'}).subscribe(
+    this.Http.post<register>('https://localhost:7284/api/UserCredentials', elem.value, {observe: 'response'}).subscribe(
       (response: HttpResponse<register>) => 
       {
         if (HttpStatusCode.Ok) {
