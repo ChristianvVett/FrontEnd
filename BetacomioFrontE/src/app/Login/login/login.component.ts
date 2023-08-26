@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 //import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { HttpClient , HttpHeaders,  HttpResponse , HttpStatusCode} from '@angular/common/http';
+import { Router } from '@angular/router'; // Importa il servizio di routing
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,7 +10,7 @@ import { HttpClient , HttpHeaders,  HttpResponse , HttpStatusCode} from '@angula
 })
 export class LoginComponent {
 
-  constructor(private http: HttpClient )
+  constructor(private http: HttpClient , private route:Router )
   {
   }
   users: Person[] = [];
@@ -19,13 +20,31 @@ export class LoginComponent {
     const username = elem.value.email;
     const password = elem.value.pass;
     const base64credential = window.btoa(username + ":" + password)
-    
+    const result = [];
 
     // Create a Basic Authentication header
     const headers = new HttpHeaders({ 'Authorization': 'Basic ' + base64credential, });
       console.log(headers)
-    this.http.post<any>('https://localhost:7284/api/ViewUserProducts', {base64credential} , {headers} ).subscribe((resp) => {})
-  }
+    this.http.post<any>('https://localhost:7284/api/Login', {base64credential} , {headers} ).subscribe((resp) => {
+
+    
+    console.log(resp);
+  
+    resp.forEach(element => {
+      console.log(element)
+      result.push(element);
+    });
+    console.log(result[0]);
+    const data = sessionStorage.setItem("username" , JSON.stringify(result[0]) );
+    
+     })
+   
+   }
+
+   
+
+    
+  
 
 
 
