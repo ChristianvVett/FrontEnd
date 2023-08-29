@@ -6,6 +6,8 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { NgbPaginationFirst, NgbPaginationLast } from '@ng-bootstrap/ng-bootstrap';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faMinus } from '@fortawesome/free-solid-svg-icons';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -24,12 +26,13 @@ export class CatalogueComponent {
   icon2=faChevronLeft;
   plus=faPlus;
   minus = faMinus;
+  cuoricino = faHeart;
+  cart = faCartShopping;
   magnifyGlass=faMagnifyingGlass;
   widthplus:number = 0
 
   // variables and array
   p:number=1;
-  sign:string[] = []
   blist:bici[]=[];
   searchOn:boolean=false;
   searchlist:bici[]= []
