@@ -1,13 +1,15 @@
 import { Component , OnInit , Renderer2 , OnChanges, SimpleChanges } from '@angular/core';
 import {faBars} from '@fortawesome/free-solid-svg-icons'
+import {faCartShopping} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
   icon=faBars;
+  cart=faCartShopping;
   rew: string = sessionStorage.getItem('dati');
   tok: string ;
   result: string;
@@ -29,7 +31,7 @@ export class NavbarComponent {
 
 token(): string{
 
-  
+
     if (this.rew == ""  || this.rew ==  null) {
       console.log("elemento sessione vuoto" + this.tok)
 
@@ -37,7 +39,7 @@ token(): string{
       }else if(this.rew != ""){
         console.log(this.rew);
        return this.result = "elemento trovato" + this.rew;
- 
+
 
   }
   return "";
@@ -47,5 +49,5 @@ sessionStorage.clear()
 window.location.reload();
 }
 
-  
+
 }

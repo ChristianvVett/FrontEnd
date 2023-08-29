@@ -9,7 +9,7 @@
 
 
 
-    <ul class="col-6 pad"  *ngIf="tok === null ">
+    <ul class="col-5 pad"  *ngIf="tok === null ">
       <li><a routerLink="" (click)="closeMobileMenu()"  class="link-list">Home</a></li>
       <li><a routerLink="/Catalogue" (click)="closeMobileMenu()" class="link-list">Catalogo</a></li>
       <li><a routerLink="/About_us" (click)="closeMobileMenu()"  class="link-list">Dicono di noi</a></li>
@@ -17,27 +17,36 @@
       <li><a routerLink="/superadmin" class="link-list">Super Admin</a></li>
       <li><a class="active hd" (click)="closeMobileMenu()" routerLink="/Login">Login</a></li>
       <li><a class="active hd" (click)="closeMobileMenu()" routerLink="/Signup">Registrazione</a></li>
-  
+
     </ul>
 
-    <ul class="col-4 bo pad"  *ngIf="tok === null">
+    <ul class="col-3 bo pad"  *ngIf="tok === null">
       <li><a class="active"  routerLink="/Login">Login</a></li>
       <li><a class="active" routerLink="/Signup">Registrazione</a></li>
-      
+
     </ul>
 
-    <ul class="col-6 pad " *ngIf="tok !== null">
-      <li><a routerLink="" (click)="closeMobileMenu()"  class="link-list">Home</a></li>
-      <li><a routerLink="/Catalogue" (click)="closeMobileMenu()" class="link-list">Catalogo</a></li>
-      <li><a routerLink="/About_us" (click)="closeMobileMenu()"  class="link-list">Dicono di noi</a></li>
-      <li><a routerLink="/Contacts" (click)="closeMobileMenu()" class="link-list">Contatti</a></li>
-      <li><a routerLink="" (click)="logout()" class="link-list">logout</a></li>
+    <ul class="col-7 pad " *ngIf="tok !== null">
+      <div class="justify-content-center d-flex">
+
+        <li><a routerLink="" (click)="closeMobileMenu()"  class="link-list">Home</a></li>
+        <li><a routerLink="/Catalogue" (click)="closeMobileMenu()" class="link-list">Catalogo</a></li>
+        <li><a routerLink="/About_us" (click)="closeMobileMenu()"  class="link-list">Dicono di noi</a></li>
+        <li><a routerLink="/Contacts" (click)="closeMobileMenu()" class="link-list">Contatti</a></li>
+      </div>
     </ul>
-  
- 
 
-  
+    <div class="col-2 d-flex registrationzone" *ngIf="tok !== null">
+      <li style="font-family: 'Play', sans-serif; font-size: 1.3rem;"><a routerLink="" (click)="logout()" class="link-list">logout</a></li>
+      <li style="font-family: 'Play', sans-serif; font-size: 1.3rem; margin-left: 30px;"><a routerLink="" (click)="logout()" class="link-list">Il mio profilo</a></li>
+      <fa-icon class="cart" [icon]="cart"></fa-icon>
+
+    </div>
 
 
- 
+
+
+
+
+
 </nav>

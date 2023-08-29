@@ -91,10 +91,25 @@ a.active:hover{
   display: none;
 }
 .pad{
-  padding-left: 250px;
+  padding-left: 50px;
 }
 #check{
   display: none;
+}
+
+.cart{
+  font-size: 1.3rem;
+  cursor: pointer;
+  width: 20%;
+  color: #ffffff;
+  text-align: center;
+
+}
+
+.registrationzone{
+  display: flex;
+  align-items: center;
+
 }
 
 @media screen and (max-width: 952px){

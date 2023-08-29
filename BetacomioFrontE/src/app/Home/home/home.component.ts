@@ -27,9 +27,9 @@ export class HomeComponent implements OnInit {
     {image: '../../../assets/images/daniel-salcius-RRcYcdGY630-unsplash.jpg'},
     {image: '../../../assets/images/coen-van-de-broek-OFyh9TpMyM8-unsplash.jpg'},
     {image: '../../../assets/images/daniel-salcius-RRcYcdGY630-unsplash.jpg'},
-    
+
   ];
-  
+
 
   constructor(private service:OrderDetailsService) { }
   bikeData:any;
