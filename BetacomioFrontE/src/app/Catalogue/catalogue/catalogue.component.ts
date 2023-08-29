@@ -29,9 +29,10 @@ export class CatalogueComponent {
 
   // variables and array
   p:number=1;
+  sign:string[] = []
   blist:bici[]=[];
   searchOn:boolean=false;
-  searchlist:bici[]=[]
+  searchlist:bici[]= []
   constructor(private http:HttpClient){}
 
   ngOnInit(){
@@ -103,7 +104,11 @@ searchbyprice(priceinput:HTMLInputElement,input:HTMLInputElement){
      console.log(this.searchlist)
 
 }
+
+
+
 }
+
 
 
 

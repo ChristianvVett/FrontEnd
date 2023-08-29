@@ -42,7 +42,7 @@
     <!-- card -->
     <ng-template *ngIf="blist.length > 0;then mainlist else notfound"></ng-template>
     <ng-template #notfound>
-      <p>non trovato</p>
+      <div class="loader"></div>
     </ng-template>
     <ng-template #mainlist>
     <div *ngIf="input.value == '' && !searchOn" class="d-flex justify-content-center flex-wrap flex-row">
@@ -60,16 +60,18 @@
     </div>
   </ng-template>
     <!-- search -->
-    <ng-template *ngIf="searchlist.length > 0;then searchlista else notfound"></ng-template>
+    <ng-template *ngIf="searchlist.length > 0;then searchlista "></ng-template>
     <ng-template #searchlista>
 
       <div *ngIf="searchOn" class="d-flex justify-content-center flex-wrap flex-row">
         <div *ngFor="let elem of searchlist|paginate:{itemsPerPage:24,currentPage:p}" class="card" style="width: 18rem;">
+         
           <img src="https://picsum.photos/500/300?random=1" class="card-img-top" alt="random photo">
           <div class="card-body text-center">
             <div>
               <p class="card-title">{{elem.name}}</p>
               <p>{{arrotondo(elem.listPrice)}}€</p>
+            
               <a href="#" class="btn button">Maggiori dettagli</a>
             </div>
           </div>
@@ -85,5 +87,5 @@
 
   </div>
 
-
+  <i class="fa-solid fa-house"></i>
 

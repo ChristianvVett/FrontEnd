@@ -151,3 +151,16 @@ input[type="range"]::-webkit-slider-thumb {
   cursor: pointer; /* Cambia il cursore al passaggio sopra il cursore */
 }
 
+.loader {
+  border: 6px solid #f3f3f3; /* Light grey */
+  border-top: 10px solid #db7134; /* Blue */
+  margin: 40px auto;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 0.5s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
