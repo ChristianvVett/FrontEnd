@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 //import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { HttpClient , HttpHeaders,  HttpResponse , HttpStatusCode} from '@angular/common/http';
 import { Router } from '@angular/router'; // Importa il servizio di routing
+import { CatalogueComponent } from 'src/app/Catalogue/catalogue/catalogue.component';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -35,12 +36,15 @@ export class LoginComponent {
       result.push(element);
     });
     console.log(result[0]);
-    const data = sessionStorage.setItem("username" , JSON.stringify(result[0]) );
-    
+    const data = sessionStorage.setItem("dati" , JSON.stringify(result[0]) );
+   window.location.reload();
+   this.route.navigateByUrl('');
      })
-   
+
+ 
    }
 
+ 
    
 
     
