@@ -29,9 +29,7 @@ export class NavbarComponent {
   closeMobileMenu() {
     const mobileMenuCheckbox = document.getElementById('check') as HTMLInputElement;
     mobileMenuCheckbox.checked = false;
-  }
-
-  logout(){
+  
     sessionStorage.clear()
     window.location.reload();
     }

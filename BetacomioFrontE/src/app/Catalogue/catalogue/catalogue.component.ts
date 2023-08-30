@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component  } from '@angular/core';
 import{HttpClient} from '@angular/common/http'
 import {faChevronRight} from '@fortawesome/free-solid-svg-icons'
 import {faChevronLeft} from '@fortawesome/free-solid-svg-icons'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import { NgbPaginationFirst, NgbPaginationLast } from '@ng-bootstrap/ng-bootstrap';
+import { NgbPaginationFirst, NgbPaginationLast  } from '@ng-bootstrap/ng-bootstrap';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faMinus } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
@@ -15,7 +15,7 @@ import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './catalogue.component.html',
   styleUrls: ['./catalogue.component.scss']
 })
-export class CatalogueComponent {
+export class CatalogueComponent implements AfterViewInit  {
 
   rangeValue: number = 0;
 
@@ -28,23 +28,36 @@ export class CatalogueComponent {
   minus = faMinus;
   cuoricino = faHeart;
   cart = faCartShopping;
-  randomImage = 0;
+  randomImage: number = 10;
   magnifyGlass=faMagnifyingGlass;
-  widthplus:number = 0
+  widthplus:number = 0;
+  base:number = 300;
 
   // variables and array
   p:number=1;
   blist:bici[]=[];
   searchOn:boolean=false;
   searchlist:bici[]= []
-  constructor(private http:HttpClient){}
+  constructor(private http:HttpClient)
+  {
+   
+
+  }
 
   ngOnInit(){
   this.http.get<any>('https://localhost:7284/api/ViewUserProducts/GetUserProducts').subscribe((result)=>{
     this.blist=result;
     console.log(this.blist);
+    this.randomImage = this.incrementRandomImage();
+    console.log(this.randomImage);
   })
 
+ 
+
+}
+ngAfterViewInit(){
+  this.randomImage =  this.incrementRandomImage();
+  console.log(this.randomImage);
 }
 transformPlus(){
   if(this.istrue){
@@ -110,11 +123,16 @@ searchbyprice(priceinput:HTMLInputElement,input:HTMLInputElement){
 }
 
 
-incrementRandomImage(){
+incrementRandomImage(): number{
      
-  this.randomImage = Math.floor(Math.random() * 100);
-  console.log(this.randomImage);
-  
+ 
+   
+  if (this.randomImage > 9 ) {
+
+    this.randomImage = Math.floor(Math.random() * 100);
+   
+  }
+  return this.randomImage
 }
 
 
