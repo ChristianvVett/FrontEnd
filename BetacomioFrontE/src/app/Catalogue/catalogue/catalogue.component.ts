@@ -28,6 +28,7 @@ export class CatalogueComponent {
   minus = faMinus;
   cuoricino = faHeart;
   cart = faCartShopping;
+  randomImage = 0;
   magnifyGlass=faMagnifyingGlass;
   widthplus:number = 0
 
@@ -108,6 +109,13 @@ searchbyprice(priceinput:HTMLInputElement,input:HTMLInputElement){
 
 }
 
+
+incrementRandomImage(){
+     
+  this.randomImage = Math.floor(Math.random() * 100);
+  console.log(this.randomImage);
+  
+}
 
 
 }
