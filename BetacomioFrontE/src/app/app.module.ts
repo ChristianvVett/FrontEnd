@@ -19,11 +19,9 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { LandingPageComponent } from './Contacts/landing-page/landing-page.component';
 import { ScrollUpComponent } from './ScrollUp/scroll-up/scroll-up.component';
 import { SuperadminComponent } from './superadmin/superadmin.component';
-<<<<<<< HEAD
 import { CataloguedtComponent } from './CatalogueDt/cataloguedt/cataloguedt.component';
-=======
-import { MyprofileComponent } from './MyProfile/myprofile/myprofile.component';
->>>>>>> b2ba7852b3ebc85fa41ec76a4ef006db4b7a9a45
+
+
 
 
 @NgModule({
@@ -41,7 +39,6 @@ import { MyprofileComponent } from './MyProfile/myprofile/myprofile.component';
     LandingPageComponent,
     ScrollUpComponent,
     SuperadminComponent,
-    MyprofileComponent,
   ],
   imports: [
     BrowserModule,
