@@ -19,6 +19,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { LandingPageComponent } from './Contacts/landing-page/landing-page.component';
 import { ScrollUpComponent } from './ScrollUp/scroll-up/scroll-up.component';
 import { SuperadminComponent } from './superadmin/superadmin.component';
+import { CataloguedtComponent } from './CatalogueDt/cataloguedt/cataloguedt.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { SuperadminComponent } from './superadmin/superadmin.component';
     FooterComponent,
     AboutUsComponent,
     CatalogueComponent,
+    CataloguedtComponent,
     LoginComponent,
     SignupComponent,
     ContactsComponent,

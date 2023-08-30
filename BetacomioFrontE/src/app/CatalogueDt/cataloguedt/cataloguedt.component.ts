@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {ActivatedRoute} from '@angular/router'
 import {HttpClient} from '@angular/common/http'
+import { faCircle } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -10,7 +11,7 @@ import {HttpClient} from '@angular/common/http'
 })
 export class CataloguedtComponent {
 constructor(private route:ActivatedRoute,private http:HttpClient){}
-
+circle= faCircle;
 productname:string;
 DetailList:biciycleDetail= {} as biciycleDetail
 

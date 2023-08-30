@@ -1,3 +1,19 @@
-<p>{{DetailList.name}}</p>
-<p>{{DetailList.description}}</p>
-<p>{{DetailList.listPrice}}€</p>
+<p class="title">{{DetailList.name}}</p>
+<div class="d-flex">
+  <img src="https://picsum.photos/500/300?random=1" class="dtimg"  alt="random photo">
+  <div style="display: flex;flex-direction: column;">
+
+    <p class="dtdesc">{{DetailList.description}}</p>
+    <div class="d-flex">
+      <div class="squarecolor blackcolor"></div>
+      <div class="squarecolor redcolor"></div>
+      <div class="squarecolor"></div>
+    </div>
+    <p class="dtprice">{{DetailList.listPrice}}€</p>
+    <div style="display: flex;">
+      <fa-icon [icon]="circle" class="circledt"></fa-icon>
+      <p class="circledt">DISPONIBILE</p>
+    </div>
+    <p class="addcart">AGGIUNGI AL CARRELLO</p>
+  </div>
+</div>

@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { HttpClient , HttpHeaders,  HttpResponse , HttpStatusCode} from '@angular/common/http';
 import { Router } from '@angular/router'; // Importa il servizio di routing
 import { CatalogueComponent } from 'src/app/Catalogue/catalogue/catalogue.component';
+import { TokenService } from 'src/app/Services/token.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,13 +12,21 @@ import { CatalogueComponent } from 'src/app/Catalogue/catalogue/catalogue.compon
 })
 export class LoginComponent {
 
-  constructor(private http: HttpClient , private route:Router )
-  {
-  }
   users: Person[] = [];
   single: Person | null =  null;
+  kd:Boolean;
+  tk:string;
+  constructor(private http: HttpClient , private route:Router,private Token:TokenService )
+  {
+    this.tk = this.Token.result;
+  }
+
+
+
+
+
   login(elem: NgForm){
-  
+
     const username = elem.value.email;
     const password = elem.value.pass;
     const base64credential = window.btoa(username + ":" + password)
@@ -28,9 +37,9 @@ export class LoginComponent {
       console.log(headers)
     this.http.post<any>('https://localhost:7284/api/Login', {base64credential} , {headers} ).subscribe((resp) => {
 
-    
+
     console.log(resp);
-  
+
     resp.forEach(element => {
       console.log(element)
       result.push(element);
@@ -41,18 +50,10 @@ export class LoginComponent {
    this.route.navigateByUrl('');
      })
 
- 
+
    }
 
- 
-   
 
-    
-  
-
-
-
-  
 }
 export interface Person{
   email:string

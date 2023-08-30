@@ -7,7 +7,7 @@ form
     margin-top: 10%;
     width: 50%;
 }
-img 
+img
 {
     border-radius: 6px;
     padding: 10px 20px;
@@ -15,8 +15,64 @@ img
     height: 500px;
     object-fit: cover;
 }
+
+.dtimg{
+  width: 80%;
+}
+
+.title{
+  font-size: 1.3rem;
+  font-family: 'Play', sans-serif;
+  font-weight: bold;
+  margin: 20px;
+}
+
+.dtdesc{
+  font-size: 1.3rem;
+  font-family: 'Play', sans-serif;
+  margin-top: 50px;
+  width: 80%;
+}
+
+.dtprice{
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.circledt{
+  margin-right: 5px;
+  color: green;
+}
+
+.squarecolor{
+  width: 30px;
+  height: 30px;
+  margin: 5px;
+  border: 1px solid black;
+  cursor: pointer
+}
+
+.blackcolor{
+  background-color: black;
+  margin: 5px;
+}
+
+.redcolor{
+  background-color: red;
+  margin: 5px;
+}
+
+.addcart{
+  color: white;
+  font-weight: bold;
+  background-color: #D15800;
+  width: 200px;
+  text-align: center;
+  cursor: pointer;
+  padding: 5px;
+}
 @media screen and (max-width:600px) {
-    form 
+    form
     {
         width: 100%;
     }

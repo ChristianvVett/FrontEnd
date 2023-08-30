@@ -1,21 +1,34 @@
-<div class="topContainer">
-    <div class="main">  	
-        <input type="checkbox" id="chk" aria-hidden="true">
-    
-        <div class="login">
-            <form #login1="ngForm" (submit)="login(login1)">
-                <label for="chk" aria-hidden="true">Login</label>
-                <div>
-                    <input  type="email" id="email" name="email" placeholder="Email" [ngModel]="single?.email">
-                    
-                </div>
 
-                <div>
-                    <input  type="password" name="pass" placeholder="Password" [ngModel]="single?.pass">
-                </div>
-                
-                <button type="submit">Login</button>
-            </form>
-        </div>
-    </div>
+
+<div *ngIf="tk == null">
+
+  <div class="topContainer">
+      <div class="main">
+          <input type="checkbox" id="chk" aria-hidden="true">
+
+          <div class="login">
+              <form #login1="ngForm" (submit)="login(login1)">
+                  <label for="chk" aria-hidden="true">Login</label>
+                  <div>
+                      <input  type="email" id="email" name="email" placeholder="Email" [ngModel]="single?.email">
+
+                  </div>
+
+                  <div>
+                      <input  type="password" name="pass" placeholder="Password" [ngModel]="single?.pass">
+                  </div>
+                  <button  type="submit">Login</button>
+
+              </form>
+          </div>
+      </div>
+  </div>
+
 </div>
+
+<div *ngIf="tk">
+  <div>
+    Benveuto
+  </div>
+</div>
+
