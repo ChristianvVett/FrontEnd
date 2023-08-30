@@ -19,6 +19,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { LandingPageComponent } from './Contacts/landing-page/landing-page.component';
 import { ScrollUpComponent } from './ScrollUp/scroll-up/scroll-up.component';
 import { SuperadminComponent } from './superadmin/superadmin.component';
+import { MyprofileComponent } from './MyProfile/myprofile/myprofile.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { SuperadminComponent } from './superadmin/superadmin.component';
     LandingPageComponent,
     ScrollUpComponent,
     SuperadminComponent,
+    MyprofileComponent,
   ],
   imports: [
     BrowserModule,
