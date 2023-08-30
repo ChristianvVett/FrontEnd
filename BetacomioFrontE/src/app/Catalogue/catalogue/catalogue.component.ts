@@ -39,7 +39,7 @@ export class CatalogueComponent {
   constructor(private http:HttpClient){}
 
   ngOnInit(){
-  this.http.get<any>('https://localhost:7284/api/ViewUserProducts').subscribe((result)=>{
+  this.http.get<any>('https://localhost:7284/api/ViewUserProducts/GetUserProducts').subscribe((result)=>{
     this.blist=result;
     console.log(this.blist);
   })

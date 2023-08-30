@@ -10,6 +10,7 @@ import { ContactsComponent } from './Contacts/contacts/contacts.component';
 import { CataloguedtComponent } from './CatalogueDt/cataloguedt/cataloguedt.component';
 import { LandingPageComponent } from './Contacts/landing-page/landing-page.component';
 import { SuperadminComponent } from './superadmin/superadmin.component';
+import { MyprofileComponent } from './MyProfile/myprofile/myprofile.component';
 
 
 const routes:Routes=[
@@ -22,7 +23,8 @@ const routes:Routes=[
   {path:'LandingPage', component:LandingPageComponent},
   {path:'Cataloguedt/:id', component:CataloguedtComponent},
   {path:'superadmin', component:SuperadminComponent },
-  { path: 'product/:productname', component:CataloguedtComponent}
+  {path: 'product/:productname', component:CataloguedtComponent},
+  {path: 'MyProfile', component:MyprofileComponent}
 ];
 
 @NgModule({
