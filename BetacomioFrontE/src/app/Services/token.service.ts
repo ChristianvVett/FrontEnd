@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router'; // Importa il servizio di routing
+import { BehaviorSubject } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +13,13 @@ export class TokenService {
   tok: string ;
   result: string;
   logincomplete:boolean=false;
+
+  private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
+  public isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
+
+  loginSuccessful() {
+    this.isAuthenticatedSubject.next(true);
+  }
   token(): string{
 
 

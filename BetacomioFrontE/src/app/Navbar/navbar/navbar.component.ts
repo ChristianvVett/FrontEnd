@@ -1,4 +1,4 @@
-import { Component , OnInit , Renderer2 , OnChanges, SimpleChanges } from '@angular/core';
+import { Component , OnInit , Renderer2 , OnChanges, SimpleChanges,ChangeDetectorRef  } from '@angular/core';
 import {faBars} from '@fortawesome/free-solid-svg-icons'
 import {faCartShopping} from '@fortawesome/free-solid-svg-icons';
 import { TokenService } from 'src/app/Services/token.service';
@@ -15,11 +15,21 @@ export class NavbarComponent {
   df:string;
   result: string;
   tr: boolean;
+  IsLogged:any;
   session: string;
-  constructor(private Token:TokenService){
-
+  cfd:boolean;
+  tok = this.Token.token();
+  constructor(private Token:TokenService,private cdr: ChangeDetectorRef){
+    console.log(this.tok)
   }
-  tok = this.Token.token()
+
+  ngOnInit() {
+    this.Token.isAuthenticated$.subscribe(isAuthenticated => {
+      this.IsLogged = isAuthenticated;
+      this.cdr.detectChanges();
+    });
+  }
+
 
   //icon1=faHouse;
   //icon2=faBookOpen;
@@ -30,6 +40,8 @@ export class NavbarComponent {
     const mobileMenuCheckbox = document.getElementById('check') as HTMLInputElement;
     mobileMenuCheckbox.checked = false;
     }
+
+
 
     logout(){
     sessionStorage.clear()
