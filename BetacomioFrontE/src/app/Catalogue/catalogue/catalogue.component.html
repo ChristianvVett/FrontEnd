@@ -51,9 +51,11 @@
         <div class="card-body text-center">
           <div>
             <p>{{elem.productId}}</p>
-            <p class="card-title">{{elem.name}}</p>
-            <p>{{arrotondo(elem.listPrice)}}€</p>
-            <fa-icon class="iconsstyle" [icon]="cuoricino"></fa-icon>
+            <p #name class="card-title">{{elem.name}}</p>
+            <p #prezzo>{{arrotondo(elem.listPrice)}}€</p>
+            <button (click)="wishlist( elem.name , elem.listPrice)">
+              <fa-icon class="iconsstyle" [icon]="cuoricino"></fa-icon>
+            </button>
             <fa-icon class="iconsstyle" [icon]="cart"></fa-icon>
             <br>
             <a [routerLink]="['/product', elem.name]" class="btn button">Maggiori dettagli</a>

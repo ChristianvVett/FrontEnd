@@ -38,6 +38,7 @@ export class CatalogueComponent implements AfterViewInit  {
   blist:bici[]=[];
   searchOn:boolean=false;
   searchlist:bici[]= []
+  response: string[] = [];
   constructor(private http:HttpClient)
   {
    
@@ -122,6 +123,24 @@ searchbyprice(priceinput:HTMLInputElement,input:HTMLInputElement){
 
 }
 
+wishlist(input: string , input2: number ){
+  this.response.push(input);
+  this.response.push(input2.toString());
+  this.http.post<any>("https://localhost:7284/api/Wishlist" , this.response).subscribe(resp => { 
+
+    try {
+      if (resp.ok) {
+        console.log("invio effettuato correttamente")
+      }else {
+        throw  console.log("errore")
+      }
+    } catch (error) {
+      
+    }
+
+   })
+
+}
 
 incrementRandomImage(): number{
      

@@ -16,7 +16,7 @@ export class TokenService {
 
     if (this.rew == ""  || this.rew ==  null) {
       console.log("elemento sessione vuoto" + this.tok)
-
+      
       return this.result = null;
       }else if(this.rew != ""){
         console.log(this.rew);

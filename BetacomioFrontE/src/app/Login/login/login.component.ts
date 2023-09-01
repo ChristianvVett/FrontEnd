@@ -5,6 +5,7 @@ import { HttpClient , HttpHeaders,  HttpResponse , HttpStatusCode} from '@angula
 import { Router } from '@angular/router'; // Importa il servizio di routing
 import { CatalogueComponent } from 'src/app/Catalogue/catalogue/catalogue.component';
 import { TokenService } from 'src/app/Services/token.service';
+import { NgFor } from '@angular/common';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,6 +17,7 @@ export class LoginComponent {
   single: Person | null =  null;
   kd:Boolean;
   tk:string;
+  ia:NgForm 
   constructor(private http: HttpClient , private route:Router,private Token:TokenService )
   {
     this.tk = this.Token.result;
@@ -46,8 +48,10 @@ export class LoginComponent {
     });
     console.log(result[0]);
     const data = sessionStorage.setItem("dati" , JSON.stringify(result[0]) );
-   window.location.reload();
-   this.route.navigateByUrl('');
+    window.location.reload();
+   this.login(this.ia)
+   this.route.navigate(['']);
+   
      })
 
 
