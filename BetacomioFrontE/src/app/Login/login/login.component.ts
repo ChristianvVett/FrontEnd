@@ -17,12 +17,7 @@ export class LoginComponent{
   single: Person | null =  null;
   kd:Boolean;
   tk:string;
-<<<<<<< HEAD
-  ia:NgForm 
-  constructor(private http: HttpClient , private route:Router,private Token:TokenService )
-=======
   constructor(private http: HttpClient , private route:Router,private Token:TokenService,private ch:ChangeDetectorRef )
->>>>>>> 72860e5ec80e6953e30c089bc99d8f79120b9289
   {
   }
 
@@ -58,23 +53,7 @@ export class LoginComponent{
       this.route.navigateByUrl('/MyProfile');
 
 
-<<<<<<< HEAD
-    console.log(resp);
-
-    resp.forEach(element => {
-      console.log(element)
-      result.push(element);
-    });
-    console.log(result[0]);
-    const data = sessionStorage.setItem("dati" , JSON.stringify(result[0]) );
-    window.location.reload();
-   this.login(this.ia)
-   this.route.navigate(['']);
-   
-     })
-=======
   })
->>>>>>> 72860e5ec80e6953e30c089bc99d8f79120b9289
 
 
 }

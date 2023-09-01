@@ -1,43 +1,66 @@
-<div class="mdl-card mdl-shadow--2dp">
-    <div class="row">
-        <div class="col-md-5">
-            <div class="immagine-circolare">
-                <img src="../../../assets/images/patrick-hendry-tLg5rJZ3LhU-unsplash.jpg" alt="">
-            </div>
-        </div>
+<div style="text-align: center; color: #d15800">
+  <h1>Bentornato {{ SingleProfile.name }}</h1>
+</div>
+<div style="display: flex; justify-content: center">
+  <div class="col-6 container-style">
+    <h3>I miei dati:</h3>
+    <hr />
+    <div class="d-flex">
+      <div class="col-4">
+        <img
+          class="immagine-circolare"
+          src="https://picsum.photos/500/300?random=1"
+          alt=""
+        />
+      </div>
+      <div class="col-4">
+        <p><b>Username: </b>{{ SingleProfile.username }}</p>
+        <p><b>Nome: </b>{{ SingleProfile.name }}</p>
+        <p><b>Cognome: </b>{{ SingleProfile.surname }}</p>
+        <p><b>Email: </b>{{ SingleProfile.email }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="d-flex justify-content-center my-5">
+  <div class="col-6 container-style">
+    <h3 style="text-align: center">La mia wishlist</h3>
+    <hr>
+    <div class="d-flex flex-column">
+      <ul class="list-group list-group-horizontal m-3">
+        <li class="list-group-item col-3"><b>Nome</b></li>
+        <li class="list-group-item col-6"><b>Descrizione</b></li>
+        <li class="list-group-item col-3"><b>Prezzo</b></li>
+      </ul>
+      <h4>Al momento non hai prodotti nella wishlist</h4>
 
-        <div class="col-md-7 col-xs-12">
-            <div class="info-wrap">
-                <h1>VETTORAZZO CHRISTIAN</h1>
-            </div>
-            <ul class="profile-wrap mt-50">
-                <li class="m-1">
-                    <div class="profile-title">Età</div>
-                    <div class="profile-desc">21</div>
-                </li>
-                <li class="m-1">
-                    <div class="profile-title">Username</div>
-                    <div class="profile-desc">
-                        christian25?
-                    </div>
-                </li>
-                <li class="m-1">
-                    <div class="profile-title">Email</div>
-                    <div class="profile-desc">
-                        chrisvett8502@gmail.com
-                    </div>
-                </li>
-                <li class="m-1">
-                    <div class="profile-title">Cellulare</div>
-                    <div class="profile-desc">
-                        000 000 0000
-                    </div>
-                </li>
-                <li class="m-1">
-                    <div class="profile-title">Anno di nascita</div>
-                    <div class="profile-desc relative">08/05/2002 </div>
-                </li>
-            </ul>
-        </div>
-    </div>                    
+      <!-- da aggiungere  -->
+      <!-- <ul class="list-group list-group-horizontal-sm m-3">
+        <li class="list-group-item col-4">An item</li>
+        <li class="list-group-item col-4">A second item</li>
+        <li class="list-group-item col-4">A third item</li>
+      </ul> -->
+    </div>
+  </div>
+</div>
+<div class="d-flex justify-content-center">
+  <div class="col-6 container-style">
+    <h3>I miei prodotti</h3>
+    <hr />
+    <div class="d-flex flex-column">
+      <ul class="list-group list-group-horizontal m-3">
+        <li class="list-group-item col-3"><b>Nome</b></li>
+        <li class="list-group-item col-6"><b>Descrizione</b></li>
+        <li class="list-group-item col-3"><b>Prezzo</b></li>
+      </ul>
+      <!-- da aggiungere  -->
+       <!-- <ul class="list-group list-group-horizontal-sm m-3">
+        <li class="list-group-item col-4">An item</li>
+        <li class="list-group-item col-4">A second item</li>
+        <li class="list-group-item col-4">A third item</li>
+      </ul> -->
+      <h4>Al momento non hai acquistato nessun prodotto</h4>
+    </div>
+  </div>
+
 </div>

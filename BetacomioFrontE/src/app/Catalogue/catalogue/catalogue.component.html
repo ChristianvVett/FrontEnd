@@ -51,17 +51,8 @@
         <div class="card-body text-center">
           <div>
             <p>{{elem.productId}}</p>
-<<<<<<< HEAD
-            <p #name class="card-title">{{elem.name}}</p>
-            <p #prezzo>{{arrotondo(elem.listPrice)}}€</p>
-            <button (click)="wishlist( elem.name , elem.listPrice)">
-              <fa-icon class="iconsstyle" [icon]="cuoricino"></fa-icon>
-            </button>
-            <fa-icon class="iconsstyle" [icon]="cart"></fa-icon>
-=======
             <p class="card-title">{{elem.name}}</p>
             <p>{{arrotondo(elem.listPrice)}}€</p>
->>>>>>> 72860e5ec80e6953e30c089bc99d8f79120b9289
             <br>
             <a [routerLink]="['/product', elem.name]" class="btn button">Maggiori dettagli</a>
           </div>
