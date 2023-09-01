@@ -1,3 +1,7 @@
+*{
+  font-family: 'Play', sans-serif;
+}
+
 .mdl-card {
     width: auto;
     min-height: inherit;
@@ -14,23 +18,34 @@
 } */
 
 .immagine-circolare {
-    width: 300px; /* Imposta la larghezza desiderata */
-    height: 300px; /* Imposta l'altezza desiderata */
+    width: 150px; /* Imposta la larghezza desiderata */
+    height: 150px; /* Imposta l'altezza desiderata */
     border-radius: 50%; /* Rendi l'elemento circolare */
     overflow: hidden; /* Nascondi eventuali parti dell'immagine che fuoriescono dalla forma circolare */
     display: flex; /* Utilizza il modello di layout flessibile */
     justify-content:center; /* Centra orizzontalmente il contenuto */
     align-items: center;
-    margin: 0 auto;
 
   }
 
   .immagine-circolare img {
     width: 100%; /* Assicurati che l'immagine non superi la larghezza dell'elemento */
     height: 100%; /* Assicurati che l'immagine non superi l'altezza dell'elemento */
-    
+
   }
 
   img{
     margin: auto;
+  }
+
+
+
+  .container-style{
+    border-radius: 10px;
+    text-align: center;
+    margin: 5px;
+    color: white;
+    background-color: #D15800;
+    box-shadow: 2px 2px 2px 1px gray;
+    cursor: pointer;
   }
