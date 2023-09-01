@@ -16,14 +16,13 @@ export class MyprofileComponent {
   stringdata= sessionStorage.getItem("dati");
   stringJSON= this.stringdata.replace(/\[|\]/g, '');
   defJSON=JSON.parse(this.stringJSON);
-  email=this.defJSON.username;
+  email=this.defJSON.email;
 
 
 
   ngOnInit(){
-    console.log("push")
-  this.http.get('https://localhost:7284/api/UserCredentials').subscribe((result)=>{
-    this.profile.push(result);
+    this.http.get('https://localhost:7284/api/UserCredentials').subscribe((result)=>{
+      this.profile.push(result);
     for(let i = 0; i<this.profile.length;i++){
       let gfd=this.profile[i];
       for (const key in gfd) {
