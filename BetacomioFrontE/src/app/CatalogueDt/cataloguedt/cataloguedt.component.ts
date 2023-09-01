@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+
 import {ActivatedRoute} from '@angular/router'
 import {HttpClient} from '@angular/common/http'
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -15,6 +17,7 @@ constructor(private route:ActivatedRoute,private http:HttpClient){}
 circle= faCircle;
 productname:string;
 cuore=faHeart;
+resultWishList: any[];
 DetailList:biciycleDetail= {} as biciycleDetail
 
 ngOnInit(){
@@ -31,10 +34,21 @@ getProductDetails(productName: string) {
       this.DetailList = result;
     });
 }
+
+wish(){
+
+
+console.log(this.resultWishList);
+
+ this.http.post("https://localhost:7284/api/Values", this.DetailList ).subscribe((resp) => 
+ {
+   console.log(resp);
+ })
+ }
 }
 interface biciycleDetail{
   name:string,
   detail:string,
-  listPrice:string
+  price:string
   description:string
 }
