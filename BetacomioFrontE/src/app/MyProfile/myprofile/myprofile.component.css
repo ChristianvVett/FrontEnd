@@ -1,3 +1,7 @@
+*{
+  font-family: 'Play', sans-serif;
+}
+
 .mdl-card {
     width: auto;
     min-height: inherit;

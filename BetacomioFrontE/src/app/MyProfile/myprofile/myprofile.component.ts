@@ -21,6 +21,7 @@ export class MyprofileComponent {
 
 
   ngOnInit(){
+    console.log("push")
   this.http.get('https://localhost:7284/api/UserCredentials').subscribe((result)=>{
     this.profile.push(result);
     for(let i = 0; i<this.profile.length;i++){
