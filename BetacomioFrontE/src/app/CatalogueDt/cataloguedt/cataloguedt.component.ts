@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {ActivatedRoute} from '@angular/router'
 import {HttpClient} from '@angular/common/http'
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -13,6 +14,7 @@ export class CataloguedtComponent {
 constructor(private route:ActivatedRoute,private http:HttpClient){}
 circle= faCircle;
 productname:string;
+cuore=faHeart;
 DetailList:biciycleDetail= {} as biciycleDetail
 
 ngOnInit(){

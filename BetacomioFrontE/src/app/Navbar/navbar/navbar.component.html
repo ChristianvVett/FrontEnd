@@ -20,7 +20,7 @@
 
     </ul>
 
-    <ul class="col-3 bo pad"  *ngIf="tok === null">
+    <ul class="col-3 bo pad"  *ngIf="tok === null" >
       <li><a class="active"  routerLink="/Login">Login</a></li>
       <li><a class="active" routerLink="/Signup">Registrazione</a></li>
 
@@ -36,8 +36,8 @@
       </div>
     </ul>
 
-    <div class="col-2 d-flex registrationzone" *ngIf="tok !== null">
-      <li style="font-family: 'Play', sans-serif; font-size: 1.3rem;"><a routerLink="" (click)="logout()" class="link-list">logout</a></li>
+    <div class="col-2 d-flex registrationzone" *ngIf="tok !== null || IsLogged ">
+      <li style="font-family: 'Play', sans-serif; font-size: 1.3rem;"><a (click)="logout()" class="link-list">logout</a></li>
       <li style="font-family: 'Play', sans-serif; font-size: 1.3rem; margin-left: 30px;"><a routerLink="/MyProfile" class="link-list">Il mio profilo</a></li>
       <fa-icon class="cart" [icon]="cart"></fa-icon>
 

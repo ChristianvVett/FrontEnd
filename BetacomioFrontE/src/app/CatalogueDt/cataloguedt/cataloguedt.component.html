@@ -9,11 +9,17 @@
       <div class="squarecolor redcolor"></div>
       <div class="squarecolor"></div>
     </div>
-    <p class="dtprice">{{DetailList.listPrice}}€</p>
+    <p class="dtprice">Prezzo: {{DetailList.listPrice}}€</p>
     <div style="display: flex;">
       <fa-icon [icon]="circle" class="circledt"></fa-icon>
       <p class="circledt">DISPONIBILE</p>
     </div>
-    <p class="addcart">AGGIUNGI AL CARRELLO</p>
+    <div class="d-flex">
+      <p class="addcart">AGGIUNGI AL CARRELLO</p>
+      <div class="heart-container">
+
+        <fa-icon class="heart" [icon]="cuore"></fa-icon>
+      </div>
+    </div>
   </div>
 </div>

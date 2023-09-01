@@ -1,0 +1,36 @@
+.mdl-card {
+    width: auto;
+    min-height: inherit;
+    position: static;
+    overflow: visible;
+    display: block;
+    padding: 45px 25px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.03), 0 3px 1px -2px rgba(0, 0, 0, 0.03), 0 1px 5px 0 rgba(0, 0, 0, 0.03);
+}
+
+/* .user-img {
+    width: 50%;
+    height: 50%;
+} */
+
+.immagine-circolare {
+    width: 300px; /* Imposta la larghezza desiderata */
+    height: 300px; /* Imposta l'altezza desiderata */
+    border-radius: 50%; /* Rendi l'elemento circolare */
+    overflow: hidden; /* Nascondi eventuali parti dell'immagine che fuoriescono dalla forma circolare */
+    display: flex; /* Utilizza il modello di layout flessibile */
+    justify-content:center; /* Centra orizzontalmente il contenuto */
+    align-items: center;
+    margin: 0 auto;
+
+  }
+
+  .immagine-circolare img {
+    width: 100%; /* Assicurati che l'immagine non superi la larghezza dell'elemento */
+    height: 100%; /* Assicurati che l'immagine non superi l'altezza dell'elemento */
+    
+  }
+
+  img{
+    margin: auto;
+  }
