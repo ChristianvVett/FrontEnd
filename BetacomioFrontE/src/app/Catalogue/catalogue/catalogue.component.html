@@ -53,8 +53,6 @@
             <p>{{elem.productId}}</p>
             <p class="card-title">{{elem.name}}</p>
             <p>{{arrotondo(elem.listPrice)}}€</p>
-            <fa-icon class="iconsstyle" [icon]="cuoricino"></fa-icon>
-            <fa-icon class="iconsstyle" [icon]="cart"></fa-icon>
             <br>
             <a [routerLink]="['/product', elem.name]" class="btn button">Maggiori dettagli</a>
           </div>
