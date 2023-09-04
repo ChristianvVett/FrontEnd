@@ -18,9 +18,10 @@ export class NavbarComponent {
   IsLogged:any;
   session: string;
   cfd:boolean;
+  showMenu:boolean;
   tok = this.Token.token();
   constructor(private Token:TokenService,private cdr: ChangeDetectorRef){
-    console.log(this.tok)
+
   }
 
   ngOnInit() {
@@ -29,7 +30,10 @@ export class NavbarComponent {
       this.cdr.detectChanges();
     });
   }
-
+  cartmenu(){
+    this.showMenu=!this.showMenu;
+    console.log("bottone premuto")
+  }
 
   //icon1=faHouse;
   //icon2=faBookOpen;

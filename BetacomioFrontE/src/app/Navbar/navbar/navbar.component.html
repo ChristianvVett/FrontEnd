@@ -39,9 +39,38 @@
     <div class="col-2 d-flex registrationzone" *ngIf="tok !== null || IsLogged ">
       <li style="font-family: 'Play', sans-serif; font-size: 1.3rem;"><a (click)="logout()" class="link-list">logout</a></li>
       <li style="font-family: 'Play', sans-serif; font-size: 1.3rem; margin-left: 30px;"><a routerLink="/MyProfile" class="link-list">Il mio profilo</a></li>
-      <fa-icon class="cart" [icon]="cart"></fa-icon>
-
+      <fa-icon (click)="cartmenu()" class="cart" [icon]="cart"></fa-icon>
     </div>
+
+    <div *ngIf="showMenu" style="
+    width: 220px;
+    max-height: 250px;
+     position: absolute;
+     background-color: white;
+     border-radius: 10px;
+     right:15px;top:70px;
+     border: 2px solid black;
+     overflow-y: auto;
+     background-color: #d45d09f3;
+     ">
+
+
+  <ul>
+  <li style="color:white"><b>X2</b> bicicletta bella <b>240€</b></li>
+  <hr>
+  <li style="color:white"><b>X2</b> bicicletta bella <b>240€</b></li>
+  <hr>
+  <li style="color:white"><b>X1</b> bicicletta bella <b>240€</b></li>
+  <hr>
+  <hr>
+  <li style="color:white"><b>X3</b> bicicletta bella <b>240€</b></li>
+  <hr>
+  <li style="color:white">Totale: <b>960€</b></li></ul>
+  <br>
+  <button style="background-color: white;width: 100%;height:50px; border: none;">Procedi al pagamento</button>
+
+  </div>
+
 
 
 

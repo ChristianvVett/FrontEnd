@@ -116,6 +116,8 @@ a.active:hover{
   display: none;
 }
 
+
+
 @media screen and (max-width: 952px){
   .logo{
     margin: 0px;
