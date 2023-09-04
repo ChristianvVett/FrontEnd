@@ -1,14 +1,18 @@
 import { Component , Renderer2 } from '@angular/core';
 import { HttpClient  } from '@angular/common/http';
+import { TokenService } from '../Services/token.service';
 @Component({
   selector: 'app-superadmin',
   templateUrl: './superadmin.component.html',
   styleUrls: ['./superadmin.component.css']
 })
 export class SuperadminComponent {
+  tok:any;
+  tak=sessionStorage.getItem("dati");
   UsersList:users[]=[];
-  constructor(private http:HttpClient, private rendered:Renderer2){
-
+  constructor(private http:HttpClient, private rendered:Renderer2,token:TokenService){
+  this.tok=token
+  console.log(this.tok)
   }
 
   ngOnInit(){
