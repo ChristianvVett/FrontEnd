@@ -116,6 +116,10 @@ a.active:hover{
   display: none;
 }
 
+#paycheck{
+  z-index: 1000;
+}
+
 
 
 @media screen and (max-width: 952px){

@@ -20,6 +20,7 @@ import { LandingPageComponent } from './Contacts/landing-page/landing-page.compo
 import { ScrollUpComponent } from './ScrollUp/scroll-up/scroll-up.component';
 import { SuperadminComponent } from './superadmin/superadmin.component';
 import { CataloguedtComponent } from './CatalogueDt/cataloguedt/cataloguedt.component';
+import { PaypalComponent } from './Payment/paypal/paypal.component';
 
 
 
@@ -39,6 +40,7 @@ import { CataloguedtComponent } from './CatalogueDt/cataloguedt/cataloguedt.comp
     LandingPageComponent,
     ScrollUpComponent,
     SuperadminComponent,
+    PaypalComponent,
   ],
   imports: [
     BrowserModule,
