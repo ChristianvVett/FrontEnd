@@ -1,48 +1,120 @@
-<header>
-    <h1 class="animate__animated animate__lightSpeedInLeft text-center title-admin">SUPER ADMIN</h1>
-</header>
+<div *ngIf="tak!=null">
 
-<aside>
+  <h1 style="text-align: center"><b>Pagina Amministratore:</b></h1>
+  <div class="d-flex justify-content-center mx-5">
+    <div
+    class="col-6"
+    style="
+      border: 1px solid black;
+      margin: 5px;
+      border-radius: 10px;
+      background-color: #d15800;
+      box-shadow: 2px 2px 2px 1px gray;
+      "
+  >
+  <h3 style="text-align: center; color: white">Utenti registrati</h3>
+  <hr>
+  <div class="d-flex flex-column">
+    <ul
+    style="border-radius: 50px"
+    class="list-group list-group-horizontal m-3"
+    >
+    <li class="list-group-item col-4"><b>Email</b></li>
+    <li class="list-group-item col-4"><b>Nome</b></li>
+    <li class="list-group-item col-4"><b>Cognome</b></li>
+  </ul>
 
-    <h2 style="padding: 40px;">Amministratore</h2>
-    <table>
-        <div class="container">
-          <div class="col-12">
-            <ul style ="list-style-type: none"><!--rimuovo i puntini degli elementi <li>-->
-                <li >
-                    <div id="utentiregistrati" class="property">Utenti Registrati <button  (mouseover)="moove($event)" (mouseout)="moove($event)" (click)="registryUser()"><i id="moove" class="fa-regular fa-id-card"></i></button></div>
-                    <div>
-                        <ul>
-                            <li id="utentiRegistrati" class="utentiRegistrati">
-                                <p>giuseppe buscemi</p>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <div class="property">Ordini Effettuati <button  (mouseover)="moove($event)" (mouseout)="moove($event)" href=""><i id="moove2" class="fa-brands fa-searchengin"></i></button></div>
-                </li>
-                <li>
-                    <div class="property">Aggiungi o Rimuovi Prodotto <a  (mouseover)="moove($event)" (mouseout)="moove($event)" href=""><i id="moove3" class="fa-duotone fa-plus"></i></a></div>
-                </li>
-                <li>
-                    <div class="property">Richieste Utenti <a (mouseover)="moove($event)" (mouseout)="moove($event)" href=""><i id="moove4" class="fa-solid fa-child icon-dimension"></i></a></div> 
-                </li>
-            </ul>
-          </div>
-        </div>
-      
-    </table>
-</aside>
+      <div *ngFor="let elem of UsersList">
+        <ul class="list-group list-group-horizontal-sm m-3">
+          <li class="list-group-item col-4">{{ elem.username }}</li>
+          <li class="list-group-item col-4">{{ elem.name }}</li>
+          <li class="list-group-item col-4">{{ elem.surname }}</li>
+        </ul>
+      </div>
+      <button style="background-color: green;border: none;color: white;">Maggiori Dettagli</button>
+    </div>
+  </div>
+  <div
+  class="col-6"
+  style="
+      border: 1px solid black;
+      margin: 5px;
+      border-radius: 10px;
+      background-color: #d15800;
+      "
+  >
+  <h3 style="text-align: center; color: white">Gestione Clienti:</h3>
+  <hr>
+  <div class="d-flex flex-column">
+    <ul
+    style="border-radius: 50px"
+    class="list-group list-group-horizontal m-3"
+    >
+    <li class="list-group-item col-3"><b>Nome</b></li>
+    <li class="list-group-item col-3"><b>Email</b></li>
+    <li class="list-group-item col-6"><b>Oggetto</b></li>
+  </ul>
 
-<pre>
-    <p>{{result | json}}</p>
-</pre>
-<ul *ngFor="let res of result | keyvalue">
-    <li *ngIf="res.key == 'results' ">{{res.key}} sono qui {{res.value}} </li>
-    
-   
-</ul>
-<!--    <h1 class="animate__animated animate__bounce">SUPER ADMIN</h1> animate__animate va sempre messo il secondo ca
-cambia in base all'animazione scelta --> 
- 
+      <div *ngFor="let elem of UsersList">
+        <ul class="list-group list-group-horizontal-sm m-3">
+          <li class="list-group-item col-3">{{ elem.username }}</li>
+          <li class="list-group-item col-3">{{ elem.name }}</li>
+          <li class="list-group-item col-6">{{ elem.surname }}</li>
+        </ul>
+      </div>
+      <button style="background-color: green;border: none;color: white;">Maggiori Dettagli</button>
+
+    </div>
+  </div>
+</div>
+<div class="d-flex justify-content-center mx-5">
+  <div
+  class="col-6"
+  style="
+      border: 1px solid black;
+      margin: 5px;
+      border-radius: 10px;
+      background-color: #d15800;
+      box-shadow: 2px 2px 2px 1px gray;
+      "
+  >
+  <h3 style="text-align: center; color: white">Catalogo</h3>
+  <hr>
+  <div class="d-flex justify-content-center align-items-center">
+    <button routerLink="/Catalogue" style="background-color: green; color: white;border: none;width: 300px;margin: 15%;font-size: 1.5rem;">VAI ALLA GESTIONE CATALOGO</button>
+  </div>
+</div>
+<div
+class="col-6"
+style="
+      border: 1px solid black;
+      margin: 5px;
+      border-radius: 10px;
+      background-color: #d15800;
+      box-shadow: 2px 2px 2px 1px gray;
+      "
+  >
+  <h3 style="text-align: center; color: white">Gestione Fornitori:</h3>
+  <hr>
+  <div class="d-flex flex-column">
+    <ul
+    style="border-radius: 50px"
+    class="list-group list-group-horizontal m-3">
+    <li class="list-group-item col-3"><b>Nome</b></li>
+    <li class="list-group-item col-3"><b>Email</b></li>
+    <li class="list-group-item col-6"><b>Oggetto</b></li>
+  </ul>
+
+  <div *ngFor="let elem of UsersList">
+    <ul class="list-group list-group-horizontal-sm m-3">
+      <li class="list-group-item col-3">{{ elem.username }}</li>
+      <li class="list-group-item col-3">{{ elem.name }}</li>
+      <li class="list-group-item col-6">{{ elem.surname }}</li>
+    </ul>
+  </div>
+  <button style="background-color: green;border: none;color: white;">Maggiori Dettagli</button>
+
+</div>
+</div>
+</div>
+</div>

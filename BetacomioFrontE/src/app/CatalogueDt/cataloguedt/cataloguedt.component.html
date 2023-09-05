@@ -1,20 +1,28 @@
 <p class="title">{{DetailList.name}}</p>
-<div class="d-flex">
-  <img src="https://picsum.photos/500/300?random=1" class="dtimg"  alt="random photo">
+<div class="row d-flex">
+  <div class="column">
+    <img src="https://picsum.photos/500/300?random=1" class="dtimg"  alt="random photo">
+  </div>
+  
   <div style="display: flex;flex-direction: column;">
-    
-    <p class="dtdesc">{{DetailList.description}}</p>
+    <div class="column m-4">
+      <p class="dtdesc">{{DetailList.description}}</p>
     <div class="d-flex">
-      <div class="squarecolor blackcolor"></div>
-      <div class="squarecolor redcolor"></div>
-      <div class="squarecolor"></div>
+        <div class="squarecolor blackcolor"></div>
+        <div class="squarecolor redcolor"></div>
+        <div class="squarecolor"></div>
     </div>
-    <p class="dtprice">Prezzo: {{DetailList.listPrice}}€</p>
+    </div>
+    
+    <div class="column m-4">
+      <p class="dtprice">Prezzo: {{DetailList.listPrice}}€</p>
     <div style="display: flex;">
       <fa-icon [icon]="circle" class="circledt"></fa-icon>
       <p class="circledt">DISPONIBILE</p>
     </div>
-    <div class="d-flex">
+    </div>
+    
+    <div class="column m-3 d-flex">
       <p class="addcart">AGGIUNGI AL CARRELLO</p>
       <div class="heart-container" (click)="wish()">
         <fa-icon class="heart" [icon]="cuore"></fa-icon>

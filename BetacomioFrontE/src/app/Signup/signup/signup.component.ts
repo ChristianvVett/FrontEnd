@@ -8,8 +8,10 @@ import { HttpClient , HttpResponse , HttpStatusCode} from '@angular/common/http'
 })
 export class SignupComponent {
   constructor(private Http: HttpClient) {}
- Userlist: register[] = []
+      
+  Userlist: register[] = []
   singleUser: register | null = null
+
   InsertUser(elem: NgForm) {
     this.singleUser = elem.value;
     this.Http.post<register>('https://localhost:7284/api/UserCredentials', elem.value, {observe: 'response'}).subscribe(
