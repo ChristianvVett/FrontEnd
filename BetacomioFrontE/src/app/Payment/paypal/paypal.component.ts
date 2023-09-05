@@ -1,4 +1,5 @@
 import { Component,AfterViewChecked } from '@angular/core';
+import { faCreditCard } from '@fortawesome/free-solid-svg-icons';
 declare let paypal:any
 @Component({
   selector: 'app-paypal',
@@ -8,6 +9,7 @@ declare let paypal:any
 export class PaypalComponent implements AfterViewChecked {
   addScript:boolean = false;
   finalAmount: number = 1;
+  Creditcard=faCreditCard;
   paypalconfig = {
     env: 'sandbox',
     client: {
