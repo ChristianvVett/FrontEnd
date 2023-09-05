@@ -24,7 +24,10 @@
     <ul class="col-3 bo pad"  *ngIf="tok === null" >
       <li><a class="active"  routerLink="/Login">Login</a></li>
       <li><a class="active" routerLink="/Signup">Registrazione</a></li>
-
+      <label style="margin-top: 30px;" class="switch">
+        <input (click)="changeColor()" type="checkbox">
+        <span class="slider round"></span>
+      </label>
     </ul>
 
     <ul class="col-7 pad " *ngIf="tok !== null">
@@ -42,11 +45,18 @@
       <li style="font-family: 'Play', sans-serif; font-size: 1.3rem;cursor: pointer;"><a (click)="logout()" class="link-list">logout</a></li>
       <li style="font-family: 'Play', sans-serif; font-size: 1.3rem; margin-left: 30px;"><a routerLink="/MyProfile" class="link-list">Il mio profilo</a></li>
       <fa-icon (click)="cartmenu()" class="cart" [icon]="cart"></fa-icon>
+      <div>
+        <label style="margin-top: 30px;" class="switch">
+        <input (click)="changeColor()" type="checkbox">
+        <span class="slider round"></span>
+      </label>
+      </div>
+
     </div>
 
     <div *ngIf="showMenu" style="
-    width: 220px;
-    max-height: 250px;
+     width: 220px;
+     max-height: 250px;
      position: absolute;
      background-color: white;
      border-radius: 10px;

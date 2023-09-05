@@ -1,4 +1,4 @@
-import { Component ,ChangeDetectorRef  } from '@angular/core';
+import { Component ,ChangeDetectorRef, Renderer2  } from '@angular/core';
 import {faBars} from '@fortawesome/free-solid-svg-icons'
 import {faCartShopping} from '@fortawesome/free-solid-svg-icons';
 import { TokenService } from 'src/app/Services/token.service';
@@ -20,9 +20,11 @@ export class NavbarComponent {
   session: string;
   cfd:boolean;
   showMenu:boolean;
+  rnd:any;
+  change:boolean = false;
   tok = this.Token.token();
-  constructor(private Token:TokenService,private cdr: ChangeDetectorRef){
-
+  constructor(private Token:TokenService,private cdr: ChangeDetectorRef,render:Renderer2){
+  this.rnd = render
   }
 
   ngOnInit() {
@@ -33,6 +35,17 @@ export class NavbarComponent {
   }
   cartmenu(){
     this.showMenu=!this.showMenu;
+  }
+  changeColor(){
+    this.change=!this.change;
+    if(this.change){
+      this.rnd.setStyle(document.body, 'background-color', '#181818');
+      this.rnd.setStyle(document.body, 'color', 'white');
+    }else{
+      this.rnd.setStyle(document.body, 'background-color','white')
+      this.rnd.setStyle(document.body, 'color', 'black');
+      console.log("gesu cristo")
+    }
   }
 
   //icon1=faHouse;

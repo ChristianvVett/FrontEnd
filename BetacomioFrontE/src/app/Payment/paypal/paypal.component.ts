@@ -45,8 +45,6 @@ export class PaypalComponent implements AfterViewChecked {
   }
   ngAfterViewChecked(): void {
     if (!this.addScript) {
-
-
         this.addPaypalScript().then(() => {
           paypal.Button.render(this.paypalconfig,'#paycheck')
         });
