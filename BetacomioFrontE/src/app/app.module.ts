@@ -21,6 +21,10 @@ import { ScrollUpComponent } from './ScrollUp/scroll-up/scroll-up.component';
 import { SuperadminComponent } from './superadmin/superadmin.component';
 import { CataloguedtComponent } from './CatalogueDt/cataloguedt/cataloguedt.component';
 import { PaypalComponent } from './Payment/paypal/paypal.component';
+import { FaqComponent } from './Faq/faq.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
+
 
 
 
@@ -41,6 +45,7 @@ import { PaypalComponent } from './Payment/paypal/paypal.component';
     ScrollUpComponent,
     SuperadminComponent,
     PaypalComponent,
+    FaqComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +55,9 @@ import { PaypalComponent } from './Payment/paypal/paypal.component';
     NgxPaginationModule,
     FontAwesomeModule,
     FormsModule,
-    CarouselModule.forRoot()
+    CarouselModule.forRoot(),
+    AccordionModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

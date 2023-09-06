@@ -12,6 +12,7 @@ import { LandingPageComponent } from './Contacts/landing-page/landing-page.compo
 import { SuperadminComponent } from './superadmin/superadmin.component';
 import { MyprofileComponent } from './MyProfile/myprofile/myprofile.component';
 import { PaypalComponent } from './Payment/paypal/paypal.component';
+import { FaqComponent } from './Faq/faq.component';
 
 
 const routes:Routes=[
@@ -26,7 +27,8 @@ const routes:Routes=[
   {path:'superadmin', component:SuperadminComponent },
   {path: 'product/:productname', component:CataloguedtComponent},
   {path: 'MyProfile', component:MyprofileComponent},
-  {path:'Paypal',component:PaypalComponent}
+  {path:'Paypal',component:PaypalComponent},
+  {path:'Faq',component:FaqComponent}
 ];
 
 @NgModule({
