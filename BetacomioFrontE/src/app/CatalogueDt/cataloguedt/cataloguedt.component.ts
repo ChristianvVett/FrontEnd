@@ -65,6 +65,28 @@ export class CataloguedtComponent {
         } catch (error) {}
       });
   }
+
+  cart(){
+    const cartData = {
+      userID: 30124,
+      productId: this.resultWishList[0].productId
+    }   
+
+    console.log(this.resultWishList[0].productId);
+
+    this.http
+      .post('https://localhost:7284/api/WishlistTemps', cartData)
+      .subscribe((resp: HttpResponse<biciycleDetail>) => {
+        try {
+          if (HttpStatusCode.Ok) {
+            console.log('invio effettuato correttamente: stato' + resp.status);
+          } else {
+            throw console.log('errorino: stato ' + resp.status);
+          }
+        } catch (error) {}
+      });
+
+  }
 }
 
 // getProductDetails(productName: string) {    ERRORE DA NON FARE PER NON BESTEMMIARE :)
