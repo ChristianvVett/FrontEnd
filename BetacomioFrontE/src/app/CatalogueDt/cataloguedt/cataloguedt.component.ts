@@ -52,14 +52,9 @@ getProductDetails(productName: string) {
 wish() {
   //aggiungo dati su utente attivo (manca ID)
   //this.resultWishList.forEach(el => console.log(el));
-const wishdata  = {
-  wish: this.resultWishList,
-  users: JSON.parse(this.toKKen.rew)
-}
-console.log(wishdata+ "sono wish data")
 
   this.http
-    .post('https://localhost:7284/api/Values', wishdata )
+    .post('https://localhost:7284/api/Values', this.resultWishList )
     .subscribe((resp: HttpResponse<biciycleDetail>) => {
       try {
         if (HttpStatusCode.Ok) {
