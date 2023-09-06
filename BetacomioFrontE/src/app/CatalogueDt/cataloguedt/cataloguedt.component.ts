@@ -14,31 +14,57 @@ import { Token } from '@angular/compiler';
   styleUrls: ['./cataloguedt.component.css']
 })
 export class CataloguedtComponent {
-constructor(private route:ActivatedRoute,private http:HttpClient , private token:TokenService){}
-circle= faCircle;
-productname:string;
-cuore=faHeart;
-resultWishList: object;
-DetailList:biciycleDetail= {} as biciycleDetail
-toKKen = this.token;
-json: object;
- ngOnInit(){
-  this.route.paramMap.subscribe(elem => {
-    this.DetailList
-    console.log(this.DetailList)
-    this.productname = elem.get('productname');
-    this.getProductDetails(this.productname);
-    })
-}
+  constructor(
+    private route: ActivatedRoute,
+    private http: HttpClient,
+    private token: TokenService
+  ) {}
+  circle = faCircle;
+  productname: string;
+  cuore = faHeart;
+  resultWishList: any[] = [];
+  DetailList: biciycleDetail = {} as biciycleDetail;
+  toKKen = this.token;
 
-getProductDetails(productName: string) {
-  this.http.get<any>(`https://localhost:7284/api/ViewUserProducts/${productName}`)
-    .subscribe((result) => {
-    
-      this.resultWishList = result;
-      console.log(this.resultWishList);
-    
+  ngOnInit() {
+    this.route.paramMap.subscribe((elem) => {
+      this.productname = elem.get('productname');
+      this.getProductDetails(this.productname);
     });
+   
+  }
+
+  getProductDetails(productName: string) {
+    this.http
+      .get<any>(`https://localhost:7284/api/ViewUserProducts/${productName}`)
+      .subscribe((result) => {
+        this.DetailList = result;
+        this.resultWishList.push(result);
+      });
+  }
+
+  wish() {
+    // const tokenData = JSON.parse(this.toKKen.rew);
+    // const tokenUserId = tokenData.id;
+    const wishData = {
+      userID: 30124,
+      productId: this.resultWishList[0].productId
+    }   
+
+    console.log(this.resultWishList[0].productId);
+
+    this.http
+      .post('https://localhost:7284/api/WishlistTemps', wishData)
+      .subscribe((resp: HttpResponse<biciycleDetail>) => {
+        try {
+          if (HttpStatusCode.Ok) {
+            console.log('invio effettuato correttamente: stato' + resp.status);
+          } else {
+            throw console.log('errorino: stato ' + resp.status);
+          }
+        } catch (error) {}
+      });
+  }
 }
 
 // getProductDetails(productName: string) {    ERRORE DA NON FARE PER NON BESTEMMIARE :)
@@ -49,24 +75,10 @@ getProductDetails(productName: string) {
 //       this.resultWishList.push(JSON.stringify(this.DetailList)); //aggiungo dati sui prodotti (manca ID)
 //     });
 //   }
-wish() {
-  //aggiungo dati su utente attivo (manca ID)
-  //this.resultWishList.forEach(el => console.log(el));
 
-  this.http
-    .post('https://localhost:7284/api/Values', this.resultWishList )
-    .subscribe((resp: HttpResponse<biciycleDetail>) => {
-      try {
-        if (HttpStatusCode.Ok) {
-          console.log('invio effettuato correttamente: stato' + resp.status);
-        } else {
-          throw console.log('errorino: stato ' + resp.status);
-        }
-      } catch (error) {}
-    });
-}
-}
+
 interface biciycleDetail{
+  productId: number, 
   name:string,
   productType: string,
   modelType: string,
