@@ -12,7 +12,7 @@ nav{
   height: 100px;
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .logo{
@@ -49,6 +49,8 @@ nav ul li a{
   display: inline-block;
   width: 60px;
   height: 34px;
+  left: 5px;
+  top: -5px;
 }
 
 .switch input {
@@ -209,7 +211,7 @@ a.active:hover{
     position: static;
   }
   .logo{
-    margin-left: 50px;
+    margin-left: 0px;
   }
   .hd{
     display: inline-block;
