@@ -38,17 +38,22 @@ export class CataloguedtComponent {
       .get<any>(`https://localhost:7284/api/ViewUserProducts/${productName}`)
       .subscribe((result) => {
         this.DetailList = result;
-        this.resultWishList.push(JSON.stringify(this.DetailList)); //aggiungo dati sui prodotti (manca ID)
+        this.resultWishList.push(result);
       });
   }
 
   wish() {
-    this.resultWishList.push(this.toKKen.rew); //aggiungo dati su utente attivo (manca ID)
-    this.resultWishList.forEach(el => console.log(el));
-   
+    // const tokenData = JSON.parse(this.toKKen.rew);
+    // const tokenUserId = tokenData.id;
+    const wishData = {
+      userID: 30124,
+      productId: this.resultWishList[0].productId
+    }   
+
+    console.log(this.resultWishList[0].productId);
 
     this.http
-      .post('https://localhost:7284/api/Wishlist', this.resultWishList)
+      .post('https://localhost:7284/api/WishlistTemps', wishData)
       .subscribe((resp: HttpResponse<biciycleDetail>) => {
         try {
           if (HttpStatusCode.Ok) {
@@ -63,6 +68,7 @@ export class CataloguedtComponent {
 
 
 interface biciycleDetail{
+  productId: number, 
   name:string,
   productType: string,
   modelType: string,
