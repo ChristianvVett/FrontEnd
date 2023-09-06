@@ -1,4 +1,5 @@
-<nav style="position: sticky;z-index: 1;top: 0;">
+<nav style="position: sticky;z-index: 5;top: 0;">
+  <!-- logo -->
   <div class="col-2 ">
     <img class="logo d-inline-block" routerLink="" src="../../../assets/images/BETACOMIO BICYCLE (4).svg" alt="">
   </div>
@@ -8,8 +9,8 @@
   </label>
 
 
-
-    <ul class="col-5 pad"  *ngIf="tok === null ">
+<!-- central part not logged-->
+      <ul class="col-6  pad"  *ngIf="tok === null ">
       <li><a routerLink="" (click)="closeMobileMenu()"  class="link-list">Home</a></li>
       <li><a routerLink="/Catalogue" (click)="closeMobileMenu()" class="link-list">Catalogo</a></li>
       <li><a routerLink="/About_us" (click)="closeMobileMenu()"  class="link-list">Dicono di noi</a></li>
@@ -20,7 +21,7 @@
       <li><a class="active hd" (click)="closeMobileMenu()" routerLink="/Signup">Registrazione</a></li>
 
     </ul>
-
+    <!-- login part not logged -->
     <ul class="col-3 bo pad"  *ngIf="tok === null" >
       <li><a class="active"  routerLink="/Login">Login</a></li>
       <li><a class="active" routerLink="/Signup">Registrazione</a></li>
@@ -30,32 +31,29 @@
       </label>
     </ul>
 
-    <ul class="col-7 pad " *ngIf="tok !== null">
-      <div class="justify-content-center d-flex">
-
+    <!-- central part logged -->
+    <ul style="text-align: center;" class="col-6 pad " *ngIf="tok !== null">
         <li><a routerLink="" (click)="closeMobileMenu()"  class="link-list">Home</a></li>
         <li><a routerLink="/Catalogue" (click)="closeMobileMenu()" class="link-list">Catalogo</a></li>
         <li><a routerLink="/About_us" (click)="closeMobileMenu()"  class="link-list">Dicono di noi</a></li>
         <li><a routerLink="/Contacts" (click)="closeMobileMenu()" class="link-list">Contatti</a></li>
         <li><a routerLink="/Faq" (click)="closeMobileMenu()"class="link-list" >FAQ</a></li>
-      </div>
     </ul>
-
-    <div class="col-2 d-flex registrationzone" *ngIf="tok !== null || IsLogged ">
+    <!-- login part logged -->
+    <div class="col-3 col-sm-6 d-lg-flex align-items-center bo pad " *ngIf="tok !== null || IsLogged ">
       <li style="font-family: 'Play', sans-serif; font-size: 1.3rem;cursor: pointer;"><a (click)="logout()" class="link-list">logout</a></li>
       <li style="font-family: 'Play', sans-serif; font-size: 1.3rem; margin-left: 30px;"><a routerLink="/MyProfile" class="link-list">Il mio profilo</a></li>
       <fa-icon (click)="cartmenu()" class="cart" [icon]="cart"></fa-icon>
-      <div>
-        <label style="margin-top: 30px;" class="switch">
+        <label style="margin-top: 10px;" class="switch">
         <input (click)="changeColor()" type="checkbox">
         <span class="slider round"></span>
       </label>
-      </div>
+      
 
     </div>
 
     <div *ngIf="showMenu" style="
-     width: 220px;
+     width: 250px;
      max-height: 250px;
      position: absolute;
      background-color: white;
@@ -82,12 +80,5 @@
   <button routerLink="Paypal" style="background-color: white;width: 100%;height:50px; border: none; width: 60%;margin-left: 40px; border-radius: 50px;">Vai al carrello</button>
 
   </div>
-
-
-
-
-
-
-
 
 </nav>
