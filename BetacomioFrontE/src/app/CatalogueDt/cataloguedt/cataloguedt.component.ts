@@ -1,16 +1,17 @@
 import { Component } from '@angular/core';
-
+import { TokenService } from 'src/app/Services/token.service';
 import {ActivatedRoute} from '@angular/router'
-import {HttpClient, HttpResponse, HttpStatusCode} from '@angular/common/http'
+import {HttpClient , HttpResponse , HttpStatusCode} from '@angular/common/http'
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
-import { TokenService } from 'src/app/Services/token.service';
+import { NgForm } from '@angular/forms';
+import { Token } from '@angular/compiler';
 
 
 @Component({
   selector: 'app-cataloguedt',
   templateUrl: './cataloguedt.component.html',
-  styleUrls: ['./cataloguedt.component.css'],
+  styleUrls: ['./cataloguedt.component.css']
 })
 export class CataloguedtComponent {
   constructor(
@@ -66,6 +67,15 @@ export class CataloguedtComponent {
   }
 }
 
+// getProductDetails(productName: string) {    ERRORE DA NON FARE PER NON BESTEMMIARE :)
+//   this.http
+//     .get<any>(`https://localhost:7284/api/ViewUserProducts/${productName}`)
+//     .subscribe((result) => {
+//       this.DetailList = result;
+//       this.resultWishList.push(JSON.stringify(this.DetailList)); //aggiungo dati sui prodotti (manca ID)
+//     });
+//   }
+
 
 interface biciycleDetail{
   productId: number, 
@@ -75,8 +85,9 @@ interface biciycleDetail{
   color: string,
   culture: string,
   description:string,
-  listPrice:string,
+  listPrice:number,
   size: string,
   thumbnailPhoto: string,
   weight: number
+
 }
