@@ -1,5 +1,8 @@
 import { Component,AfterViewChecked } from '@angular/core';
 import { faCreditCard } from '@fortawesome/free-solid-svg-icons';
+import {HttpClient , HttpResponse , HttpStatusCode} from '@angular/common/http'
+import { TokenService } from 'src/app/Services/token.service';
+
 declare let paypal:any
 @Component({
   selector: 'app-paypal',
@@ -7,9 +10,18 @@ declare let paypal:any
   styleUrls: ['./paypal.component.css']
 })
 export class PaypalComponent implements AfterViewChecked {
+
+  constructor(
+    private http: HttpClient,
+    private token: TokenService
+  ) {}
+
   addScript:boolean = false;
   finalAmount: number = 1;
   Creditcard=faCreditCard;
+  resultCart: biciDetail[] = [];
+  HaToken= this.token;
+
   paypalconfig = {
     env: 'sandbox',
     client: {
@@ -33,6 +45,9 @@ export class PaypalComponent implements AfterViewChecked {
       })
     }
   };
+
+
+
   addPaypalScript(){
     this.addScript = true;
     return new Promise((resolve,reject)=>{
@@ -51,4 +66,28 @@ export class PaypalComponent implements AfterViewChecked {
 
     }
   }
+
+  //metodo per visualizzare prodotti del carrello
+  getCartProducts(){
+    this.http
+      .get<any>("https://localhost:7284/api/ShoppingCart")
+      .subscribe(response =>  this.resultCart = response)
+  }
 }
+
+interface biciDetail{
+
+  userId : number,
+  productId: number, 
+  quantity: number, 
+  unitPrice:number,
+  totalPrice: number,
+  product: {
+    name: string,
+    listprice: number,
+    
+  }
+
+
+}
+

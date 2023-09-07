@@ -4,8 +4,6 @@ import {ActivatedRoute} from '@angular/router'
 import {HttpClient , HttpResponse , HttpStatusCode} from '@angular/common/http'
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
-import { NgForm } from '@angular/forms';
-import { Token } from '@angular/compiler';
 
 
 @Component({
@@ -24,7 +22,7 @@ export class CataloguedtComponent {
   cuore = faHeart;
   resultWishList: any[] = [];
   DetailList: biciycleDetail = {} as biciycleDetail;
-  toKKen = this.token;
+  tokenData = JSON.parse(this.token.rew);
 
   ngOnInit() {
     this.route.paramMap.subscribe((elem) => {
@@ -44,14 +42,15 @@ export class CataloguedtComponent {
   }
 
   wish() {
-    // const tokenData = JSON.parse(this.toKKen.rew);
-    // const tokenUserId = tokenData.id;
+
     const wishData = {
-      userID: 30124,
+      userID: parseInt(this.tokenData.id) + 11, //necessario mettere +11 per sincronizzare ID dei due database
       productId: this.resultWishList[0].productId
     }   
 
-    console.log(this.resultWishList[0].productId);
+
+    console.log(this.tokenData.id);
+    console.log(wishData.productId);
 
     this.http
       .post('https://localhost:7284/api/WishlistTemps', wishData)
@@ -68,11 +67,13 @@ export class CataloguedtComponent {
 
   cart(){
     const cartData = {
-      userID: 30124,
+      userID: parseInt(this.tokenData.id) + 11, //necessario mettere +11 per sincronizzare ID dei due database
       productId: this.resultWishList[0].productId
     }   
 
-    console.log(this.resultWishList[0].productId);
+    console.log(cartData.userID);
+    
+    console.log(cartData.productId);
 
     this.http
       .post('https://localhost:7284/api/WishlistTemps', cartData)
@@ -111,5 +112,4 @@ interface biciycleDetail{
   size: string,
   thumbnailPhoto: string,
   weight: number
-
 }

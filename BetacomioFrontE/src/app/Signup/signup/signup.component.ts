@@ -18,7 +18,7 @@ export class SignupComponent {
       (response: HttpResponse<register>) => 
       {
         if (HttpStatusCode.Ok) {
-          console.log("registrazione effettuata con successo" + response.status)
+          console.log("registrazione effettuata con successo, stato: " + response.status)
         }else if(HttpStatusCode.BadRequest){ console.log("errore in fase di registrazione  " + response.status)}
       }
     );
