@@ -24,6 +24,8 @@ import { PaypalComponent } from './Payment/paypal/paypal.component';
 import { FaqComponent } from './Faq/faq.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { RememberPassComponent } from './remember-pass/remember-pass.component';
+import { ChangePassComponent } from './change-pass/change-pass.component';
 
 
 
@@ -46,6 +48,8 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
     SuperadminComponent,
     PaypalComponent,
     FaqComponent,
+    RememberPassComponent,
+    ChangePassComponent,
   ],
   imports: [
     BrowserModule,

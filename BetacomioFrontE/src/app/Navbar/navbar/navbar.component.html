@@ -1,46 +1,58 @@
-<nav style="position: sticky;z-index: 5;top: 0;">
-  <!-- logo -->
-  <div class="col-2 ">
+<nav style="position: sticky;z-index: 5;top: 0; display: flex;justify-content: space-between;">
+  <!-- logo not logged -->
+  <div class="col-2 "*ngIf="tok === null">
     <img class="logo d-inline-block" routerLink="" src="../../../assets/images/BETACOMIO BICYCLE (4).svg" alt="">
+    <input type="checkbox" id="check">
+    <label class="d-block d-sm-block" for="check" class="checkbtn">
+      <fa-icon [icon]="icon"></fa-icon>
+    </label>
   </div>
-  <input type="checkbox" id="check">
-  <label class="d-block d-sm-block" for="check" class="checkbtn">
-    <fa-icon [icon]="icon"></fa-icon>
-  </label>
 
-
-<!-- central part not logged-->
-      <ul class="col-6  pad"  *ngIf="tok === null ">
+  <!-- central part not logged-->
+  <div class="col-6" *ngIf="tok === null" >
+    <ul>
       <li><a routerLink="" (click)="closeMobileMenu()"  class="link-list">Home</a></li>
-      <li><a routerLink="/Catalogue" (click)="closeMobileMenu()" class="link-list">Catalogo</a></li>
-      <li><a routerLink="/About_us" (click)="closeMobileMenu()"  class="link-list">Dicono di noi</a></li>
-      <li><a routerLink="/Contacts" (click)="closeMobileMenu()" class="link-list">Contatti</a></li>
-      <li><a routerLink="/superadmin" (click)="closeMobileMenu()" class="link-list">Super Admin</a></li>
-      <li><a routerLink="/Faq" (click)="closeMobileMenu()"class="link-list" >FAQ</a></li>
-      <li><a class="active hd" (click)="closeMobileMenu()" routerLink="/Login">Login</a></li>
-      <li><a class="active hd" (click)="closeMobileMenu()" routerLink="/Signup">Registrazione</a></li>
+  <li><a routerLink="/Catalogue" (click)="closeMobileMenu()" class="link-list">Catalogo</a></li>
+  <li><a routerLink="/About_us" (click)="closeMobileMenu()"  class="link-list">Dicono di noi</a></li>
+  <li><a routerLink="/Contacts" (click)="closeMobileMenu()" class="link-list">Contatti</a></li>
+  <li><a routerLink="/superadmin" (click)="closeMobileMenu()" class="link-list">Super Admin</a></li>
+  <li><a routerLink="/Faq" (click)="closeMobileMenu()"class="link-list" >FAQ</a></li>
+  <li><a class="active hd" (click)="closeMobileMenu()" routerLink="/Login">Login</a></li>
+  <li><a class="active hd" (click)="closeMobileMenu()" routerLink="/Signup">Registrazione</a></li>
 
-    </ul>
-    <!-- login part not logged -->
-    <ul class="col-3 bo pad"  *ngIf="tok === null" >
-      <li><a class="active"  routerLink="/Login">Login</a></li>
-      <li><a class="active" routerLink="/Signup">Registrazione</a></li>
-      <label style="margin-top: 30px;" class="switch">
-        <input (click)="changeColor()" type="checkbox">
-        <span class="slider round"></span>
-      </label>
-    </ul>
+</ul>
 
-    <!-- central part logged -->
-    <ul style="text-align: center;" class="col-6 pad " *ngIf="tok !== null">
-        <li><a routerLink="" (click)="closeMobileMenu()"  class="link-list">Home</a></li>
-        <li><a routerLink="/Catalogue" (click)="closeMobileMenu()" class="link-list">Catalogo</a></li>
+</div>
+<!-- login part not logged -->
+<div class="col-3 bo pad"  *ngIf="tok === null">
+  <ul>
+    <li><a class="active"  routerLink="/Login">Login</a></li>
+    <li><a class="active" routerLink="/Signup">Registrazione</a></li>
+    <label style="margin-top: 30px;" class="switch">
+      <input (click)="changeColor()" type="checkbox">
+      <span class="slider round"></span>
+    </label>
+  </ul>
+</div>
+
+<!-- logo logged -->
+<div class="col-3 " *ngIf="tok !== null">
+  <img class="logo d-inline-block" routerLink="" src="../../../assets/images/BETACOMIO BICYCLE (4).svg" alt="">
+</div>
+<input type="checkbox" id="check">
+<label class="d-block d-sm-block" for="check" class="checkbtn">
+  <fa-icon [icon]="icon"></fa-icon>
+</label>
+<!-- central part logged -->
+<ul style="text-align: center; margin-top: 10px;" class="col-6 pad " *ngIf="tok !== null">
+  <li><a routerLink="" (click)="closeMobileMenu()"  class="link-list">Home</a></li>
+  <li><a routerLink="/Catalogue" (click)="closeMobileMenu()" class="link-list">Catalogo</a></li>
         <li><a routerLink="/About_us" (click)="closeMobileMenu()"  class="link-list">Dicono di noi</a></li>
         <li><a routerLink="/Contacts" (click)="closeMobileMenu()" class="link-list">Contatti</a></li>
         <li><a routerLink="/Faq" (click)="closeMobileMenu()"class="link-list" >FAQ</a></li>
     </ul>
     <!-- login part logged -->
-    <div class="col-3 col-sm-6 d-lg-flex align-items-center bo pad " *ngIf="tok !== null || IsLogged ">
+    <div class="col-4 col-sm-6 d-lg-flex align-items-center bo pad " *ngIf="tok !== null || IsLogged ">
       <li style="font-family: 'Play', sans-serif; font-size: 1.3rem;cursor: pointer;"><a (click)="logout()" class="link-list">logout</a></li>
       <li style="font-family: 'Play', sans-serif; font-size: 1.3rem; margin-left: 30px;"><a routerLink="/MyProfile" class="link-list">Il mio profilo</a></li>
       <fa-icon (click)="cartmenu()" class="cart" [icon]="cart"></fa-icon>
@@ -48,10 +60,11 @@
         <input (click)="changeColor()" type="checkbox">
         <span class="slider round"></span>
       </label>
-      
+
 
     </div>
 
+    <!-- cart menu -->
     <div *ngIf="showMenu" style="
      width: 250px;
      max-height: 250px;

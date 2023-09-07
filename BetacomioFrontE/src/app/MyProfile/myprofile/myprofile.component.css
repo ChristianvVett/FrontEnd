@@ -49,3 +49,15 @@
     box-shadow: 2px 2px 2px 1px gray;
     cursor: pointer;
   }
+
+  @media screen and (max-width:600px) {
+    .wih
+    {
+        width: 100%;
+        margin-top: 40px;
+    }
+
+    .gg{
+      margin-bottom: 40px;
+    }
+  }

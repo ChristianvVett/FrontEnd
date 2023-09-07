@@ -13,6 +13,7 @@ import { SuperadminComponent } from './superadmin/superadmin.component';
 import { MyprofileComponent } from './MyProfile/myprofile/myprofile.component';
 import { PaypalComponent } from './Payment/paypal/paypal.component';
 import { FaqComponent } from './Faq/faq.component';
+import { RememberPassComponent } from './remember-pass/remember-pass.component';
 
 
 const routes:Routes=[
@@ -28,7 +29,8 @@ const routes:Routes=[
   {path: 'product/:productname', component:CataloguedtComponent},
   {path: 'MyProfile', component:MyprofileComponent},
   {path:'Paypal',component:PaypalComponent},
-  {path:'Faq',component:FaqComponent}
+  {path:'Faq',component:FaqComponent},
+  {path: 'rememberPass' , component:RememberPassComponent}
 ];
 
 @NgModule({

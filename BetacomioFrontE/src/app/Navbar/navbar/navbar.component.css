@@ -161,7 +161,7 @@ a.active:hover{
 .cart{
   font-size: 1.3rem;
   cursor: pointer;
-  width: 20%;
+  width: 100px;
   color: #ffffff;
   text-align: center;
 
