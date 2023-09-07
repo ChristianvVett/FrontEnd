@@ -23,7 +23,9 @@
     </div>
     
     <div class="column m-3 d-flex">
-      <p class="addcart">AGGIUNGI AL CARRELLO</p>
+      <div (click)="cart()">
+        <p class="addcart">AGGIUNGI AL CARRELLO</p>
+      </div>
       <div class="heart-container" (click)="wish()">
         <fa-icon class="heart" [icon]="cuore"></fa-icon>
       </div>
