@@ -41,7 +41,7 @@ export class CatalogueComponent implements AfterViewInit  {
   response: string[] = [];
   constructor(private http:HttpClient)
   {
-   
+
 
   }
 
@@ -53,7 +53,7 @@ export class CatalogueComponent implements AfterViewInit  {
     console.log(this.randomImage);
   })
 
- 
+
 
 }
 ngAfterViewInit(){
@@ -123,33 +123,16 @@ searchbyprice(priceinput:HTMLInputElement,input:HTMLInputElement){
 
 }
 
-wishlist(input: string , input2: number ){
-  this.response.push(input);
-  this.response.push(input2.toString());
-  this.http.post<any>("https://localhost:7284/api/Wishlist" , this.response).subscribe(resp => { 
 
-    try {
-      if (resp.ok) {
-        console.log("invio effettuato correttamente")
-      }else {
-        throw  console.log("errore")
-      }
-    } catch (error) {
-      
-    }
-
-   })
-
-}
 
 incrementRandomImage(): number{
-     
- 
-   
+
+
+
   if (this.randomImage > 9 ) {
 
     this.randomImage = Math.floor(Math.random() * 100);
-   
+
   }
   return this.randomImage
 }

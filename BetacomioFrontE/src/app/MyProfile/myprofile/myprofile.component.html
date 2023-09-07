@@ -3,28 +3,28 @@
   <h1>Bentornato/a {{ SingleProfile.name }}</h1>
 </div>
 <div style="display: flex; justify-content: center">
-  <div class="col-6 container-style">
+  <div class="col-12 col-lg-6 container-style">
     <h3>I miei dati:</h3>
     <hr />
-    <div class="d-flex">
-      <div class="col-4">
+    <div class="d-flex flex-column flex-lg-row align-items-center justify-content-center">
+      <div class="col-6 col-lg-3">
         <img
           class="immagine-circolare"
           src="https://picsum.photos/500/300?random=1"
           alt=""
         />
       </div>
-      <div class="col-4">
+      <div class=" wih col-5 col-lg-5 ">
         <p><b>Username: </b>{{ SingleProfile.username }}</p>
         <p><b>Nome: </b>{{ SingleProfile.name }}</p>
         <p><b>Cognome: </b>{{ SingleProfile.surname }}</p>
-        <p><b>Email: </b>{{ SingleProfile.email }}</p>
+        <p><b>Email: </b> <br>{{ SingleProfile.email }}</p>
       </div>
     </div>
   </div>
 </div>
 <div class="d-flex justify-content-center my-5">
-  <div class="col-6 container-style">
+  <div class="col-12 col-lg-6 container-style">
     <h3 style="text-align: center">La mia wishlist</h3>
     <hr>
     <div class="d-flex flex-column">
@@ -45,7 +45,7 @@
   </div>
 </div>
 <div class="d-flex justify-content-center">
-  <div class="col-6 container-style">
+  <div class="col-12 col-lg-6 gg container-style">
     <h3>I miei prodotti</h3>
     <hr />
     <div class="d-flex flex-column">
