@@ -9,7 +9,7 @@
   </div>
 
   <!-- central part not logged-->
-  <div class="col-6 " *ngIf="tok === null" >
+  <div class="col-6" *ngIf="tok === null" >
     <ul>
       <li><a routerLink="" (click)="closeMobileMenu()"  class="link-list">Home</a></li>
   <li><a routerLink="/Catalogue" (click)="closeMobileMenu()" class="link-list">Catalogo</a></li>
@@ -38,11 +38,11 @@
 <!-- logo logged -->
 <div class="col-3 " *ngIf="tok !== null">
   <img class="logo d-inline-block" routerLink="" src="../../../assets/images/BETACOMIO BICYCLE (4).svg" alt="">
-  <input type="checkbox" id="check">
-  <label class="d-block d-sm-block" for="check" class="checkbtn">
-    <fa-icon [icon]="icon"></fa-icon>
-  </label>
 </div>
+<input type="checkbox" id="check">
+<label class="d-block d-sm-block" for="check" class="checkbtn">
+  <fa-icon [icon]="icon"></fa-icon>
+</label>
 <!-- central part logged -->
 <ul style="text-align: center; margin-top: 10px;" class="col-6 pad " *ngIf="tok !== null">
   <li><a routerLink="" (click)="closeMobileMenu()"  class="link-list">Home</a></li>
