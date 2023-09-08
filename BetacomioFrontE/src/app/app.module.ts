@@ -26,6 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { RememberPassComponent } from './remember-pass/remember-pass.component';
 import { ChangePassComponent } from './change-pass/change-pass.component';
+import { ConfirmPassComponent } from './confirm-pass/confirm-pass.component';
 
 
 
@@ -50,6 +51,7 @@ import { ChangePassComponent } from './change-pass/change-pass.component';
     FaqComponent,
     RememberPassComponent,
     ChangePassComponent,
+    ConfirmPassComponent,
   ],
   imports: [
     BrowserModule,

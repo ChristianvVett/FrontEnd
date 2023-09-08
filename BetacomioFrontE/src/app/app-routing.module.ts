@@ -14,6 +14,7 @@ import { MyprofileComponent } from './MyProfile/myprofile/myprofile.component';
 import { PaypalComponent } from './Payment/paypal/paypal.component';
 import { FaqComponent } from './Faq/faq.component';
 import { RememberPassComponent } from './remember-pass/remember-pass.component';
+import { ConfirmPassComponent } from './confirm-pass/confirm-pass.component';
 
 
 const routes:Routes=[
@@ -30,7 +31,8 @@ const routes:Routes=[
   {path: 'MyProfile', component:MyprofileComponent},
   {path:'Paypal',component:PaypalComponent},
   {path:'Faq',component:FaqComponent},
-  {path: 'rememberPass' , component:RememberPassComponent}
+  {path: 'rememberPass' , component:RememberPassComponent},
+  {path: 'confirmpassword' , component:ConfirmPassComponent}
 ];
 
 @NgModule({

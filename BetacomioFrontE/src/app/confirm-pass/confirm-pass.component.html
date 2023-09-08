@@ -1,0 +1,21 @@
+<div class="topContainer">
+    <div class="main">  	
+      
+      
+      <form #Confirm="ngForm" (ngSubmit)="onSubmit(Confirm)">
+        <div>
+          <label for="text">codice</label>
+          <input type="text" id="codice" name="codice" [(ngModel)]="codice" required>
+          <label for="email">Inserisci Email</label>
+          <input type="email" id="email" name="email" [(ngModel)]="email" required>
+          <label for="Password">Inserisci la nuova Password</label>
+          <input type="password" id="password" name="password" [(ngModel)]="password" required>
+          
+        </div>
+        <button type="submit">Invia</button>
+      </form>
+    
+  </div>
+  </div>
+  
+  
