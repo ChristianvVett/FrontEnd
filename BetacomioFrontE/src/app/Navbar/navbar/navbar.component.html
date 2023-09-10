@@ -1,31 +1,28 @@
-<nav style="position: sticky;z-index: 5;top: 0; display: flex;justify-content: space-between;">
+<nav style="position: sticky;z-index: 5;top: 0;justify-content: space-between;">
   <!-- logo not logged -->
-  <div class="col-2 "*ngIf="tok === null">
+  <div class="col-3 col-lg-2 "*ngIf="tok === null">
     <img class="logo d-inline-block" routerLink="" src="../../../assets/images/BETACOMIO BICYCLE (4).svg" alt="">
-    <input type="checkbox" id="check">
-    <label class="d-block d-sm-block" for="check" class="checkbtn">
-      <fa-icon [icon]="icon"></fa-icon>
-    </label>
   </div>
 
   <!-- central part not logged-->
-  <div class="col-6" *ngIf="tok === null" >
+  <div class="col-4 col-lg-6" *ngIf="tok === null" >
+    <input type="checkbox" id="check">
+    <label  for="check" class="checkbtn">
+      <fa-icon [icon]="icon"></fa-icon>
+    </label>
     <ul>
-      <li><a routerLink="" (click)="closeMobileMenu()"  class="link-list">Home</a></li>
+  <li><a routerLink="" (click)="closeMobileMenu()"  class="link-list">Home</a></li>
   <li><a routerLink="/Catalogue" (click)="closeMobileMenu()" class="link-list">Catalogo</a></li>
   <li><a routerLink="/About_us" (click)="closeMobileMenu()"  class="link-list">Dicono di noi</a></li>
   <li><a routerLink="/Contacts" (click)="closeMobileMenu()" class="link-list">Contatti</a></li>
   <li><a routerLink="/superadmin" (click)="closeMobileMenu()" class="link-list">Super Admin</a></li>
   <li><a routerLink="/Faq" (click)="closeMobileMenu()"class="link-list" >FAQ</a></li>
-  <li><a class="active hd" (click)="closeMobileMenu()" routerLink="/Login">Login</a></li>
-  <li><a class="active hd" (click)="closeMobileMenu()" routerLink="/Signup">Registrazione</a></li>
-
-</ul>
+  </ul>
 
 </div>
 <!-- login part not logged -->
-<div class="col-3 bo pad"  *ngIf="tok === null">
-  <ul>
+<div class="col-4 col-sm-4 col-lg-3 bo  "  *ngIf="tok === null">
+  <ul class="mrg">
     <li><a class="active"  routerLink="/Login">Login</a></li>
     <li><a class="active" routerLink="/Signup">Registrazione</a></li>
     <label style="margin-top: 30px;" class="switch">
@@ -39,20 +36,22 @@
 <div class="col-3 " *ngIf="tok !== null">
   <img class="logo d-inline-block" routerLink="" src="../../../assets/images/BETACOMIO BICYCLE (4).svg" alt="">
 </div>
-<input type="checkbox" id="check">
-<label class="d-block d-sm-block" for="check" class="checkbtn">
-  <fa-icon [icon]="icon"></fa-icon>
-</label>
 <!-- central part logged -->
-<ul style="text-align: center; margin-top: 10px;" class="col-6 pad " *ngIf="tok !== null">
-  <li><a routerLink="" (click)="closeMobileMenu()"  class="link-list">Home</a></li>
-  <li><a routerLink="/Catalogue" (click)="closeMobileMenu()" class="link-list">Catalogo</a></li>
-        <li><a routerLink="/About_us" (click)="closeMobileMenu()"  class="link-list">Dicono di noi</a></li>
-        <li><a routerLink="/Contacts" (click)="closeMobileMenu()" class="link-list">Contatti</a></li>
-        <li><a routerLink="/Faq" (click)="closeMobileMenu()"class="link-list" >FAQ</a></li>
-    </ul>
+<div class="col-4 col-lg-4 " *ngIf="tok !== null">
+  <input type="checkbox" id="check">
+  <label class="d-block d-sm-block" for="check" class="checkbtn">
+    <fa-icon [icon]="icon"></fa-icon>
+  </label>
+  <ul style="margin-top: 10px;">
+    <li><a routerLink="" (click)="closeMobileMenu()"  class="link-list">Home</a></li>
+    <li><a routerLink="/Catalogue" (click)="closeMobileMenu()" class="link-list">Catalogo</a></li>
+    <li><a routerLink="/About_us" (click)="closeMobileMenu()"  class="link-list">Dicono di noi</a></li>
+    <li><a routerLink="/Contacts" (click)="closeMobileMenu()" class="link-list">Contatti</a></li>
+    <li><a routerLink="/Faq" (click)="closeMobileMenu()"class="link-list">FAQ</a></li>
+  </ul>
+</div>
     <!-- login part logged -->
-    <div class="col-4 col-sm-6 d-lg-flex align-items-center bo pad " *ngIf="tok !== null || IsLogged ">
+    <div class="col-4 d-none col-lg-3 d-lg-flex align-items-center" *ngIf="tok !== null || IsLogged ">
       <li style="font-family: 'Play', sans-serif; font-size: 1.3rem;cursor: pointer;"><a (click)="logout()" class="link-list">logout</a></li>
       <li style="font-family: 'Play', sans-serif; font-size: 1.3rem; margin-left: 30px;"><a routerLink="/MyProfile" class="link-list">Il mio profilo</a></li>
       <fa-icon (click)="cartmenu()" class="cart" [icon]="cart"></fa-icon>
@@ -60,8 +59,6 @@
         <input (click)="changeColor()" type="checkbox">
         <span class="slider round"></span>
       </label>
-
-
     </div>
 
     <!-- cart menu -->
