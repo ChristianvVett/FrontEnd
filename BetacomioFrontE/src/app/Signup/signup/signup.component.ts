@@ -77,10 +77,10 @@ checkAllField(){
     }else{
       this.isEmailOk = false;
     }
-    // this.getAllDatas();
-    // console.log(this.Userlist)
+    this.getAllDatas();
+    console.log(this.Userlist)
   }
-// !this.singleUser.PasswordHash.toUpperCase()
+
   checkPassword(){
     if(!this.regex.test(this.singleUser.PasswordHash) || !this.regexnum.test(this.singleUser.PasswordHash) || !this.regexMaiuscole.test(this.singleUser.PasswordHash)){
       this.isPasswordOk=true;
