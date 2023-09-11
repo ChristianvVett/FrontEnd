@@ -12,7 +12,7 @@ export class SignupComponent {
     this.singleUser={Name:"",Surname:"",Username:"",Phone:"" ,Email:"",PasswordHash:"",PasswordSalt:"",BirthYear:""}
   }
 
-  Userlist: userlist[] = []
+  Userlist: any[] = []
   singleUser: register | null = null
   isNameOk:boolean = false;
   isSurnameOk:boolean=false;
@@ -24,6 +24,7 @@ export class SignupComponent {
   regexnum = /\d/;
   regexMaiuscole = /[A-Z]/;
   allOk:boolean=false;
+  EmailAlreadyTaken:boolean=false;
   InsertUser(elem: NgForm) {
     this.singleUser = elem.value;
     this.Http.post<register>('https://localhost:7284/api/UserCredentials', elem.value, {observe: 'response'}).subscribe(
@@ -90,13 +91,20 @@ checkAllField(){
     this.checkAllField();
   }
 
-  // getAllDatas(){
-  //   this.Http.get<any>("https://localhost:7284/api/UserCredentials").subscribe(el=>{
-  //     for(let i = 0; i< el.length;i++){
-  //       this.Userlist.Email. el[i].email
-  //     }
-  //   })
-  // }
+  getAllDatas(){
+    this.Http.get<any>("https://localhost:7284/api/UserCredentials").subscribe(el=>{
+      for(let i = 0; i< el.length;i++){
+        if(this.singleUser.Email ==  el[i].email){
+          this.EmailAlreadyTaken=true;
+          break;
+        }else if(!this.singleUser.Email == el[i].email){
+          this.EmailAlreadyTaken=false;
+          break;
+        }
+        this.EmailAlreadyTaken=false;
+      }
+    })
+  }
 }
 
 interface register {
@@ -110,8 +118,3 @@ interface register {
   BirthYear: string;
 }
 
-interface userlist{
-
-  Email:string
-
-}

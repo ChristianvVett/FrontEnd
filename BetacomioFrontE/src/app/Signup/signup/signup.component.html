@@ -21,6 +21,9 @@
                     <div style="display: flex;justify-content: center;">
                       <p class="alert" *ngIf="isEmailOk">L'email non è valida</p>
                     </div>
+                    <div style="display: flex;justify-content: center;">
+                      <p class="alert" *ngIf="EmailAlreadyTaken">L'email esiste gia nei nostri sistemi</p>
+                    </div>
 
                     <input type="text" name="Phone" placeholder="inserisci un numero di telefono" [(ngModel)]="singleUser.Phone">
 
