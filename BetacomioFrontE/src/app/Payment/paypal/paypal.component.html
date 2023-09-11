@@ -45,6 +45,62 @@
               </div>
           
               <div class="row justify-content-around">
+
+                <!-- SEZIONE ORDINI CARRELLO  -->
+                  <div class="col-md-5">
+                    <div class="card border-0 ">
+                        <div class="card-header card-2">
+                            <p class="card-text text-muted mt-md-4  mb-2 space">I TUOI ORDINI</p>
+                            <hr class="my-2">
+                        </div>
+                        <div *ngIf="resultCart.length > 0; then showCartProducts else NoProducts"> </div>
+                        <ng-template #showCartProducts>
+
+                            <div class="card-body pt-0" >
+                                <div class="row  justify-content-between" *ngFor="let val of resultCart">
+                                    <div class="col-auto col-md-7">
+                                        <div class="media flex-column flex-sm-row">
+                                            <img class=" img-fluid" src="https://picsum.photos/500/300?random=1" width="62" height="62">
+                                            <div class="media-body  my-auto">
+                                                <div class="row ">
+                                                    <div class="col-auto"><p class="mb-0"><b>{{val.product.name}}</b></p></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class=" pl-0 flex-sm-col col-auto  my-auto"> <p class="boxed-1">{{val.quantity}}</p></div>
+                                    <div class=" pl-0 flex-sm-col col-auto  my-auto "><p><b>{{val.product.listPrice}}€</b></p></div>
+                                    <hr class="my-2">
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="row justify-content-between">
+                                            <div class="col-4"><p class="mb-1"><b>Costo prodotti: </b></p></div>
+                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{totalPrice}}€</b></p></div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <div class="col"><p class="mb-1"><b>Spese di spedizione: </b></p></div>
+                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>50€</b></p></div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <div class="col-4"><p ><b>Totale</b></p></div>
+                                            <div class="flex-sm-col col-auto"><p  class="mb-1"><b>{{totalPrice + 50}}€</b></p> </div>
+                                        </div><hr class="my-0">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </ng-template>
+                        <ng-template #NoProducts>
+                            <p class="card-text text-muted mt-md-4  mb-2 space">Non ci sono prodotti da visualizzare, prova ad acquistare qualcosa!</p>
+                        </ng-template>
+
+
+                    </div>
+                  </div>
+
+                <!-- SEZIONE PAGAMENTO  -->
                   <div class="col-md-5">
                       <div class="card border-0">
                           <div class="card-body">
@@ -91,83 +147,7 @@
 
 
 
-                  <!-- Utilizzare binding e direttive per prodotti carrello  -->
 
-                  <div class="col-md-5">
-                      <div class="card border-0 ">
-                          <div class="card-header card-2">
-                              <p class="card-text text-muted mt-md-4  mb-2 space">I tuoi ordini</p>
-                              <hr class="my-2">
-                          </div>
-
-                          <div class="card-body pt-0"  *ngFor="let val of resultCart">
-                              <div class="row  justify-content-between">
-                                  <div class="col-auto col-md-7">
-                                      <div class="media flex-column flex-sm-row">
-                                          <img class=" img-fluid" src="https://picsum.photos/500/300?random=1" width="62" height="62">
-                                          <div class="media-body  my-auto">
-                                              <div class="row ">
-                                                  <div class="col-auto"><p class="mb-0"><b>{{val.product.name}}</b></p></div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class=" pl-0 flex-sm-col col-auto  my-auto"> <p class="boxed-1">{{val.quantity}}</p></div>
-                                  <div class=" pl-0 flex-sm-col col-auto  my-auto "><p><b>{{val.product.listprice}}$</b></p></div>
-                              </div>
-                              <hr class="my-2">
-
-
-                              <!-- <div class="row  justify-content-between">
-                                  <div class="col-auto col-md-7">
-                                      <div class="media flex-column flex-sm-row">
-                                          <img class=" img-fluid " src="https://picsum.photos/500/300?random=1" width="62" height="62">
-                                          <div class="media-body  my-auto">
-                                              <div class="row ">
-                                                  <div class="col"><p class="mb-0"><b>{{val.product.name}}</b></p></div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="pl-0 flex-sm-col col-auto  my-auto"> <p class="boxed-1">{{val.quantity}}</p></div>
-                                  <div class="pl-0 flex-sm-col col-auto my-auto"><p><b>{{val.product.listprice}}$</b></p></div>
-                              </div>
-                              <hr class="my-2">
-                              <div class="row  justify-content-between">
-                                  <div class="col-auto col-md-7">
-                                      <div class="media flex-column flex-sm-row">
-                                          <img class=" img-fluid " src="https://picsum.photos/500/300?random=1" width="62" height="62">
-                                          <div class="media-body  my-auto">
-                                              <div class="row ">
-                                                  <div class="col"><p class="mb-0"><b>{{val.product.name}}</b></p></div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="pl-0 flex-sm-col col-auto  my-auto"> <p class="boxed-1">1</p></div>
-                                  <div class="pl-0 flex-sm-col col-auto my-auto"><p><b>240$</b></p></div>
-                              </div>
-                              <hr class="my-2"> -->
-                              
-                              <div class="row ">
-                                  <div class="col">
-                                      <div class="row justify-content-between">
-                                          <div class="col-4"><p class="mb-1"><b>Costo prodotti: </b></p></div>
-                                          <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{val.totalPrice}}$</b></p></div>
-                                      </div>
-                                      <div class="row justify-content-between">
-                                          <div class="col"><p class="mb-1"><b>Spese di spedizione: </b></p></div>
-                                          <div class="flex-sm-col col-auto"><p class="mb-1"><b>50$</b></p></div>
-                                      </div>
-                                      <div class="row justify-content-between">
-                                          <div class="col-4"><p ><b>Totale</b></p></div>
-                                          <div class="flex-sm-col col-auto"><p  class="mb-1"><b>{{val.totalPrice + 50}}$</b></p> </div>
-                                      </div><hr class="my-0">
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
 
 
               </div>

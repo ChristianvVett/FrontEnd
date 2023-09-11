@@ -1,7 +1,7 @@
 <p class="title">{{DetailList.name}}</p>
 <div class="row d-flex">
   <div class="column">
-    <img src="https://picsum.photos/500/300?random=1" class="dtimg"  alt="random photo">
+    <img [src]="DetailList.sanitizedPhoto" class="dtimg"  alt="random photo">
   </div>
   
   <div style="display: flex;flex-direction: column;">
@@ -20,6 +20,13 @@
       <fa-icon [icon]="circle" class="circledt"></fa-icon>
       <p class="circledt">DISPONIBILE</p>
     </div>
+    <div style="border: 1px dashed black; background-color: bisque; width: fit-content; padding: 20px;">
+      <p> Quantità attuale: <strong> {{ prodQuantity }}</strong> </p>
+      <button (click)="decreaseQuantity()" style="margin-left: 25px"> - </button>
+      <button (click)="incrementQuantity()" style="margin-left: 25px"> + </button>
+    </div>
+
+
     </div>
     
     <div class="column m-3 d-flex">

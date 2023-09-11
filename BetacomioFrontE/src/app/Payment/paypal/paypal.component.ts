@@ -19,8 +19,13 @@ export class PaypalComponent implements AfterViewChecked {
   addScript:boolean = false;
   finalAmount: number = 1;
   Creditcard=faCreditCard;
-  resultCart: biciDetail[] = [];
-  HaToken= this.token;
+  resultCart: cartItem[] = [];
+  HaToken = JSON.parse(this.token.rew);
+  idToken: number;
+
+  totalPrice = 0;
+  totalQuantity = 0;
+  
 
   paypalconfig = {
     env: 'sandbox',
@@ -47,6 +52,11 @@ export class PaypalComponent implements AfterViewChecked {
   };
 
 
+  ngOnInit(){
+   
+    this.getCartProducts();
+
+    }
 
   addPaypalScript(){
     this.addScript = true;
@@ -67,15 +77,32 @@ export class PaypalComponent implements AfterViewChecked {
     }
   }
 
-  //metodo per visualizzare prodotti del carrello
+  //metodo per visualizzare prodotti del carrello dell'utente loggato
   getCartProducts(){
-    this.http
-      .get<any>("https://localhost:7284/api/ShoppingCart")
-      .subscribe(response =>  this.resultCart = response)
+   
+    this.idToken = parseInt(this.HaToken.id) +11;
+    console.log(this.idToken);
+    this.http.get<any>(`https://localhost:7284/api/ShoppingCart?userid=${this.idToken}`).subscribe(response =>{
+    this.resultCart = response; 
+    this.calculateTotals();
+    console.log(this.resultCart);
+    })
   }
+
+  //calcolo della somma di prezzi e quantità del carrello
+  calculateTotals(){
+    this.totalPrice = 0;
+    this.totalQuantity = 0;
+
+    for(const val of this.resultCart){
+      this.totalPrice += val.totalPrice;
+      this.totalQuantity += val.quantity;
+    }
+  }
+
 }
 
-interface biciDetail{
+interface cartItem{
 
   userId : number,
   productId: number, 
@@ -84,10 +111,9 @@ interface biciDetail{
   totalPrice: number,
   product: {
     name: string,
-    listprice: number,
-    
+    listPrice: number,
   }
 
-
 }
+
 
