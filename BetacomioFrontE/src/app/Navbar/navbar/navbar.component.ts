@@ -3,6 +3,7 @@ import {faBars} from '@fortawesome/free-solid-svg-icons'
 import {faCartShopping} from '@fortawesome/free-solid-svg-icons';
 import { TokenService } from 'src/app/Services/token.service';
 import { faMoon } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 declare let paypal: any;
 
 @Component({
@@ -25,7 +26,7 @@ export class NavbarComponent {
   rnd:any;
   change:boolean = false;
   tok = this.Token.token();
-  constructor(private Token:TokenService,private cdr: ChangeDetectorRef,render:Renderer2){
+  constructor(private Token:TokenService,private cdr: ChangeDetectorRef,render:Renderer2, private route: Router){
   this.rnd = render
   }
 
@@ -65,6 +66,7 @@ export class NavbarComponent {
     logout(){
     sessionStorage.clear()
     window.location.reload();
+    this.route.navigateByUrl("/");
     }
 
 
