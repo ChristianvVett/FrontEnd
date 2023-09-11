@@ -2,6 +2,7 @@ import { Component ,ChangeDetectorRef, Renderer2  } from '@angular/core';
 import {faBars} from '@fortawesome/free-solid-svg-icons'
 import {faCartShopping} from '@fortawesome/free-solid-svg-icons';
 import { TokenService } from 'src/app/Services/token.service';
+import { faMoon } from '@fortawesome/free-solid-svg-icons';
 declare let paypal: any;
 
 @Component({
@@ -12,6 +13,7 @@ declare let paypal: any;
 export class NavbarComponent {
   icon=faBars;
   cart=faCartShopping;
+  moon=faMoon;
   rew: string = sessionStorage.getItem('dati');
   df:string;
   result: string;

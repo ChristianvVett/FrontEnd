@@ -28,7 +28,6 @@ nav{
 
 nav ul{
   float: right;
-  margin-right: 20px;
 }
 
 nav ul li{
@@ -39,7 +38,6 @@ nav ul li{
 
 nav ul li a{
   color: white;
-  font-size: 17px;
   padding: 7px 13px;
   text-transform: uppercase;
   transform: scale(1.1);
@@ -120,6 +118,7 @@ a.active:hover{
 }
 .link-list{
   color: white;
+  font-size: 17px;
   text-decoration: none;
   position: relative;
 }
@@ -151,9 +150,7 @@ a.active:hover{
   cursor: pointer;
   display: none;
 }
-.pad{
-  padding-left: 10px;
-}
+
 #check{
   display: none;
 }
@@ -199,12 +196,26 @@ a.active:hover{
 
 }
 
-@media (max-width: 1485px){
+@media screen and (max-width: 1485px){
  .pad{
   padding: 0;
  }
-}
+ .link-list{
+  font-size: 14px;
 
+ }
+
+}
+@media screen and (min-width: 1485px){
+  .mrg{
+    margin-right: 100px;
+  }
+}
+  @media screen and (max-width: 1485px){
+    .mrg{
+      margin-right: 20px;
+    }
+ }
 @media (max-width: 1126px){
   .checkbtn{
     display: block;
