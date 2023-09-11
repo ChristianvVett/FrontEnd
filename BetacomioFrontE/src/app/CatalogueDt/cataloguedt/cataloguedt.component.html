@@ -1,4 +1,5 @@
-<p class="title">{{DetailList.name}}</p>
+<!-- <div class="container">
+  <p class="title">{{DetailList.name}}</p>
 <div class="row d-flex">
   <div class="column">
     <img [src]="DetailList.sanitizedPhoto" class="dtimg"  alt="random photo">
@@ -37,5 +38,54 @@
         <fa-icon class="heart" [icon]="cuore"></fa-icon>
       </div>
     </div>
+  </div>
+</div>
+</div> -->
+
+<div class="url">Home > Catalogue > Details</div>
+<div class="flex-box">
+  <div class="left">
+      <div class="big-img">
+        <img [src]="DetailList.sanitizedPhoto" alt="random photo">
+      </div>
+  </div>
+
+  <div class="right">
+      <div class="pname">{{DetailList.name}}</div>
+      <div>
+        <p class="dtdesc">{{DetailList.description}}</p>
+      <div class="d-flex">
+          <div class="squarecolor blackcolor"></div>
+          <div class="squarecolor redcolor"></div>
+          <div class="squarecolor"></div>
+      </div>
+      </div>
+      <div class="ratings">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+      </div>
+      <div class="price">{{DetailList.listPrice}}€</div>
+      <div style="border: 1px dashed black; background-color: bisque; width: fit-content; padding: 20px;">
+        <p> Quantità attuale: <strong> {{ prodQuantity }}</strong> </p>
+        <button (click)="decreaseQuantity()" style="margin-left: 25px"> - </button>
+        <button (click)="incrementQuantity()" style="margin-left: 25px"> + </button>
+      </div>
+      <!-- <div class="quantity">
+          <p>Quantity :</p>
+          <input type="number" min="1" max="5" value="1">
+      </div> -->
+      <div class="btn-box">
+        <div (click)="cart()">
+          <p class="cart-btn">AGGIUNGI AL CARRELLO</p>
+        </div>
+        <div class="heart-container" (click)="wish()">
+        <fa-icon class="heart" [icon]="cuore"></fa-icon>
+      </div>
+          <!-- <button class="cart-btn">Add to Cart</button> -->
+      </div>
+      
   </div>
 </div>

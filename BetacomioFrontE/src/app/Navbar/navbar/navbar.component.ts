@@ -7,6 +7,8 @@ import { GetMethodsService } from 'src/app/Services/get-methods.service';
 import { SafeUrl } from '@angular/platform-browser';
 import { cartItem } from 'src/app/Payment/paypal/paypal.component';
 
+import { Router } from '@angular/router';
+declare let paypal: any;
 
 @Component({
   selector: 'app-navbar',
@@ -31,7 +33,13 @@ export class NavbarComponent {
   rnd:any;
   change:boolean = false;
   tok = this.Token.token();
-  constructor(private Token:TokenService,private cdr: ChangeDetectorRef,render:Renderer2, private getMethodsService: GetMethodsService){
+  constructor(
+    private Token:TokenService,
+    private cdr: ChangeDetectorRef,
+    private render:Renderer2, 
+    private route: Router, 
+    private getMethodsService: GetMethodsService
+    ){
   this.rnd = render
   }
 
@@ -83,6 +91,7 @@ export class NavbarComponent {
     logout(){
     sessionStorage.clear()
     window.location.reload();
+    this.route.navigateByUrl("/");
     }
 
 

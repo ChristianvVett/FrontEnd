@@ -33,6 +33,9 @@ const routes:Routes=[
   {path:'Faq',component:FaqComponent},
   {path: 'rememberPass' , component:RememberPassComponent},
   {path: 'confirmpassword' , component:ConfirmPassComponent}
+  
+
+
 ];
 
 @NgModule({

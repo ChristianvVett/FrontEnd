@@ -1,5 +1,6 @@
-.body{
+/* body{
     background-color: #BAF1F1;
+    overflow-x: hidden;
 }
 
 form
@@ -14,6 +15,11 @@ img
     width: 100%;
     height: 500px;
     object-fit: cover;
+}
+
+.container{
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .dtimg{
@@ -108,4 +114,158 @@ img
     {
         width: 100%;
     }
+} */
+
+
+.flex-box{
+  display: flex;
+  justify-content: center;
+  margin: 5px;
+}
+
+.left{
+  width: 40%;
+  margin-top: 40px;
+}
+
+.big-img{
+  width: 300px;
+}
+
+.big-img img{
+  width: inherit;
+}
+
+.url{
+  padding: 0px;
+  font-size: 15px;
+  color: #aaa;
+}
+.pname{
+  font-size: 22px;
+  font-weight: 600;
+  margin-top: 50px;
+}
+
+.dtdesc{
+  font-family: 'Play', sans-serif;
+}
+
+.squarecolor{
+  width: 30px;
+  height: 30px;
+  margin: 5px;
+  border: 1px solid black;
+  cursor: pointer
+}
+
+.blackcolor{
+  background-color: black;
+  margin: 5px;
+}
+
+.redcolor{
+  background-color: red;
+  margin: 5px;
+}
+
+.ratings i{
+  color: rgb(255, 136, 0);
+}
+.price{
+  font-size: 20px;
+  font-weight: 500;
+  margin: 20px 0;
+}
+.size{
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+.size p{
+  font-size: 18px;
+  font-weight: 500;
+}
+.psize{
+  width: 60px;
+  height: 30px;
+  border: 1px solid #ff5e00;
+  color: #000;
+  text-align: center;
+  margin: 0 10px;
+  cursor: pointer;
+}
+.psize.active{
+  border-width: 1.5px;
+  color: #ff5e00;
+  font-weight: 500;
+}
+.quantity{
+  display: flex;
+}
+.quantity p{
+  font-size: 18px;
+  font-weight: 500;
+}
+.quantity input{
+  width: 40px;
+  font-size: 17px;
+  font-weight: 500;
+  text-align: center;
+  margin-left: 15px;
+}
+.btn-box{
+  display: flex;
+  margin-top: 40px;
+}
+.btn-box button{
+  font-size: 18px;
+  padding: 8px 25px;
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+}
+.cart-btn{
+  background-color: #D15800;
+  margin-right: 20px;
+  border-radius: 5px;
+}
+
+.cart-btn:hover{
+  background-color: #D15800;
+}
+
+.heart{
+  font-size: 1.3rem;
+  color: white;
+  transition: 0.4s ease-in-out;
+}
+
+.heart-container{
+  border: 1px solid black;
+  background-color: #D15800;
+  height: 33.5px;
+  display: flex;
+  justify-content: center;
+  margin-left: 15px;
+  width: 40px;
+  cursor: pointer;
+  transition: 0.4s ease-in-out;
+}
+
+
+.heart-container:hover .heart{
+  color:black;
+}
+.heart-container:hover{
+  background-color: white;
+}
+
+@media screen and (max-width: 600px) {
+  .flex-box {
+      flex-direction: column;
+      padding: 5px;
+  }
 }

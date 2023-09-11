@@ -1,5 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +11,35 @@ export class AppComponent {
   userActivity;
   userInactive: Subject<any> = new Subject();
 
-  constructor() {
+  constructor(private route: Router) {
     this.setTimeout();
-    this.userInactive.subscribe(() => console.log('utente inattivo da 3 secondi'));
+    this.userInactive.subscribe(() => this.reload()
+    
+    );
+    
   }
 
   setTimeout() {
-    this.userActivity = setTimeout(() => this.userInactive.next(undefined), 3000);
+    let  time = 0;
+    this.userActivity = setTimeout(() =>
+   
+    this.userInactive.next(undefined),
+    
+    150000);
+  
+
+    
+  }
+  reload(){
+    if (sessionStorage.getItem("dati") != null) {
+      sessionStorage.clear();
+      this.route.navigateByUrl("Login")
+      
+      
+    }else{
+      
+    }
+   
   }
 
   @HostListener('window:mousemove')refreshUserState() {

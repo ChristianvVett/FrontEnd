@@ -8,12 +8,29 @@
     <form #rem="ngForm" (ngSubmit)="onSubmit(rem)">
       <div>
         <label for="email">Inserisci la tua email</label>
-        <input type="text" id="email" name="email" [(ngModel)]="email" required>
+        <input type="text" id="email" name="email" [(ngModel)]="email" >
       </div>
-      <button type="submit">Invia</button>
+      <button type="submit" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Invia</button>
     </form>
   
 </div>
+
+
 </div>
 
-
+<!-- Modal -->
+<div #modal class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modaler modal-title fs-5" id="staticBackdropLabel">Invio Email inviata con Successo</h1>
+      </div>
+      <div class="modal-body">
+        <p>EMAIL INVIATA CORRETTAMENTE APRI LA TUA CASELLA DI POSTA ELETTRONICA E' CLICCA IL LINK CHE TI ABBIAMO INVIATO SEGUITO DA UN CODICE SEGRETO</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+      </div>
+    </div>
+  </div>
+</div>
