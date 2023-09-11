@@ -76,8 +76,8 @@ checkAllField(){
     }else{
       this.isEmailOk = false;
     }
-    this.getAllDatas();
-    console.log(this.Userlist)
+    // this.getAllDatas();
+    // console.log(this.Userlist)
   }
 // !this.singleUser.PasswordHash.toUpperCase()
   checkPassword(){
@@ -90,13 +90,13 @@ checkAllField(){
     this.checkAllField();
   }
 
-  getAllDatas(){
-    this.Http.get<any>("https://localhost:7284/api/UserCredentials").subscribe(el=>{
-      for(let i = 0; i< el.length;i++){
-        this.Userlist.Email. el[i].email
-      }
-    })
-  }
+  // getAllDatas(){
+  //   this.Http.get<any>("https://localhost:7284/api/UserCredentials").subscribe(el=>{
+  //     for(let i = 0; i< el.length;i++){
+  //       this.Userlist.Email. el[i].email
+  //     }
+  //   })
+  // }
 }
 
 interface register {
