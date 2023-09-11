@@ -26,7 +26,9 @@ onSubmit(elem: NgForm) {
 this.http.post("https://localhost:7284/api/RememberPass" , emai).subscribe(
   (resp) => 
   {
-
+   if (HttpStatusCode.Ok) {
+    
+   }
 
   })
    
