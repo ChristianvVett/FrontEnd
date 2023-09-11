@@ -9,7 +9,7 @@ import { OnChange } from 'ngx-bootstrap/utils';
 })
 export class SignupComponent {
   constructor(private Http: HttpClient) {
-    this.singleUser={Name:"",Surname:"",Username:"",Phone:"" ,Email:"",PasswordHash:"",PasswordSalt:""}
+    this.singleUser={Name:"",Surname:"",Username:"",Phone:"" ,Email:"",PasswordHash:"",PasswordSalt:"",BirthYear:""}
   }
 
   Userlist: userlist[] = []
@@ -107,6 +107,7 @@ interface register {
   Phone: string;
   PasswordHash: string;
   PasswordSalt: string;
+  BirthYear: string;
 }
 
 interface userlist{

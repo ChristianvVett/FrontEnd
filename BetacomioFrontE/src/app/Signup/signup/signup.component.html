@@ -33,7 +33,7 @@
                     <div style="display: flex;justify-content: center;">
                       <p class="alert" *ngIf="isUsernameOk">Il nome utente è troppo corto</p>
                     </div>
-
+                    <input type="date" name="BirthYear" placeholder="data di nascita" (blur)="checkuserName()" [(ngModel)]="singleUser.BirthYear">
 
                     <input type="password" name="PasswordHash" placeholder="Password" (blur)="checkPassword()" [(ngModel)]="singleUser.PasswordHash">
                     <div style="display: flex;justify-content: center;">
