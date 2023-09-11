@@ -1,18 +1,46 @@
 <div class="topContainer">
-    <div class="main">  	
+    <div class="main">
         <input type="checkbox" id="chk" aria-hidden="true">
-    
+
             <div class="signup">
                 <form #inputform="ngForm" (submit)="InsertUser(inputform)">
                     <label for="chk" aria-hidden="true">Sign up</label>
-                    <input type="text" name="Name" placeholder="inserisci un nome" [ngModel]="singleUser?.Name">
-                    <input type="text" name="Surname" placeholder="inserisci un cognome" [ngModel]="singleUser?.Surname">
-                    <input type="text" name="Phone" placeholder="inserisci un numero di telefono" [ngModel]="singleUser?.Phone">
-                    <input type="text" name="Username" placeholder="User name" [ngModel]="singleUser?.Username">
-                    <input type="email" name="Email" placeholder="Email" [ngModel]="singleUser?.Email" >
-                    <input type="password" name="PasswordHash" placeholder="Password" [ngModel]="singleUser?.PasswordHash">
+                    <input type="text" id="name" name="name" placeholder="inserisci un nome" (blur)="checkName()"  [(ngModel)]="singleUser.Name">
+
+                    <div style="display: flex;justify-content: center;">
+                    <p class="alert" *ngIf="isNameOk">Il nome è troppo corto</p>
+                    </div>
+
+                    <input type="text" name="Surname" placeholder="inserisci un cognome" (blur)="checkSurname()" [(ngModel)]="singleUser.Surname">
+
+                    <div style="display: flex;justify-content: center;">
+                    <p class="alert" *ngIf="isSurnameOk">Il cognome non è valido</p>
+                    </div>
+
+                    <input type="email" name="Email" placeholder="Email" (blur)="checkEmail()" [(ngModel)]="singleUser.Email" >
+                    <div style="display: flex;justify-content: center;">
+                      <p class="alert" *ngIf="isEmailOk">L'email non è valida</p>
+                    </div>
+
+                    <input type="text" name="Phone" placeholder="inserisci un numero di telefono" [(ngModel)]="singleUser.Phone">
+
+                    <div style="display: flex;justify-content: center;">
+                    <p class="alert" *ngIf="isPhoneOk">Il numero di telefono non è valido</p>
+                    </div>
+
+                    <input type="text" name="Username" placeholder="Username" (blur)="checkuserName()" [(ngModel)]="singleUser.Username">
+
+                    <div style="display: flex;justify-content: center;">
+                      <p class="alert" *ngIf="isUsernameOk">Il nome utente è troppo corto</p>
+                    </div>
+
+
+                    <input type="password" name="PasswordHash" placeholder="Password" (blur)="checkPassword()" [(ngModel)]="singleUser.PasswordHash">
+                    <div style="display: flex;justify-content: center;">
+                      <p class="alert" *ngIf="isPasswordOk">la password deve contenere almeno un carattere speciale e una lettera maiuscola</p>
+                    </div>
                     <input type="hidden" name="PasswordSalt" [ngModel]="'string'">
-                    <button type="submit">Sign up</button>
+                    <button type="submit" [disabled]="!allOk" [ngClass]="{'opacity':!allOk}">Sign up</button>
                 </form>
             </div>
     </div>
