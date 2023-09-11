@@ -14,7 +14,7 @@
 
 
         <label for="NameInput">Nome</label><br>
-        <input type="text" id="NameInput" name="name" required [(ngModel)]="person.name" (blur)="checkname()"><br>
+        <input type="text" id="NameInput" name="name"  [(ngModel)]="person.name" (blur)="checkname()"><br>
         <!-- validation -->
         <div>
             <p class="alert" *ngIf="nlength">Il nome è troppo corto</p>
