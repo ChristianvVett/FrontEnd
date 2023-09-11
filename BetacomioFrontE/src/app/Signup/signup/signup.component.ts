@@ -77,8 +77,8 @@ checkAllField(){
     }else{
       this.isEmailOk = false;
     }
-    this.getAllDatas();
-    console.log(this.Userlist)
+    // this.getAllDatas();
+    // console.log(this.Userlist)
   }
 // !this.singleUser.PasswordHash.toUpperCase()
   checkPassword(){
