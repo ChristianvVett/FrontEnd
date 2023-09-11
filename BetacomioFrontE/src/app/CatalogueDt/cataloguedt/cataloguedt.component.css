@@ -1,5 +1,6 @@
-.body{
+body{
     background-color: #BAF1F1;
+    overflow-x: hidden;
 }
 
 form
@@ -14,6 +15,11 @@ img
     width: 100%;
     height: 500px;
     object-fit: cover;
+}
+
+.container{
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .dtimg{
