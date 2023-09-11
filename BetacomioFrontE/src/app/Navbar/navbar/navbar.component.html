@@ -76,19 +76,13 @@
      background-color: #d45d09f3; ">
 
 
-  <ul>
-  <li style="color:white; margin-right:50px"><b>X2</b> bicicletta bella <b>240€</b></li>
+  <ul *ngFor="let el of iconCart"> 
+  <li style="color:white; line-height: 40px;"><b>x{{el.quantity}}</b> {{el.product.name}} <b>{{el.product.listPrice}} €</b></li>
   <hr>
-  <li style="color:white; margin-right:50px"><b>X2</b> bicicletta bella <b>240€</b></li>
-  <hr>
-  <li style="color:white; margin-right:50px"><b>X1</b> bicicletta bella <b>240€</b></li>
-  <hr>
-  <hr>
-  <li style="color:white; margin-right:50px"><b>X3</b> bicicletta bella <b>240€</b></li>
-  <hr>
-  <li style="color:white; margin-right:50px">Totale: <b>960€</b></li></ul>
+  </ul>
+  <p style="color:white; text-align: center">Totale: <b>{{totPrice}} €</b></p>
   <br>
-  <button routerLink="Paypal" style="background-color: white;height:50px; border: none; width: 60%; margin-left:50px; border-radius: 40px;">Vai al carrello</button>
+  <button routerLink="Paypal" style="background-color: white;height:50px; border: none; width: 60%; margin-left:50px; margin-bottom: 10px; border-radius: 40px;">Vai al carrello</button>
 
   </div>
 

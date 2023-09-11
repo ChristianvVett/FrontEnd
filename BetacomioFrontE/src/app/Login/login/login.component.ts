@@ -46,8 +46,8 @@ export class LoginComponent{
         result.push(element);
       });
       console.log(result[0]);
-      const data = sessionStorage.setItem("dati" , JSON.stringify(result[0]) );
-      this.Token.loginSuccessful()
+      const data = sessionStorage.setItem("dati" , JSON.stringify(result[0]));
+      this.Token.loginSuccessful();
       this.tk = this.Token.result;
       this.ch.detectChanges();
       this.route.navigateByUrl('/MyProfile');

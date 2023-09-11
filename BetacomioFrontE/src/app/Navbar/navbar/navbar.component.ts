@@ -3,7 +3,10 @@ import {faBars} from '@fortawesome/free-solid-svg-icons'
 import {faCartShopping} from '@fortawesome/free-solid-svg-icons';
 import { TokenService } from 'src/app/Services/token.service';
 import { faMoon } from '@fortawesome/free-solid-svg-icons';
-declare let paypal: any;
+import { GetMethodsService } from 'src/app/Services/get-methods.service';
+import { SafeUrl } from '@angular/platform-browser';
+import { cartItem } from 'src/app/Payment/paypal/paypal.component';
+
 
 @Component({
   selector: 'app-navbar',
@@ -14,7 +17,10 @@ export class NavbarComponent {
   icon=faBars;
   cart=faCartShopping;
   moon=faMoon;
-  rew: string = sessionStorage.getItem('dati');
+  iconCart: cartItem[] = [];
+  totPrice: number;
+  tokenData = JSON.parse(this.Token.rew);
+  tokenId : number;
   df:string;
   result: string;
   tr: boolean;
@@ -25,7 +31,7 @@ export class NavbarComponent {
   rnd:any;
   change:boolean = false;
   tok = this.Token.token();
-  constructor(private Token:TokenService,private cdr: ChangeDetectorRef,render:Renderer2){
+  constructor(private Token:TokenService,private cdr: ChangeDetectorRef,render:Renderer2, private getMethodsService: GetMethodsService){
   this.rnd = render
   }
 
@@ -33,11 +39,24 @@ export class NavbarComponent {
     this.Token.isAuthenticated$.subscribe(isAuthenticated => {
       this.IsLogged = isAuthenticated;
       this.cdr.detectChanges();
+      this.showCartIconProducts();
+      
+
     });
   }
   cartmenu(){
     this.showMenu=!this.showMenu;
   }
+
+  showCartIconProducts(){
+    this.tokenId = parseInt(this.tokenData.id) + 11;
+    this.getMethodsService.getCartProducts(this.tokenId).subscribe(response =>{
+      this.iconCart = response; 
+      this.totPrice = this.getMethodsService.calculateCartTotal(this.iconCart); //calcola totale carrello
+    
+    })
+  }
+
   changeColor(){
     this.change=!this.change;
     if(this.change){
@@ -46,7 +65,6 @@ export class NavbarComponent {
     }else{
       this.rnd.setStyle(document.body, 'background-color','white')
       this.rnd.setStyle(document.body, 'color', 'black');
-      console.log("gesu cristo")
     }
   }
 

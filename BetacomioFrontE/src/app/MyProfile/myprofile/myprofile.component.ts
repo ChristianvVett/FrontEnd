@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
+import {HttpClient} from '@angular/common/http';
+import { GetMethodsService } from 'src/app/Services/get-methods.service';
+import { SafeUrl } from '@angular/platform-browser';
 
 
 @Component({
@@ -9,7 +11,7 @@ import {HttpClient} from '@angular/common/http'
 })
 export class MyprofileComponent {
 
-  constructor(private http:HttpClient){}
+  constructor(private http:HttpClient, private getMethods: GetMethodsService){}
 
   stringdata= sessionStorage.getItem("dati");
   stringJSON= this.stringdata.replace(/\[|\]/g, '');
@@ -28,24 +30,15 @@ export class MyprofileComponent {
 
   ngOnInit(){
    
-    this.getWishlistItems();
-    console.log(this.defJSON);
+    this.useridToken = parseInt(this.defJSON.id) + 11;
+    this.getMethods.getWishlistItems(this.useridToken).subscribe(response =>{
+      this.wishlistItems = response; 
 
-
-    }
-
-
-    //metodo per visualizzare prodotti wishlist dell'utente loggato
-    getWishlistItems(){
-        
-        this.useridToken = parseInt(this.defJSON.id) + 11;
-        console.log(this.useridToken);
-        this.http.get<any>(`https://localhost:7284/api/Wishlist?userid=${this.useridToken}`).subscribe(response =>{
-        this.wishlistItems = response; 
-        console.log(this.wishlistItems);
-
+      for (const el of this.wishlistItems) {
+        el.product.sanitizedPhoto = this.getMethods.getProductImage(el.product.thumbNailPhoto);
+      }
     })
-    };
+  }
 
 
   //   this.http.get('https://localhost:7284/api/UserCredentials').subscribe((result)=>{
@@ -79,6 +72,7 @@ interface wishItem{
   product: {
     name: string,
     listPrice: number,
-    thumbnailPhoto: Uint8Array,
+    thumbNailPhoto: Uint8Array,
+    sanitizedPhoto: SafeUrl
   }
 }

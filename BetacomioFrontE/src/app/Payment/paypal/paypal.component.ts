@@ -2,8 +2,12 @@ import { Component,AfterViewChecked } from '@angular/core';
 import { faCreditCard } from '@fortawesome/free-solid-svg-icons';
 import {HttpClient , HttpResponse , HttpStatusCode} from '@angular/common/http'
 import { TokenService } from 'src/app/Services/token.service';
+import { GetMethodsService } from 'src/app/Services/get-methods.service';
+import { SafeUrl } from '@angular/platform-browser';
+
 
 declare let paypal:any
+
 @Component({
   selector: 'app-paypal',
   templateUrl: './paypal.component.html',
@@ -13,7 +17,8 @@ export class PaypalComponent implements AfterViewChecked {
 
   constructor(
     private http: HttpClient,
-    private token: TokenService
+    private token: TokenService,
+    private getMethodsService: GetMethodsService
   ) {}
 
   addScript:boolean = false;
@@ -22,9 +27,8 @@ export class PaypalComponent implements AfterViewChecked {
   resultCart: cartItem[] = [];
   HaToken = JSON.parse(this.token.rew);
   idToken: number;
+  totPrice: number;
 
-  totalPrice = 0;
-  totalQuantity = 0;
   
 
   paypalconfig = {
@@ -54,9 +58,23 @@ export class PaypalComponent implements AfterViewChecked {
 
   ngOnInit(){
    
-    this.getCartProducts();
+    this.idToken = parseInt(this.HaToken.id) + 11;
 
-    }
+    this.getMethodsService.getCartProducts(this.idToken).subscribe(response =>{
+    this.resultCart = response; 
+    this.totPrice = this.getMethodsService.calculateCartTotal(this.resultCart); //calcola totale carrello
+  
+
+        for(const el of this.resultCart){
+          console.log(el.product);
+          el.product.sanitizedPhoto = this.getMethodsService.getProductImage(el.product.thumbNailPhoto);
+        }
+
+      })
+
+
+  }
+
 
   addPaypalScript(){
     this.addScript = true;
@@ -77,32 +95,12 @@ export class PaypalComponent implements AfterViewChecked {
     }
   }
 
-  //metodo per visualizzare prodotti del carrello dell'utente loggato
-  getCartProducts(){
-   
-    this.idToken = parseInt(this.HaToken.id) +11;
-    console.log(this.idToken);
-    this.http.get<any>(`https://localhost:7284/api/ShoppingCart?userid=${this.idToken}`).subscribe(response =>{
-    this.resultCart = response; 
-    this.calculateTotals();
-    console.log(this.resultCart);
-    })
-  }
 
-  //calcolo della somma di prezzi e quantità del carrello
-  calculateTotals(){
-    this.totalPrice = 0;
-    this.totalQuantity = 0;
 
-    for(const val of this.resultCart){
-      this.totalPrice += val.totalPrice;
-      this.totalQuantity += val.quantity;
-    }
-  }
 
 }
 
-interface cartItem{
+export interface cartItem{
 
   userId : number,
   productId: number, 
@@ -112,6 +110,8 @@ interface cartItem{
   product: {
     name: string,
     listPrice: number,
+    thumbNailPhoto: Uint8Array,
+    sanitizedPhoto: SafeUrl
   }
 
 }

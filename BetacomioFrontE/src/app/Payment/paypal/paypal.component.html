@@ -60,7 +60,7 @@
                                 <div class="row  justify-content-between" *ngFor="let val of resultCart">
                                     <div class="col-auto col-md-7">
                                         <div class="media flex-column flex-sm-row">
-                                            <img class=" img-fluid" src="https://picsum.photos/500/300?random=1" width="62" height="62">
+                                            <img class=" img-fluid" [src]="val.product.sanitizedPhoto" width="62" height="62">
                                             <div class="media-body  my-auto">
                                                 <div class="row ">
                                                     <div class="col-auto"><p class="mb-0"><b>{{val.product.name}}</b></p></div>
@@ -69,7 +69,7 @@
                                         </div>
                                     </div>
                                     <div class=" pl-0 flex-sm-col col-auto  my-auto"> <p class="boxed-1">{{val.quantity}}</p></div>
-                                    <div class=" pl-0 flex-sm-col col-auto  my-auto "><p><b>{{val.product.listPrice}}€</b></p></div>
+                                    <div class=" pl-0 flex-sm-col col-auto  my-auto "><p><b>{{val.product.listPrice}} €</b></p></div>
                                     <hr class="my-2">
                                 </div>
                                 
@@ -77,7 +77,7 @@
                                     <div class="col">
                                         <div class="row justify-content-between">
                                             <div class="col-4"><p class="mb-1"><b>Costo prodotti: </b></p></div>
-                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{totalPrice}}€</b></p></div>
+                                            <div class="flex-sm-col col-auto"><p class="mb-1"><b>{{totPrice}} €</b></p></div>
                                         </div>
                                         <div class="row justify-content-between">
                                             <div class="col"><p class="mb-1"><b>Spese di spedizione: </b></p></div>
@@ -85,7 +85,7 @@
                                         </div>
                                         <div class="row justify-content-between">
                                             <div class="col-4"><p ><b>Totale</b></p></div>
-                                            <div class="flex-sm-col col-auto"><p  class="mb-1"><b>{{totalPrice + 50}}€</b></p> </div>
+                                            <div class="flex-sm-col col-auto"><p  class="mb-1"><b>{{totPrice + 50}} €</b></p> </div>
                                         </div><hr class="my-0">
                                     </div>
                                 </div>

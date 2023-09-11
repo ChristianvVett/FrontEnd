@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
@@ -13,17 +13,19 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { TokenService } from 'src/app/Services/token.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { GetMethodsService } from 'src/app/Services/get-methods.service';
 
 @Component({
   selector: 'app-catalogue',
   templateUrl: './catalogue.component.html',
   styleUrls: ['./catalogue.component.scss'],
 })
-export class CatalogueComponent implements AfterViewInit {
+export class CatalogueComponent {
   constructor(
     private http: HttpClient,
     private token: TokenService,
-    private sanitizer: DomSanitizer
+    private getMethods: GetMethodsService
+
   ) {}
 
   rangeValue: number = 0;
@@ -56,53 +58,33 @@ export class CatalogueComponent implements AfterViewInit {
       this.viewProductStandard();
     } else {
       console.log('PRODOTTI IN LINGUA');
-      this.langToken = parseInt(this.getToken.language);
-      this.viewProductLanguage(this.langToken); //lingua dell'utente loggato
+      this.viewProductLanguage();
     }
   }
-  ngAfterViewInit() {
-    // this.randomImage = this.incrementRandomImage();
-    // console.log(this.randomImage);
-  }
+
 
   //Visualizzazione prodotti per utenti non registrati
   viewProductStandard() {
-    this.http
-      .get<any>(`https://localhost:7284/api/ViewAdminProducts`)
-      .subscribe((result) => {
-        this.blist = result;
+    this.getMethods.getProductStandard().subscribe((response) => {
+        this.blist = response;
         
         for (const el of this.blist) {
-          el.sanitizedPhoto = this.getProductImage(el.thumbnailPhoto);
+          el.sanitizedPhoto = this.getMethods.getProductImage(el.thumbnailPhoto);
         }
-
-        console.log(this.blist);
       });
   }
 
   //visualizzazione prodotti per lingua, per utenti loggati
-  viewProductLanguage(language: number) {
-    this.http
-      .get<any>(
-        `https://localhost:7284/api/ViewUserProducts/GetUserProductsByLanguage?nationality=${language}`
-      )
-      .subscribe((result) => {
-        this.blist = result;
-
+  viewProductLanguage() {
+    this.langToken = parseInt(this.getToken.language);
+    this.getMethods.getProductLanguage(this.langToken).subscribe((response) => {
+        this.blist = response;
         for (const el of this.blist) {
-          el.sanitizedPhoto = this.getProductImage(el.thumbnailPhoto);
-        }
-        console.log(this.blist);
-      });
+          el.sanitizedPhoto = this.getMethods.getProductImage(el.thumbnailPhoto);
+        } 
+        });
   }
-
-  //Metodo che permette di convertire array di byte in immagini
-  getProductImage(imageData: Uint8Array) {
-    const base64Image = 'data:image/jpeg;base64,' + imageData;
-    const sanitizedUrl = this.sanitizer.bypassSecurityTrustUrl(base64Image);
-
-    return sanitizedUrl;
-  }
+  
 
   transformPlus() {
     if (this.istrue) {
@@ -162,15 +144,6 @@ export class CatalogueComponent implements AfterViewInit {
     console.log(this.searchlist);
   }
 
-  // incrementRandomImage(): number{
-
-  //   if (this.randomImage > 9 ) {
-
-  //     this.randomImage = Math.floor(Math.random() * 100);
-
-  //   }
-  //   return this.randomImage
-  // }
 }
 
 interface bici {
