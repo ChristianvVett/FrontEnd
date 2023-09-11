@@ -12,10 +12,29 @@
           <input type="password" id="password" name="password" [(ngModel)]="password" required>
           
         </div>
-        <button type="submit">Invia</button>
+        <button #buttonModal type="submit"data-bs-toggle="modal" data-bs-target="#exampleModal">Invia</button>
       </form>
     
   </div>
   </div>
   
-  
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Password modificata con successo</h1>
+        
+      </div>
+      <div class="modal-body">
+      <p>a breve verrai reindirizzato alla pagina di login </p>
+     
+      </div>
+      <div class="modal-footer">
+      
+      </div>
+    </div>
+  </div>
+</div>
