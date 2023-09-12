@@ -42,6 +42,15 @@ export class GetMethodsService {
       );
   }
 
+  //metodo per visualizzare ordini acquisti effettuati
+  getOrderDetails(tokenId: number):Observable<any>{
+    return this.http
+      .get<any>(
+        `https://localhost:7284/api/OrderHeaders?userid=${tokenId}`,
+      )
+  }
+
+
   //Metodo che permette di convertire array di byte in immagini
   getProductImage(imageData: Uint8Array) {
     const base64Image = 'data:image/jpeg;base64,' + imageData;

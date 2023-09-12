@@ -47,7 +47,9 @@ export class NavbarComponent {
     this.Token.isAuthenticated$.subscribe(isAuthenticated => {
       this.IsLogged = isAuthenticated;
       this.cdr.detectChanges();
-      this.showCartIconProducts();
+      if(this.tokenData != null || this.tokenData != undefined){
+        this.showCartIconProducts();
+      }
       
 
     });
@@ -61,7 +63,6 @@ export class NavbarComponent {
     this.getMethodsService.getCartProducts(this.tokenId).subscribe(response =>{
       this.iconCart = response; 
       this.totPrice = this.getMethodsService.calculateCartTotal(this.iconCart); //calcola totale carrello
-    
     })
   }
 

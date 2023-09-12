@@ -18,7 +18,9 @@ export class MyprofileComponent {
   defJSON=JSON.parse(this.stringJSON);
 
   useridToken: number;
+  useridTokenNormal: number;
   wishlistItems: wishItem[] = [];
+  orderItems: orderProducts[] = [];
 
   usernameProfilo = this.defJSON.username;
   nomeProfilo = this.defJSON.name;
@@ -29,8 +31,12 @@ export class MyprofileComponent {
 
 
   ngOnInit(){
-   
+
+    //id utente loggato
     this.useridToken = parseInt(this.defJSON.id) + 11;
+    this.useridTokenNormal =  parseInt(this.defJSON.id);
+
+    //prodotti wishlist
     this.getMethods.getWishlistItems(this.useridToken).subscribe(response =>{
       this.wishlistItems = response; 
 
@@ -38,33 +44,27 @@ export class MyprofileComponent {
         el.product.sanitizedPhoto = this.getMethods.getProductImage(el.product.thumbNailPhoto);
       }
     })
+
+    //prodotti acquisti
+    this.getMethods.getOrderDetails(this.useridTokenNormal).subscribe(response =>{
+      this.orderItems = response;
+      console.log(this.orderItems);
+
+
+      for (const el of this.orderItems) {
+        el.orderDetails.product.sanitizedPhoto = this.getMethods.getProductImage(el.orderDetails.product.thumbNailPhoto);
+      }
+    })
+
   }
 
-
-  //   this.http.get('https://localhost:7284/api/UserCredentials').subscribe((result)=>{
-  //     this.profile.push(result);
-  //   for(let i = 0; i<this.profile.length;i++){
-  //     let gfd=this.profile[i];
-  //     for (const key in gfd) {
-  //       let email = gfd[key].email
-  //       console.log(email)
-  //       if(email == this.email){
-  //         console.log("esiste");
-  //         this.SingleProfile =gfd[key]
-  //         console.log(this.SingleProfile)
-  //       }else{
-  //         console.log("non esiste")
-  //       }
-  //     }
-  //   }
-  // })
 
 
 
 }
 
 
-interface wishItem{
+export interface wishItem{
 
   userId : number,
   productId: number,
@@ -76,3 +76,20 @@ interface wishItem{
     sanitizedPhoto: SafeUrl
   }
 }
+
+export interface orderProducts{
+  orderDate: Date,
+  subTotal: number,
+  orderDetails: {
+    orderDetailId: number,
+    orderQty: number,
+    unitPrice: number,
+    totalPrice: number,
+    product: {
+      name: string,
+      thumbNailPhoto: Uint8Array,
+      sanitizedPhoto: SafeUrl
+    }
+  }
+}
+
