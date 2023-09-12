@@ -9,7 +9,7 @@ import { OnChange } from 'ngx-bootstrap/utils';
 })
 export class SignupComponent {
   constructor(private Http: HttpClient) {
-    this.singleUser={Name:"",Surname:"",Username:"",Phone:"" ,Email:"",PasswordHash:"",PasswordSalt:"",BirthYear:""}
+    this.singleUser={Name:"",Surname:"",Username:"",Phone:"" ,Email:"",PasswordHash:"",PasswordSalt:"",BirthYear:"", Nationality: 3}
   }
 
   Userlist: any[] = []
@@ -88,7 +88,7 @@ checkAllField(){
     }else{
       this.isPasswordOk=false;
     }
-    this.checkAllField();
+    // this.checkAllField();
   }
 
   getAllDatas(){
@@ -105,6 +105,10 @@ checkAllField(){
       }
     })
   }
+
+  checkDate(elem:HTMLInputElement){
+    console.log(elem.value);
+  }
 }
 
 interface register {
@@ -116,5 +120,6 @@ interface register {
   PasswordHash: string;
   PasswordSalt: string;
   BirthYear: string;
+  Nationality: number;
 }
 

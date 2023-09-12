@@ -5,45 +5,68 @@
             <div class="signup">
                 <form #inputform="ngForm" (submit)="InsertUser(inputform)">
                     <label for="chk" aria-hidden="true">Sign up</label>
+                    
+                    <!-- Nome -->
                     <input type="text" id="name" name="name" placeholder="inserisci un nome" (blur)="checkName()"  [(ngModel)]="singleUser.Name">
-
                     <div style="display: flex;justify-content: center;">
-                    <p class="alert" *ngIf="isNameOk">Il nome è troppo corto</p>
+                    <p class="alert" *ngIf="isNameOk">Il nome deve contenere almeno 4 caratteri</p>
                     </div>
 
+                    <!-- Cognome -->
                     <input type="text" name="Surname" placeholder="inserisci un cognome" (blur)="checkSurname()" [(ngModel)]="singleUser.Surname">
-
                     <div style="display: flex;justify-content: center;">
-                    <p class="alert" *ngIf="isSurnameOk">Il cognome non è valido</p>
+                    <p class="alert" *ngIf="isSurnameOk">Il cognome deve contenere almeno 4 caratteri</p>
                     </div>
 
+                    <!-- Email -->
                     <input type="email" name="Email" placeholder="Email" (blur)="checkEmail()" [(ngModel)]="singleUser.Email" >
                     <div style="display: flex;justify-content: center;">
                       <p class="alert" *ngIf="isEmailOk">L'email non è valida</p>
                     </div>
                     <div style="display: flex;justify-content: center;">
-                      <p class="alert" *ngIf="EmailAlreadyTaken">L'email esiste gia nei nostri sistemi</p>
+                      <p class="alert" *ngIf="EmailAlreadyTaken">L'email esiste già nei nostri sistemi</p>
                     </div>
 
+                    <!-- Cellulare -->
                     <input type="text" name="Phone" placeholder="inserisci un numero di telefono" [(ngModel)]="singleUser.Phone">
-
                     <div style="display: flex;justify-content: center;">
-                    <p class="alert" *ngIf="isPhoneOk">Il numero di telefono non è valido</p>
+                    <p class="alert" *ngIf="isPhoneOk">Il numero di telefono può contenere un massimo di 12 cifre</p>
                     </div>
 
+                    <!-- Username -->
                     <input type="text" name="Username" placeholder="Username" (blur)="checkuserName()" [(ngModel)]="singleUser.Username">
-
                     <div style="display: flex;justify-content: center;">
-                      <p class="alert" *ngIf="isUsernameOk">Il nome utente è troppo corto</p>
+                      <p class="alert" *ngIf="isUsernameOk">Il nome utente deve contenere almeno due numeri e includere fra le 4 e le 12 lettere</p>
                     </div>
-                    <input type="date" name="BirthYear" placeholder="data di nascita" (blur)="checkuserName()" [(ngModel)]="singleUser.BirthYear">
 
-                    <input type="password" name="PasswordHash" placeholder="Password" (blur)="checkPassword()" [(ngModel)]="singleUser.PasswordHash">
+                    <!-- Lingua -->
+                    <label for="languages">Scegli una lingua:</label>
+
+                      <select name="languages" id="lang" [(ngModel)]="singleUser.Nationality">
+                        <option value="1">Arabo</option>
+                        <option value="2">Cinese</option>
+                        <option value="3">Inglese</option>
+                        <option value="4">Francese</option>
+                        <option value="5">Ebraico</option>
+                        <option value="6">Tailandese</option>
+                      </select>
+                    
+
+                    <!-- Birth year -->
+                    <input #datanascita type="date" name="BirthYear" placeholder="data di nascita" (blur)="checkDate(datanascita)" [(ngModel)]="singleUser.BirthYear">
                     <div style="display: flex;justify-content: center;">
-                      <p class="alert" *ngIf="isPasswordOk">la password deve contenere almeno un carattere speciale e una lettera maiuscola</p>
+                      <p class="alert"> La data di nascita non può essere inferiore al 1930 e superiore al 2005</p>
                     </div>
+                    <!-- Password -->
+                    <input type="password" name="PasswordHash" placeholder="Password" [(ngModel)]="singleUser.PasswordHash">
+                    <div style="display: flex;justify-content: center;">
+                      <p class="alert" *ngIf="isPasswordOk">la password deve contenere almeno un carattere speciale ed essere compresa fra 6 e 15 caratteri</p>
+
+                    </div>
+
                     <input type="hidden" name="PasswordSalt" [ngModel]="'string'">
                     <button type="submit" [disabled]="!allOk" [ngClass]="{'opacity':!allOk}">Sign up</button>
+
                 </form>
             </div>
     </div>

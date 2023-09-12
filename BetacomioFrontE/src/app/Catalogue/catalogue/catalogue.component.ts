@@ -12,7 +12,7 @@ import { faMinus } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { TokenService } from 'src/app/Services/token.service';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { SafeUrl } from '@angular/platform-browser';
 import { GetMethodsService } from 'src/app/Services/get-methods.service';
 
 @Component({
