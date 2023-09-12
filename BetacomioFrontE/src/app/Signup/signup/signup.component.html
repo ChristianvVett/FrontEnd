@@ -65,6 +65,16 @@
                     </div>
 
                     <input type="hidden" name="PasswordSalt" [ngModel]="'string'">
+
+                    <select name="lenguage" id="cars">
+                      <option class="english">ENGLISH</option>
+                      <option class="arabic">ARABIC</option>
+                      <option class="thai">THAI</option>
+                      <option class="jewish">JEWISH</option>
+                      <option class="chinese">CHINESE</option>
+                      <option class="french">FRENCH</option>
+                    </select>
+
                     <button type="submit" [disabled]="!allOk" [ngClass]="{'opacity':!allOk}">Sign up</button>
 
                 </form>

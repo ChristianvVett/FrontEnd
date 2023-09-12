@@ -28,8 +28,8 @@ import { RememberPassComponent } from './remember-pass/remember-pass.component';
 import { ChangePassComponent } from './change-pass/change-pass.component';
 import { MyprofileComponent } from './MyProfile/myprofile/myprofile.component';
 import { ConfirmPassComponent } from './confirm-pass/confirm-pass.component';
-// import { Page404Component } from './page404/page404.component';
-// import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { NotfoundComponent } from './notfound/notfound.component';
+
 
 
 
@@ -56,6 +56,7 @@ import { ConfirmPassComponent } from './confirm-pass/confirm-pass.component';
     ChangePassComponent,
     MyprofileComponent,
     ConfirmPassComponent,
+    NotfoundComponent,
     // Page404Component,
     // PageNotFoundComponent
   ],

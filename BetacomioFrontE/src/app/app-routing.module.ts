@@ -15,6 +15,7 @@ import { PaypalComponent } from './Payment/paypal/paypal.component';
 import { FaqComponent } from './Faq/faq.component';
 import { RememberPassComponent } from './remember-pass/remember-pass.component';
 import { ConfirmPassComponent } from './confirm-pass/confirm-pass.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 
 const routes:Routes=[
@@ -32,9 +33,9 @@ const routes:Routes=[
   {path:'Paypal',component:PaypalComponent},
   {path:'Faq',component:FaqComponent},
   {path: 'rememberPass' , component:RememberPassComponent},
-  {path: 'confirmpassword' , component:ConfirmPassComponent}
-  
-
+  {path: 'confirmpassword' , component:ConfirmPassComponent},
+  {path: '404' , component:NotfoundComponent},  
+  {path: '**' , redirectTo: '/404'}
 
 ];
 

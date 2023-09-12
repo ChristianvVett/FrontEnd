@@ -101,3 +101,19 @@ button:hover{
   border-radius: 10px;
   color: white;
 }
+
+/* DROPDOWN */
+
+select {
+	width: 50%;
+	height: 50px;
+	background: #e0dede;
+	justify-content: center;
+	display: flex;
+	margin: 20px auto;
+	padding: 10px;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+}
+
