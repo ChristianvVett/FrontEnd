@@ -15,9 +15,7 @@ export class GetMethodsService {
 
   //Visualizzazione prodotti per utenti non registrati
   getProductStandard(): Observable<any> {
-    return this.http.get<any>(`https://localhost:7284/api/ViewAdminProducts`, {
-      observe: 'response',
-    });
+    return this.http.get<any>(`https://localhost:7284/api/ViewAdminProducts`);
   }
 
   //visualizzazione prodotti per lingua, per utenti loggati

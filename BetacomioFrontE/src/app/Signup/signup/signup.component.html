@@ -40,29 +40,39 @@
                     </div>
 
                     <!-- Lingua -->
-                    <label for="languages">Scegli una lingua:</label>
 
-                      <select name="languages" id="lang" [(ngModel)]="singleUser.Nationality">
-                        <option value="1">Arabo</option>
-                        <option value="2">Cinese</option>
-                        <option value="3">Inglese</option>
-                        <option value="4">Francese</option>
-                        <option value="5">Ebraico</option>
-                        <option value="6">Tailandese</option>
-                      </select>
+                    <div style="display:flex; align-items: center; justify-content: space-between; width: 80%; margin:0 auto">
+                      <div class="col-5">
+                        <label for="Nationality" style="font-size:16px; margin:0; justify-content: left;">Scegli una lingua:</label>
+                      </div>
+                      <div class="col-7">
+                        <select name="Nationality" [(ngModel)]="singleUser.Nationality">
+                          <option value="1">Arabo</option>
+                          <option value="2">Cinese</option>
+                          <option value="3">Inglese</option>
+                          <option value="4">Francese</option>
+                          <option value="5">Ebraico</option>
+                          <option value="6">Tailandese</option>
+                        </select>
+                      </div>
+
+                    </div>
+
+
                     
 
                     <!-- Birth year -->
-                    <input #datanascita type="date" name="BirthYear" placeholder="data di nascita" (blur)="checkDate(datanascita)" [(ngModel)]="singleUser.BirthYear">
+                    <input type="date" name="BirthYear" placeholder="data di nascita" (blur)="checkDate()" [(ngModel)]="singleUser.BirthYear">
                     <div style="display: flex;justify-content: center;">
-                      <p class="alert"> La data di nascita non può essere inferiore al 1930 e superiore al 2005</p>
+                      <p class="alert" *ngIf="isBirthYearOk"> La data di nascita non può essere inferiore al 1930 e superiore al 2005</p>
                     </div>
                     
                     <!-- Password -->
-                    <input type="password" name="PasswordHash" placeholder="Password" [(ngModel)]="singleUser.PasswordHash">
+                    <input type="password" name="PasswordHash" placeholder="Password" (blur)="checkPassword()" [(ngModel)]="singleUser.PasswordHash">
                     <div style="display: flex;justify-content: center;">
                       <p class="alert" *ngIf="isPasswordOk">la password deve contenere almeno un carattere speciale ed essere compresa fra 6 e 15 caratteri</p>
-
+                      
+                      <input type="hidden" name="PasswordSalt" [ngModel]="'string'">
                     </div>
 
                     <button type="submit" [disabled]="!allOk" [ngClass]="{'opacity':!allOk}">Sign up</button>

@@ -9,7 +9,7 @@ import { OnChange } from 'ngx-bootstrap/utils';
 })
 export class SignupComponent {
   constructor(private Http: HttpClient) {
-    this.singleUser={Name:"",Surname:"",Username:"",Phone:"" ,Email:"",PasswordHash:"",PasswordSalt:"",BirthYear:"", Nationality: 3}
+    this.singleUser={Name:"",Surname:"",Username:"",Phone:"" ,Email:"",PasswordHash:"",PasswordSalt:"",BirthYear:"", Nationality: null}
   }
 
   Userlist: any[] = []
@@ -19,13 +19,15 @@ export class SignupComponent {
   isPhoneOk:boolean=false;
   isUsernameOk:boolean=false;
   isEmailOk:boolean=false;
+  isBirthYearOk:boolean = false;
   isPasswordOk:boolean=false;
-  regex = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\\/\-=]/;
-  regexnum = /\d/;
-  regexMaiuscole = /[A-Z]/;
+  regexPass = /(?=.*[!@#$%^&*()\-_=+[\]{}|\\;:'""<>,.?/~])\S{6,15}/;  //regex password
+  regexUsername = /(?=.*[a-zA-Z]{4,12})(?=.*\d.*\d).+/;  //regex username
+  regexMail = /([a-z\d.-]+)@([a-z\d-]+)\.([a-z]{2,6})(\.[a-z]{2,4})?/;  //regex mail
   allOk:boolean=false;
   EmailAlreadyTaken:boolean=false;
   InsertUser(elem: NgForm) {
+    console.log(elem.value);
     this.singleUser = elem.value;
     this.Http.post<register>('https://localhost:7284/api/UserCredentials', elem.value, {observe: 'response'}).subscribe(
       (response: HttpResponse<register>) =>
@@ -37,7 +39,7 @@ export class SignupComponent {
     );
   }
 checkAllField(){
-  if(!this.isNameOk==true && !this.isSurnameOk==true && !this.isEmailOk==true && !this.isPhoneOk==true && !this.isUsernameOk==true && !this.isPasswordOk==true){
+  if(!this.isNameOk==true && !this.isSurnameOk==true && !this.isEmailOk==true && !this.isPhoneOk==true && !this.isUsernameOk==true && !this.isPasswordOk==true && !this.isBirthYearOk==true){
     this.allOk=true;
   }else{
     this.allOk=false;
@@ -54,25 +56,23 @@ checkAllField(){
   }
 
   checkSurname(){
-    if(this.singleUser.Surname.length<=4 || this.singleUser.Surname.includes(" ")){
+    if(this.singleUser.Surname.length <= 4 || this.singleUser.Surname.includes(" ")){
       this.isSurnameOk=true;
     }else{
       this.isSurnameOk=false;
     }
   }
 
-
-
   checkuserName(){
-    if(this.singleUser.Username.length < 4){
+    if(!this.regexUsername.test(this.singleUser.Username)){
       this.isUsernameOk=true;
-    }else if(this.singleUser.Username.length >4){
+    }else{
       this.isUsernameOk=false;
     }
   }
 
   checkEmail(){
-    if(this.singleUser.Email.length <=5 || !this.singleUser.Email.includes("@")){
+    if(!this.regexMail.test(this.singleUser.Email)){
       this.isEmailOk=true;
     }else{
       this.isEmailOk = false;
@@ -81,14 +81,28 @@ checkAllField(){
     console.log(this.Userlist)
   }
 
+  checkDate(){
+    const year= [];
+    for(const item of this.singleUser.BirthYear.split("-")){
+      year.push(item);
+    }
+    if(year[0] < 1930 || year[0] > 2005){
+      this.isBirthYearOk = true;
+
+    }else{
+      this.isBirthYearOk = false;
+    }
+    
+
+  }
+
   checkPassword(){
-    if(!this.regex.test(this.singleUser.PasswordHash) || !this.regexnum.test(this.singleUser.PasswordHash) || !this.regexMaiuscole.test(this.singleUser.PasswordHash)){
+    if(!this.regexPass.test(this.singleUser.PasswordHash)){
       this.isPasswordOk=true;
-      console.log(this.isPasswordOk)
     }else{
       this.isPasswordOk=false;
     }
-    // this.checkAllField();
+     this.checkAllField();
   }
 
   getAllDatas(){
@@ -106,9 +120,7 @@ checkAllField(){
     })
   }
 
-  checkDate(elem:HTMLInputElement){
-    console.log(elem.value);
-  }
+
 }
 
 interface register {

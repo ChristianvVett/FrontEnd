@@ -65,7 +65,7 @@ export class CataloguedtComponent {
         this.DetailList.sanitizedPhoto = this.getProductImage(this.DetailList.thumbnailPhoto);
 
         this.langDetailList.push(result);
-        
+        console.log(this.DetailList);
 
       });
   }

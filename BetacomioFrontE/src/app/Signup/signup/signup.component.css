@@ -105,13 +105,12 @@ button:hover{
 /* DROPDOWN */
 
 select {
-	width: 50%;
-	height: 50px;
+	width: 100%;
 	background: #e0dede;
 	justify-content: center;
 	display: flex;
-	margin: 20px auto;
-	padding: 10px;
+	margin: 10px auto;
+	padding: 5px;
 	border: none;
 	outline: none;
 	border-radius: 5px;
