@@ -57,23 +57,13 @@
                     <div style="display: flex;justify-content: center;">
                       <p class="alert"> La data di nascita non può essere inferiore al 1930 e superiore al 2005</p>
                     </div>
+                    
                     <!-- Password -->
                     <input type="password" name="PasswordHash" placeholder="Password" [(ngModel)]="singleUser.PasswordHash">
                     <div style="display: flex;justify-content: center;">
                       <p class="alert" *ngIf="isPasswordOk">la password deve contenere almeno un carattere speciale ed essere compresa fra 6 e 15 caratteri</p>
 
                     </div>
-
-                    <input type="hidden" name="PasswordSalt" [ngModel]="'string'">
-
-                    <select name="lenguage" id="cars">
-                      <option class="english">ENGLISH</option>
-                      <option class="arabic">ARABIC</option>
-                      <option class="thai">THAI</option>
-                      <option class="jewish">JEWISH</option>
-                      <option class="chinese">CHINESE</option>
-                      <option class="french">FRENCH</option>
-                    </select>
 
                     <button type="submit" [disabled]="!allOk" [ngClass]="{'opacity':!allOk}">Sign up</button>
 
