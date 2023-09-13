@@ -133,6 +133,7 @@ export class CatalogueComponent {
       console.log(this.searchlist);
     }
   }
+  
   searchbyprice(priceinput: HTMLInputElement, input: HTMLInputElement) {
     this.searchOn = true;
     var lista = this.blist.filter(
