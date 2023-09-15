@@ -3,37 +3,32 @@
 
     <form #inputform="ngForm"  (submit)="submitform(inputform)" class="formcontainer">
         <label for="EmailInput">Email</label><br>
-        <input type="text" id="EmailInput" name="email" required  (blur)="checkemail()" [(ngModel)]="person.email" #emailinput><br>
+        <input type="text" id="EmailInput" name="email" required  (blur)="checkemail()" [(ngModel)]="person.Email" #emailinput><br>
         <!-- validation -->
         <div>
             <p class="alert" *ngIf="lenghtnotok">L'email è troppo corta</p>
             <p class="alert" *ngIf="charnotok">Inserisci un email valida</p>
         </div>
 
-
-
-
-        <label for="NameInput">Nome</label><br>
-        <input type="text" id="NameInput" name="name"  [(ngModel)]="person.name" (blur)="checkname()"><br>
         <!-- validation -->
         <div>
             <p class="alert" *ngIf="nlength">Il nome è troppo corto</p>
         </div>
 
         <label for="CauseInput">Oggetto della richiesta</label><br>
-        <input type="text" id="CauseInput" name="request" (blur)="checkrequired()" required [(ngModel)]="person.request"><br>
+        <input type="text" id="CauseInput" name="Object"  required [(ngModel)]="person.Object"><br>
         <div>
             <p class="alert" *ngIf="rlength">Il motivo della richiesta non può essere vuoto</p>
         </div>
 
         <label for="DetailsInput">Dettaglio della richiesta</label><br>
-        <textarea id="DetailsInput" name="detail" (blur)="checkdetail()" required [(ngModel)]="person.detail"></textarea>
+        <textarea id="DetailsInput" name="Description" (blur)="checkdetail()" required [(ngModel)]="person.Description"></textarea>
         <div>
             <p class="alert" *ngIf="dlength">La descrizione della richiesta non può essere vuota</p>
         </div>
 
         <label for="DetailsInput">allega un file</label><br>
-        <input class="nostyle" type="file" name="file" (change)="fileselected($event)">
+        <input class="nostyle" type="file" name="File" (change)="fileselected($event)">
         <div *ngIf="okFile" class="alert">
             <p>Il file inserito non è valido</p>
         </div>

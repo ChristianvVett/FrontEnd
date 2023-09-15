@@ -1,7 +1,7 @@
 import {Component } from '@angular/core';
+import {HttpClient} from '@angular/common/http'
 import {NgForm} from '@angular/forms';
 import { EmailsenderService } from 'src/app/Services/emailsender.service';
-import { PostContactsService } from 'src/app/Services/postMethods.service';
 import { Router } from '@angular/router';
 
 
@@ -12,81 +12,79 @@ import { Router } from '@angular/router';
   styleUrls: ['./contacts.component.scss']
 })
 export class ContactsComponent {
-  constructor(private emailsender:EmailsenderService, private srvpost:PostContactsService,private router: Router){
-    
+  constructor(private emailsender:EmailsenderService, http:HttpClient,private router: Router){
+    this.http = http
   }
   okFile: boolean = false;
-  
+
   person: persona = {
-    email: '',
-    name: '',
-    request: '',
-    detail: '',
-    file:''
+    UserID:null,
+    Email: '',
+    Object: '',
+    Description: '',
+    File:null
   };
-  
-  
-  
+
+  http:HttpClient;
+
   lenghtnotok = false;
   charnotok = false;
-  
+
   rlength=false;
-  
+
    dlength=false;
 
    nlength=false;
    allok=false;
-   
-   
+
+
    checkemail(){
-     this.lenghtnotok=this.person.email.length<5
-     this.charnotok=!this.person.email.includes('@');
+     this.lenghtnotok=this.person.Email.length<5
+     this.charnotok=!this.person.Email.includes('@');
      if(this.lenghtnotok||this.charnotok){
        this.allok=true;
       }else{
         this.allok=false
       }
     }
-    
-    checkname(){
-      this.nlength=this.person.name.length<5
-      if(this.nlength){
-        this.allok=true;
+
+
+    getUserID(){
+      if(sessionStorage != null){
+        var session = sessionStorage.getItem("dati");
+        var jsonobj = JSON.parse(session);
+         this.person.UserID = jsonobj.id
       }else{
-        this.allok=false
+        this.person.UserID = null
       }
     }
-    
-    checkrequired(){
-      this.rlength=this.person.name.length == 0
-      if(this.rlength){
-        this.allok=true;
-      }else{
-        this.allok=false
-      }
-    }
-    
+
+
     checkdetail(){
-      this.dlength=this.person.name.length == 0
+      this.dlength=this.person.Description.length == 0
       if(this.dlength){
         this.allok=true;
       }else{
         this.allok=false
       }
     }
-    
-    
-    
+
+
+
     submitform(input:NgForm){
-      
+
       this.person = input.value;
-      this.emailsender.sendEmail(this.person.name,this.person.request,this.person.detail);
+      // this.emailsender.sendEmail(this.person.Object,this.person.Description);
+      this.getUserID();
+      this.http.post<any>("https://localhost:7284/api/UserRequestsTemps",this.person).subscribe(resp=>{
+
+      })
       this.router.navigate(['/LandingPage'], { queryParams:{ formData: JSON.stringify(this.person) } });
 
       input.reset();
-      
+
     }
-    
+
     fileselected(event: any) {
       let file: File = event.target.files[0];
       if (file) {
@@ -107,10 +105,10 @@ export class ContactsComponent {
 
 
 interface persona{
-  email:string,
-  name:string,
-  request:string,
-  detail:string,
-  file:string
+  UserID:number,
+  Email:string,
+  Object:string,
+  Description:string,
+  File:string
 
 }

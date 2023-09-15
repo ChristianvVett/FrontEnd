@@ -11,11 +11,10 @@ export class EmailsenderService {
     emailjs.init('mIkEkY3ezqk1oFYMV');
   }
 
-  public sendEmail(name:string,request:string,detail:string) {
+  public sendEmail(Object:string,Description:string) {
     const templateParams={
-      from_name:name,
-      from_request:request,
-      message:detail
+      from_request:Object,
+      message:Description
 
     };
     emailjs.send('service_kopwqad','template_k0hyt5s', templateParams)
