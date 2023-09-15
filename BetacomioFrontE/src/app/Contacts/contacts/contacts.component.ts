@@ -1,5 +1,5 @@
 import {Component } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
+import {HttpClient, HttpHeaders} from '@angular/common/http'
 import {NgForm} from '@angular/forms';
 import { EmailsenderService } from 'src/app/Services/emailsender.service';
 import { Router } from '@angular/router';
@@ -16,13 +16,13 @@ export class ContactsComponent {
     this.http = http
   }
   okFile: boolean = false;
-
+  ciao:Uint8Array[] = [];
   person: persona = {
     UserID:null,
     Email: '',
     Object: '',
     Description: '',
-    File:null
+    Image:this.ciao
   };
 
   http:HttpClient;
@@ -36,7 +36,7 @@ export class ContactsComponent {
 
    nlength=false;
    allok=false;
-
+    session = sessionStorage.getItem("dati");
 
    checkemail(){
      this.lenghtnotok=this.person.Email.length<5
@@ -50,9 +50,8 @@ export class ContactsComponent {
 
 
     getUserID(){
-      if(sessionStorage != null){
-        var session = sessionStorage.getItem("dati");
-        var jsonobj = JSON.parse(session);
+      if(this.session){
+        var jsonobj = JSON.parse(this.session);
          this.person.UserID = jsonobj.id
       }else{
         this.person.UserID = null
@@ -73,11 +72,13 @@ export class ContactsComponent {
 
     submitform(input:NgForm){
 
+      console.log(this.person)
       this.person = input.value;
       // this.emailsender.sendEmail(this.person.Object,this.person.Description);
+      // Imposta l'header Content-Type su 'application/octet-stream'
+      const headers = new HttpHeaders({ 'Content-Type': 'application/octet-stream' });
       this.getUserID();
-      this.http.post<any>("https://localhost:7284/api/UserRequestsTemps",this.person).subscribe(resp=>{
-
+      this.http.post<any>("https://localhost:7284/api/UserRequestsTemps",this.person,{headers:headers}).subscribe((resp)=>{
       })
       this.router.navigate(['/LandingPage'], { queryParams:{ formData: JSON.stringify(this.person) } });
 
@@ -85,15 +86,37 @@ export class ContactsComponent {
 
     }
 
-    fileselected(event: any) {
+    private async convertImageToByteArray(file: File): Promise<Uint8Array> {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+
+        reader.onload = () => {
+          const arrayBuffer = reader.result as ArrayBuffer;
+          const uint8Array = new Uint8Array(arrayBuffer);
+          this.ciao.push(uint8Array)
+          resolve(uint8Array);
+        };
+
+        reader.onerror = (error) => {
+          reject(error);
+        };
+
+        reader.readAsArrayBuffer(file);
+      });
+    }
+
+    async fileselected(event: any) {
       let file: File = event.target.files[0];
       if (file) {
           const validFile = this.isValidFileType(file);
           this.okFile = !validFile;
+          const byteFile=await this.convertImageToByteArray(file);
       } else {
           this.okFile = false;
       }
   }
+
+
 
   private isValidFileType(file: File): boolean {
       const allowedExtensions = ['.png', '.jpeg', '.jpg'];
@@ -109,6 +132,6 @@ interface persona{
   Email:string,
   Object:string,
   Description:string,
-  File:string
+  Image:Uint8Array[]
 
 }
