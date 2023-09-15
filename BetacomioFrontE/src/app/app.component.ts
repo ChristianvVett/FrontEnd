@@ -44,7 +44,7 @@ export class AppComponent {
 
   @HostListener('window:mousemove')refreshUserState() {
     clearTimeout(this.userActivity);
-    console.log("sono qui ");
+   
     this.setTimeout();
   }
 }

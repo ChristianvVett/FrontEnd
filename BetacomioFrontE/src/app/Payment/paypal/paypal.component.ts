@@ -4,6 +4,7 @@ import {HttpClient , HttpResponse , HttpStatusCode} from '@angular/common/http'
 import { TokenService } from 'src/app/Services/token.service';
 import { GetMethodsService } from 'src/app/Services/get-methods.service';
 import { SafeUrl } from '@angular/platform-browser';
+import { NgForm } from '@angular/forms';
 
 
 declare let paypal:any
@@ -14,6 +15,7 @@ declare let paypal:any
   styleUrls: ['./paypal.component.css']
 })
 export class PaypalComponent implements AfterViewChecked {
+[x: string]: any;
 
   constructor(
     private http: HttpClient,
@@ -28,8 +30,8 @@ export class PaypalComponent implements AfterViewChecked {
   HaToken = JSON.parse(this.token.rew);
   idToken: number;
   totPrice: number;
-
-  
+  sommaTot: number
+  totoarro: string;
 
   paypalconfig = {
     env: 'sandbox',
@@ -62,14 +64,17 @@ export class PaypalComponent implements AfterViewChecked {
 
     this.getMethodsService.getCartProducts(this.idToken).subscribe(response =>{
     this.resultCart = response; 
+    console.log(this.resultCart)
     this.totPrice = this.getMethodsService.calculateCartTotal(this.resultCart); //calcola totale carrello
+      this.sommaTot = this.totPrice + 50;
+      this.totoarro = this.sommaTot.toFixed(2)
   
 
         for(const el of this.resultCart){
           console.log(el.product);
           el.product.sanitizedPhoto = this.getMethodsService.getProductImage(el.product.thumbNailPhoto);
         }
-
+       
       })
 
 
@@ -86,6 +91,18 @@ export class PaypalComponent implements AfterViewChecked {
       document.body.appendChild(scripttagElement)
     })
   }
+
+  payment(indirizzo: HTMLInputElement , cpdicepostale: HTMLInputElement){
+
+    console.log(cpdicepostale.value + "sono quiiiii");
+   
+    for(const el of this.resultCart){
+      console.log(el.product);
+     
+    }
+
+  }
+ 
   ngAfterViewChecked(): void {
     if (!this.addScript) {
         this.addPaypalScript().then(() => {
@@ -95,6 +112,7 @@ export class PaypalComponent implements AfterViewChecked {
     }
   }
 
+ 
 
 
 
