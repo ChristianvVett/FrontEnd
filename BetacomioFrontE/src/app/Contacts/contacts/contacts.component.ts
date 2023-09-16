@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http'
 import {NgForm} from '@angular/forms';
 import { EmailsenderService } from 'src/app/Services/emailsender.service';
 import { Router } from '@angular/router';
-
+import * as base64js from 'base64-js';
 
 
 @Component({
@@ -72,7 +72,7 @@ export class ContactsComponent {
 
 
     submitform(input:NgForm){
-      const imageBase64 = btoa(String.fromCharCode.apply(null, this.person.Image));
+      const imageBase64 = base64js.fromByteArray(this.ciao[0])
       const dataToSend = {
     
    
@@ -84,6 +84,7 @@ export class ContactsComponent {
            
         Image: imageBase64 // Rappresentazione Base64 dell'array di byte dell'immagine
           };
+          console.log(dataToSend.Image)
           const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
    
       this.person = input.value;
