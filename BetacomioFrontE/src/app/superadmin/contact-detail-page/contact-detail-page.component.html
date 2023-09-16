@@ -1,0 +1,26 @@
+
+  <div style="width: 60%;margin: 0 auto; display: flex;align-items: space;flex-direction: column;">
+
+    <div class="my-5" style="border: 1px solid #D15800;width: 100%; border-radius: 20px;padding: 10px; text-align: center;">
+      <label for="email">email:</label>
+      <p id="email">{{detailperson.email}}</p>
+      <hr>
+      <label for="object">Oggetto della richiesta:</label>
+      <p  id="object">{{detailperson.object}}</p>
+      <hr>
+      <label for="description">Richiesta:</label>
+      <p  id="description">{{detailperson.description}}</p>
+      <hr>
+      <label style="display: block;" for="description">Immagine:</label>
+      <img [src]="detailperson.imageUrl" alt="report image">
+    </div>
+    <div style="display: flex;justify-content: center;">
+
+      <input style="padding:10px;width: 100%;border-radius: 10px; border: 2px solid #D15800;margin-bottom: 10px;" type="text" placeholder="Scrivi del testo...">
+    </div>
+
+  </div>
+
+
+
+

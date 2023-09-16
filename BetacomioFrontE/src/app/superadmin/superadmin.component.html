@@ -25,7 +25,7 @@
   </ul>
 
       <div *ngFor="let elem of UsersList;let i =index">
-        <div *ngIf="i<5">
+        <div *ngIf="i<3">
           <ul class="list-group list-group-horizontal-sm m-3">
             <li class="list-group-item col-4">{{ elem.username }}</li>
             <li class="list-group-item col-4">{{ elem.name }}</li>
@@ -58,7 +58,7 @@
   </ul>
 
       <div *ngFor="let elem of UsersList;let i = index">
-        <div *ngIf="i<5">
+        <div *ngIf="i<3">
           <ul class="list-group list-group-horizontal-sm m-3">
             <li class="list-group-item col-3">{{ elem.username }}</li>
             <li class="list-group-item col-3">{{ elem.name }}</li>
@@ -111,16 +111,18 @@ style="
   </ul>
 
   <div *ngFor="let elem of persons; let i=index">
+    <div *ngIf="i < 22">
 
       <ul class="list-group list-group-horizontal-sm m-3">
           <li class="list-group-item col-3">{{!elem.userId ? "utente non registrato":elem.userId}}</li>
           <li class="list-group-item col-4">{{elem.email}}</li>
           <li class="list-group-item col-3">{{elem.object}}</li>
           <li style="display: flex;justify-content: space-around;" class="list-group-item col-2">
-            <fa-icon style="background-color: lightseagreen ;color: white; padding: 7px; border-radius: 5px; cursor: pointer;"  [icon]="eye"></fa-icon>
-            <fa-icon style="background-color: red;color: white; padding: 7px; border-radius: 7px; cursor: pointer;" [icon]="garbage"></fa-icon>
+            <fa-icon [routerLink]="['/ContactDetailPage',elem.requestId]" style="background-color: lightseagreen ;color: white; padding: 7px; border-radius: 5px; cursor: pointer;"  [icon]="eye"></fa-icon>
+            <fa-icon (click)="deleteContact(elem.requestId)" style="background-color: green;color: white; padding: 7px; border-radius: 7px; cursor: pointer;" [icon]="garbage"></fa-icon>
           </li>
         </ul>
+    </div>
 
   </div>
   <button style="background-color: green;border: none;color: white;">Maggiori Dettagli</button>

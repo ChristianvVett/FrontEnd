@@ -12,11 +12,11 @@ import { LandingPageComponent } from './Contacts/landing-page/landing-page.compo
 import { SuperadminComponent } from './superadmin/superadmin.component';
 import { MyprofileComponent } from './MyProfile/myprofile/myprofile.component';
 import { PaypalComponent } from './Payment/paypal/paypal.component';
-import { FaqComponent } from './Faq/faq.component';
+import { FaqComponent } from './faq/faq.component';
 import { RememberPassComponent } from './remember-pass/remember-pass.component';
 import { ConfirmPassComponent } from './confirm-pass/confirm-pass.component';
 import { NotfoundComponent } from './notfound/notfound.component';
-
+import { ContactDetailPageComponent } from './superadmin/contact-detail-page/contact-detail-page.component';
 
 const routes:Routes=[
   {path:'',component:HomeComponent},
@@ -34,9 +34,9 @@ const routes:Routes=[
   {path:'Faq',component:FaqComponent},
   {path: 'rememberPass' , component:RememberPassComponent},
   {path: 'confirmpassword' , component:ConfirmPassComponent},
-  {path: '404' , component:NotfoundComponent},  
-  {path: '**' , redirectTo: '/404'}
-
+  {path: '404' , component:NotfoundComponent},
+  // {path: '**' , redirectTo: '/404'},
+  {path: 'ContactDetailPage/:requestId', component:ContactDetailPageComponent}
 ];
 
 @NgModule({

@@ -21,7 +21,7 @@ import { ScrollUpComponent } from './ScrollUp/scroll-up/scroll-up.component';
 import { SuperadminComponent } from './superadmin/superadmin.component';
 import { CataloguedtComponent } from './CatalogueDt/cataloguedt/cataloguedt.component';
 import { PaypalComponent } from './Payment/paypal/paypal.component';
-import { FaqComponent } from './Faq/faq.component';
+import { FaqComponent } from './faq/faq.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { RememberPassComponent } from './remember-pass/remember-pass.component';
@@ -29,6 +29,7 @@ import { ChangePassComponent } from './change-pass/change-pass.component';
 import { MyprofileComponent } from './MyProfile/myprofile/myprofile.component';
 import { ConfirmPassComponent } from './confirm-pass/confirm-pass.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { ContactDetailPageComponent } from './superadmin/contact-detail-page/contact-detail-page.component';
 
 
 
@@ -57,6 +58,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
     MyprofileComponent,
     ConfirmPassComponent,
     NotfoundComponent,
+    ContactDetailPageComponent
     // Page404Component,
     // PageNotFoundComponent
   ],

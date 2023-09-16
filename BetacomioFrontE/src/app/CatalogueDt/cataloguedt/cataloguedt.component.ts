@@ -42,7 +42,7 @@ export class CataloguedtComponent {
          this.getProductDetails_Lang(this.productname, this.lang);
         }
     });
-   
+
   }
 
   // Visualizza dettaglio prodotto standard
@@ -74,7 +74,7 @@ export class CataloguedtComponent {
     getProductImage(imageData: Uint8Array) {
       const base64Image = 'data:image/jpeg;base64,' + imageData;
       const sanitizedUrl = this.sanitizer.bypassSecurityTrustUrl(base64Image);
-  
+
       return sanitizedUrl;
     }
 
@@ -84,7 +84,7 @@ export class CataloguedtComponent {
     const wishData = {
       userID: parseInt(this.tokenData.id) + 11, //necessario mettere +11 per sincronizzare ID dei due database
       productId: this.langDetailList[0].productId
-    }   
+    }
 
 
     console.log(this.tokenData.id);
@@ -111,7 +111,7 @@ export class CataloguedtComponent {
       quantity: this.prodQuantity,
       unitPrice: this.langDetailList[0].listPrice,
       totalPrice: (this.prodQuantity * this.langDetailList[0].listPrice)
-    }   
+    }
 
     console.log(cartData.userID);
     console.log(cartData.quantity);
@@ -140,8 +140,8 @@ export class CataloguedtComponent {
   decreaseQuantity(){
     if(this.prodQuantity > 1){
     this.prodQuantity--;
-    } 
-    
+    }
+
   }
 
 }
@@ -157,7 +157,7 @@ export class CataloguedtComponent {
 
 
 interface biciycleDetail{
-  productId: number, 
+  productId: number,
   name:string,
   productType: string,
   modelType: string,

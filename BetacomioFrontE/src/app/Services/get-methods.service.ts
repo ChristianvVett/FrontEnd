@@ -29,7 +29,7 @@ export class GetMethodsService {
   getCartProducts(tokenId: number): Observable<any> {
     return this.http.get<any>(
       `https://localhost:7284/api/ShoppingCart?userid=${tokenId}`,
-      
+
     );
   }
 
@@ -38,7 +38,7 @@ export class GetMethodsService {
     return this.http
       .get<any>(
         `https://localhost:7284/api/Wishlist?userid=${tokenId}`,
-        
+
       );
   }
 
@@ -58,6 +58,7 @@ export class GetMethodsService {
 
     return sanitizedUrl;
   }
+
 
   //calcolo della somma di prezzi e quantità del carrello
   calculateCartTotal(cartList: cartItem[]) {

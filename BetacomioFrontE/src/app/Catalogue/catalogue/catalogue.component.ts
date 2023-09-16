@@ -3,10 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import {
-  NgbPaginationFirst,
-  NgbPaginationLast,
-} from '@ng-bootstrap/ng-bootstrap';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faMinus } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
@@ -22,7 +18,6 @@ import { GetMethodsService } from 'src/app/Services/get-methods.service';
 })
 export class CatalogueComponent {
   constructor(
-    private http: HttpClient,
     private token: TokenService,
     private getMethods: GetMethodsService
 
@@ -67,7 +62,7 @@ export class CatalogueComponent {
   viewProductStandard() {
     this.getMethods.getProductStandard().subscribe((response) => {
         this.blist = response;
-        
+
         for (const el of this.blist) {
           el.sanitizedPhoto = this.getMethods.getProductImage(el.thumbnailPhoto);
         }
@@ -81,10 +76,10 @@ export class CatalogueComponent {
         this.blist = response;
         for (const el of this.blist) {
           el.sanitizedPhoto = this.getMethods.getProductImage(el.thumbnailPhoto);
-        } 
+        }
         });
   }
-  
+
 
   transformPlus() {
     if (this.istrue) {
@@ -133,7 +128,7 @@ export class CatalogueComponent {
       console.log(this.searchlist);
     }
   }
-  
+
   searchbyprice(priceinput: HTMLInputElement, input: HTMLInputElement) {
     this.searchOn = true;
     var lista = this.blist.filter(

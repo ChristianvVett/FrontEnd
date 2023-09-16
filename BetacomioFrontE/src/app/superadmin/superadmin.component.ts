@@ -1,24 +1,24 @@
 import { Component , Renderer2 } from '@angular/core';
 import { HttpClient  } from '@angular/common/http';
 import { TokenService } from '../Services/token.service';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
+import { Route } from '@angular/router';
 @Component({
   selector: 'app-superadmin',
   templateUrl: './superadmin.component.html',
   styleUrls: ['./superadmin.component.css']
 })
-export class SuperadminComponent {
+export class SuperadminComponent{
   tok:any;
   tak=sessionStorage.getItem("dati");
   UsersList:users[]=[];
   persons:persona[]=[];
   // font awesome icons
-  garbage = faTrash;
+  garbage = faCheck;
   eye=faEye;
   constructor(private http:HttpClient, private rendered:Renderer2,token:TokenService){
   this.tok=token
-  console.log(this.tok)
   }
 
   ngOnInit(){
@@ -29,10 +29,14 @@ export class SuperadminComponent {
   getMessages(){
     this.http.get<any>("https://localhost:7284/api/UserRequestsTemps").subscribe((request)=>{
       this.persons=request;
-      console.log(this.persons)
     })
   }
 
+  deleteContact(id:number){
+    this.http.delete(`https://localhost:7284/api/UserRequestsTemps/${id}`).subscribe(resp=>{
+    })
+    location.reload()
+  }
   users(){
     this.http.get<any>("https://localhost:7284/api/UserCredentials").subscribe((request)=>{
       this.UsersList=request;
@@ -44,7 +48,6 @@ export class SuperadminComponent {
   // }
 
   moove(event){
-
 
       let moove = document.getElementById("moove");
 
@@ -67,6 +70,7 @@ interface users{
   surname:string,
 }
 interface persona{
+  requestId:number,
   userId:string,
   email:string,
   object:string,
