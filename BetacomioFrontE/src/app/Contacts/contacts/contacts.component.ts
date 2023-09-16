@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 export class ContactsComponent {
   constructor(private emailsender:EmailsenderService, http:HttpClient,private router: Router){
     this.http = http
+    //ciao
   }
   okFile: boolean = false;
   ciao:Uint8Array[] = [];
