@@ -1,4 +1,4 @@
-<div *ngIf="tak!=null">
+<div>
 
   <h1 style="text-align: center"><b>Pagina Amministratore:</b></h1>
   <div class="d-flex justify-content-center mx-5">
@@ -24,12 +24,14 @@
     <li class="list-group-item col-4"><b>Cognome</b></li>
   </ul>
 
-      <div *ngFor="let elem of UsersList">
-        <ul class="list-group list-group-horizontal-sm m-3">
-          <li class="list-group-item col-4">{{ elem.username }}</li>
-          <li class="list-group-item col-4">{{ elem.name }}</li>
-          <li class="list-group-item col-4">{{ elem.surname }}</li>
-        </ul>
+      <div *ngFor="let elem of UsersList;let i =index">
+        <div *ngIf="i<5">
+          <ul class="list-group list-group-horizontal-sm m-3">
+            <li class="list-group-item col-4">{{ elem.username }}</li>
+            <li class="list-group-item col-4">{{ elem.name }}</li>
+            <li class="list-group-item col-4">{{ elem.surname }}</li>
+          </ul>
+        </div>
       </div>
       <button style="background-color: green;border: none;color: white;">Maggiori Dettagli</button>
     </div>
@@ -43,7 +45,7 @@
       background-color: #d15800;
       "
   >
-  <h3 style="text-align: center; color: white">Gestione Clienti:</h3>
+  <h3 style="text-align: center; color: white">Ordini:</h3>
   <hr>
   <div class="d-flex flex-column">
     <ul
@@ -55,12 +57,14 @@
     <li class="list-group-item col-6"><b>Oggetto</b></li>
   </ul>
 
-      <div *ngFor="let elem of UsersList">
-        <ul class="list-group list-group-horizontal-sm m-3">
-          <li class="list-group-item col-3">{{ elem.username }}</li>
-          <li class="list-group-item col-3">{{ elem.name }}</li>
-          <li class="list-group-item col-6">{{ elem.surname }}</li>
-        </ul>
+      <div *ngFor="let elem of UsersList;let i = index">
+        <div *ngIf="i<5">
+          <ul class="list-group list-group-horizontal-sm m-3">
+            <li class="list-group-item col-3">{{ elem.username }}</li>
+            <li class="list-group-item col-3">{{ elem.name }}</li>
+            <li class="list-group-item col-6">{{ elem.surname }}</li>
+          </ul>
+        </div>
       </div>
       <button style="background-color: green;border: none;color: white;">Maggiori Dettagli</button>
 
@@ -94,23 +98,30 @@ style="
       box-shadow: 2px 2px 2px 1px gray;
       "
   >
-  <h3 style="text-align: center; color: white">Gestione Fornitori:</h3>
+  <h3 style="text-align: center; color: white">Messaggi in arrivo:</h3>
   <hr>
   <div class="d-flex flex-column">
     <ul
     style="border-radius: 50px"
     class="list-group list-group-horizontal m-3">
-    <li class="list-group-item col-3"><b>Nome</b></li>
-    <li class="list-group-item col-3"><b>Email</b></li>
-    <li class="list-group-item col-6"><b>Oggetto</b></li>
+    <li class="list-group-item col-2"><b>Id utente</b></li>
+    <li class="list-group-item col-4"><b>Email</b></li>
+    <li class="list-group-item col-4"><b>Oggetto</b></li>
+    <li class="list-group-item col-2"><b>Gestione messaggi</b></li>
   </ul>
 
-  <div *ngFor="let elem of UsersList">
-    <ul class="list-group list-group-horizontal-sm m-3">
-      <li class="list-group-item col-3">{{ elem.username }}</li>
-      <li class="list-group-item col-3">{{ elem.name }}</li>
-      <li class="list-group-item col-6">{{ elem.surname }}</li>
-    </ul>
+  <div *ngFor="let elem of persons; let i=index">
+
+      <ul class="list-group list-group-horizontal-sm m-3">
+          <li class="list-group-item col-3">{{!elem.userId ? "utente non registrato":elem.userId}}</li>
+          <li class="list-group-item col-4">{{elem.email}}</li>
+          <li class="list-group-item col-3">{{elem.object}}</li>
+          <li style="display: flex;justify-content: space-around;" class="list-group-item col-2">
+            <fa-icon style="background-color: lightseagreen ;color: white; padding: 7px; border-radius: 5px; cursor: pointer;"  [icon]="eye"></fa-icon>
+            <fa-icon style="background-color: red;color: white; padding: 7px; border-radius: 7px; cursor: pointer;" [icon]="garbage"></fa-icon>
+          </li>
+        </ul>
+
   </div>
   <button style="background-color: green;border: none;color: white;">Maggiori Dettagli</button>
 
@@ -118,6 +129,6 @@ style="
 </div>
 </div>
 </div>
-<div style="height: 100vh;" *ngIf="tak==null">
+<!-- <div style="height: 100vh;" *ngIf="tak==null">
 <h1 style="text-align: center;color: #d15800; margin-top: 100px;">Devi essere loggato per accedere alla pagina Super Admin</h1>
-</div>
+</div> -->

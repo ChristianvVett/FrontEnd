@@ -5,7 +5,7 @@
             <div class="signup">
                 <form #inputform="ngForm" (submit)="InsertUser(inputform)">
                     <label for="chk" aria-hidden="true">Sign up</label>
-                    
+
                     <!-- Nome -->
                     <input type="text" id="name" name="name" placeholder="inserisci un nome" (blur)="checkName()"  [(ngModel)]="singleUser.Name">
                     <div style="display: flex;justify-content: center;">
@@ -45,7 +45,7 @@
                       <div class="col-5">
                         <label for="Nationality" style="font-size:16px; margin:0; justify-content: left;">Scegli una lingua:</label>
                       </div>
-                      <div class="col-7">
+                       <div class="col-7">
                         <select name="Nationality" [(ngModel)]="singleUser.Nationality">
                           <option value="1">Arabo</option>
                           <option value="2">Cinese</option>
@@ -59,19 +59,19 @@
                     </div>
 
 
-                    
+
 
                     <!-- Birth year -->
                     <input type="date" name="BirthYear" placeholder="data di nascita" (blur)="checkDate()" [(ngModel)]="singleUser.BirthYear">
                     <div style="display: flex;justify-content: center;">
                       <p class="alert" *ngIf="isBirthYearOk"> La data di nascita non può essere inferiore al 1930 e superiore al 2005</p>
                     </div>
-                    
+
                     <!-- Password -->
                     <input type="password" name="PasswordHash" placeholder="Password" (blur)="checkPassword()" [(ngModel)]="singleUser.PasswordHash">
                     <div style="display: flex;justify-content: center;">
                       <p class="alert" *ngIf="isPasswordOk">la password deve contenere almeno un carattere speciale ed essere compresa fra 6 e 15 caratteri</p>
-                      
+
                       <input type="hidden" name="PasswordSalt" [ngModel]="'string'">
                     </div>
 

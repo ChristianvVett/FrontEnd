@@ -1,6 +1,8 @@
 import { Component , Renderer2 } from '@angular/core';
 import { HttpClient  } from '@angular/common/http';
 import { TokenService } from '../Services/token.service';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faEye } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-superadmin',
   templateUrl: './superadmin.component.html',
@@ -10,6 +12,10 @@ export class SuperadminComponent {
   tok:any;
   tak=sessionStorage.getItem("dati");
   UsersList:users[]=[];
+  persons:persona[]=[];
+  // font awesome icons
+  garbage = faTrash;
+  eye=faEye;
   constructor(private http:HttpClient, private rendered:Renderer2,token:TokenService){
   this.tok=token
   console.log(this.tok)
@@ -17,12 +23,19 @@ export class SuperadminComponent {
 
   ngOnInit(){
     this.users();
+    this.getMessages();
+  }
+
+  getMessages(){
+    this.http.get<any>("https://localhost:7284/api/UserRequestsTemps").subscribe((request)=>{
+      this.persons=request;
+      console.log(this.persons)
+    })
   }
 
   users(){
     this.http.get<any>("https://localhost:7284/api/UserCredentials").subscribe((request)=>{
       this.UsersList=request;
-      console.log(this.UsersList)
     })
   }
 
@@ -52,4 +65,11 @@ interface users{
   username:string,
   name:string,
   surname:string,
+}
+interface persona{
+  userId:string,
+  email:string,
+  object:string,
+  description:string,
+  image:string
 }

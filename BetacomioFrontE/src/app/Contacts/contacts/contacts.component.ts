@@ -1,7 +1,7 @@
 import {Component } from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http'
 import {NgForm} from '@angular/forms';
 import { EmailsenderService } from 'src/app/Services/emailsender.service';
-import { PostContactsService } from 'src/app/Services/postMethods.service';
 import { Router } from '@angular/router';
 
 
@@ -12,90 +12,111 @@ import { Router } from '@angular/router';
   styleUrls: ['./contacts.component.scss']
 })
 export class ContactsComponent {
-  constructor(private emailsender:EmailsenderService, private srvpost:PostContactsService,private router: Router){
-    
+  constructor(private emailsender:EmailsenderService, http:HttpClient,private router: Router){
+    this.http = http
   }
   okFile: boolean = false;
-  
+  ciao:Uint8Array[] = [];
   person: persona = {
-    email: '',
-    name: '',
-    request: '',
-    detail: '',
-    file:''
+    UserID:null,
+    Email: '',
+    Object: '',
+    Description: '',
+    Image:this.ciao
   };
-  
-  
-  
+
+  http:HttpClient;
+
   lenghtnotok = false;
   charnotok = false;
-  
+
   rlength=false;
-  
+
    dlength=false;
 
    nlength=false;
    allok=false;
-   
-   
+    session = sessionStorage.getItem("dati");
+
    checkemail(){
-     this.lenghtnotok=this.person.email.length<5
-     this.charnotok=!this.person.email.includes('@');
+     this.lenghtnotok=this.person.Email.length<5
+     this.charnotok=!this.person.Email.includes('@');
      if(this.lenghtnotok||this.charnotok){
        this.allok=true;
       }else{
         this.allok=false
       }
     }
-    
-    checkname(){
-      this.nlength=this.person.name.length<5
-      if(this.nlength){
-        this.allok=true;
+
+
+    getUserID(){
+      if(this.session){
+        var jsonobj = JSON.parse(this.session);
+         this.person.UserID = jsonobj.id
       }else{
-        this.allok=false
+        this.person.UserID = null
       }
     }
-    
-    checkrequired(){
-      this.rlength=this.person.name.length == 0
-      if(this.rlength){
-        this.allok=true;
-      }else{
-        this.allok=false
-      }
-    }
-    
+
+
     checkdetail(){
-      this.dlength=this.person.name.length == 0
+      this.dlength=this.person.Description.length == 0
       if(this.dlength){
         this.allok=true;
       }else{
         this.allok=false
       }
     }
-    
-    
-    
+
+
+
     submitform(input:NgForm){
-      
+
+      console.log(this.person)
       this.person = input.value;
-      this.emailsender.sendEmail(this.person.name,this.person.request,this.person.detail);
+      // this.emailsender.sendEmail(this.person.Object,this.person.Description);
+      // Imposta l'header Content-Type su 'application/octet-stream'
+      const headers = new HttpHeaders({ 'Content-Type': 'application/octet-stream' });
+      this.getUserID();
+      this.http.post<any>("https://localhost:7284/api/UserRequestsTemps",this.person,{headers:headers}).subscribe((resp)=>{
+      })
       this.router.navigate(['/LandingPage'], { queryParams:{ formData: JSON.stringify(this.person) } });
 
       input.reset();
-      
+
     }
-    
-    fileselected(event: any) {
+
+    private async convertImageToByteArray(file: File): Promise<Uint8Array> {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+
+        reader.onload = () => {
+          const arrayBuffer = reader.result as ArrayBuffer;
+          const uint8Array = new Uint8Array(arrayBuffer);
+          this.ciao.push(uint8Array)
+          resolve(uint8Array);
+        };
+
+        reader.onerror = (error) => {
+          reject(error);
+        };
+
+        reader.readAsArrayBuffer(file);
+      });
+    }
+
+    async fileselected(event: any) {
       let file: File = event.target.files[0];
       if (file) {
           const validFile = this.isValidFileType(file);
           this.okFile = !validFile;
+          const byteFile=await this.convertImageToByteArray(file);
       } else {
           this.okFile = false;
       }
   }
+
+
 
   private isValidFileType(file: File): boolean {
       const allowedExtensions = ['.png', '.jpeg', '.jpg'];
@@ -107,10 +128,10 @@ export class ContactsComponent {
 
 
 interface persona{
-  email:string,
-  name:string,
-  request:string,
-  detail:string,
-  file:string
+  UserID:number,
+  Email:string,
+  Object:string,
+  Description:string,
+  Image:Uint8Array[]
 
 }
