@@ -72,14 +72,26 @@ export class ContactsComponent {
 
 
     submitform(input:NgForm){
-
-      console.log(this.person)
+      const imageBase64 = btoa(String.fromCharCode.apply(null, this.person.Image));
+      const dataToSend = {
+    
+   
+        UserID: this.person.UserID,
+            Email: this.person.Email,
+            Object: this.person.Object,
+            Description: this.person.Description,
+            
+           
+        Image: imageBase64 // Rappresentazione Base64 dell'array di byte dell'immagine
+          };
+          const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+   
       this.person = input.value;
       // this.emailsender.sendEmail(this.person.Object,this.person.Description);
       // Imposta l'header Content-Type su 'application/octet-stream'
-      const headers = new HttpHeaders({ 'Content-Type': 'application/octet-stream' });
+    
       this.getUserID();
-      this.http.post<any>("https://localhost:7284/api/UserRequestsTemps",this.person,{headers:headers}).subscribe((resp)=>{
+      this.http.post<any>("https://localhost:7284/api/UserRequestsTemps",dataToSend,{headers}).subscribe((resp)=>{
       })
       this.router.navigate(['/LandingPage'], { queryParams:{ formData: JSON.stringify(this.person) } });
 
