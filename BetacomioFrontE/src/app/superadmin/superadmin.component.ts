@@ -3,7 +3,7 @@ import { HttpClient  } from '@angular/common/http';
 import { TokenService } from '../Services/token.service';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
-import { Route } from '@angular/router';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-superadmin',
   templateUrl: './superadmin.component.html',
@@ -15,10 +15,32 @@ export class SuperadminComponent{
   UsersList:users[]=[];
   persons:persona[]=[];
   // font awesome icons
+  totalmessages:number;
   garbage = faCheck;
   eye=faEye;
+  x=faXmark;
+  isvisible:boolean;
+  isvisible2:boolean;
   constructor(private http:HttpClient, private rendered:Renderer2,token:TokenService){
   this.tok=token
+  }
+
+  hideWindow(){
+    this.isvisible = !this.isvisible
+    if(this.isvisible){
+      document.getElementById('window').style.display='block'
+    } else{
+      document.getElementById('window').style.display='none'
+    }
+  }
+
+  hideWindowUsers(){
+    this.isvisible2 = !this.isvisible2
+    if(this.isvisible2){
+      document.getElementById('window2').style.display='block'
+    } else{
+      document.getElementById('window2').style.display='none'
+    }
   }
 
   ngOnInit(){
@@ -65,6 +87,7 @@ export class SuperadminComponent{
 }
 
 interface users{
+  email:string
   username:string,
   name:string,
   surname:string,

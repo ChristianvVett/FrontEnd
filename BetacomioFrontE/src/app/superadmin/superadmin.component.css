@@ -30,3 +30,20 @@ button{
 .utentiRegistrati{
     display: block;
 }
+
+.transition:hover{
+  background-color: #d15800;
+
+}
+
+.transition:hover .tra {
+  color: white !important;
+}
+.circle {
+	width: 25x;
+  height: 25px;
+  background: #d15800;
+  border-radius: 50%;
+  padding: 5px;
+  color: white;
+}

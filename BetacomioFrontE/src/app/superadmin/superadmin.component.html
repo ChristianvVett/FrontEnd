@@ -1,135 +1,121 @@
-<div>
+<div class="my-5">
+  <h1 style="text-align: center;color: #d15800;"><b>Pagina Amministratore:</b></h1>
+  <div class="d-flex justify-content-center mx-5">
+    <div class="col-6 transition" style=" border: 1px solid #d15800; margin: 5px; border-radius: 10px; box-shadow: 2px 2px 2px 1px gray; height: fit-content; padding: 50px;transition: 0.4s ease-in-out; cursor: pointer; " (click)="hideWindowUsers()">
+      <h3 class="tra" style="text-align: center; color: black">Utenti registrati: <span class="circle">{{UsersList.length}}</span></h3>
+    </div>
+    <div class="col-6 transition" style=" border: 1px solid #d15800; margin: 5px; border-radius: 10px; ; box-shadow: 2px 2px 2px 1px gray; height: fit-content; padding: 50px;transition: 0.4s ease-in-out; cursor: pointer; ">
+      <h3 class="tra" style="text-align: center; color: black">Cronologia Ordini:</h3>
 
-  <h1 style="text-align: center"><b>Pagina Amministratore:</b></h1>
+    </div>
+  </div>
   <div class="d-flex justify-content-center mx-5">
     <div
-    class="col-6"
-    style="
-      border: 1px solid black;
-      margin: 5px;
-      border-radius: 10px;
-      background-color: #d15800;
-      box-shadow: 2px 2px 2px 1px gray;
-      "
-  >
-  <h3 style="text-align: center; color: white">Utenti registrati</h3>
-  <hr>
-  <div class="d-flex flex-column">
-    <ul
-    style="border-radius: 50px"
-    class="list-group list-group-horizontal m-3"
+      class="col-6 transition"
+      style=" border: 1px solid #d15800; margin: 5px; border-radius: 10px; ; box-shadow: 2px 2px 2px 1px gray; height: fit-content; padding: 50px;transition: 0.4s ease-in-out; "
     >
-    <li class="list-group-item col-4"><b>Email</b></li>
-    <li class="list-group-item col-4"><b>Nome</b></li>
-    <li class="list-group-item col-4"><b>Cognome</b></li>
-  </ul>
-
-      <div *ngFor="let elem of UsersList;let i =index">
-        <div *ngIf="i<3">
-          <ul class="list-group list-group-horizontal-sm m-3">
-            <li class="list-group-item col-4">{{ elem.username }}</li>
-            <li class="list-group-item col-4">{{ elem.name }}</li>
-            <li class="list-group-item col-4">{{ elem.surname }}</li>
-          </ul>
-        </div>
-      </div>
-      <button style="background-color: green;border: none;color: white;">Maggiori Dettagli</button>
+      <h3 class="tra" style="text-align: center; color: black">Catalogo</h3>
     </div>
-  </div>
-  <div
-  class="col-6"
-  style="
-      border: 1px solid black;
-      margin: 5px;
-      border-radius: 10px;
-      background-color: #d15800;
-      "
-  >
-  <h3 style="text-align: center; color: white">Ordini:</h3>
-  <hr>
-  <div class="d-flex flex-column">
-    <ul
-    style="border-radius: 50px"
-    class="list-group list-group-horizontal m-3"
-    >
-    <li class="list-group-item col-3"><b>Nome</b></li>
-    <li class="list-group-item col-3"><b>Email</b></li>
-    <li class="list-group-item col-6"><b>Oggetto</b></li>
-  </ul>
-
-      <div *ngFor="let elem of UsersList;let i = index">
-        <div *ngIf="i<3">
-          <ul class="list-group list-group-horizontal-sm m-3">
-            <li class="list-group-item col-3">{{ elem.username }}</li>
-            <li class="list-group-item col-3">{{ elem.name }}</li>
-            <li class="list-group-item col-6">{{ elem.surname }}</li>
-          </ul>
-        </div>
+    <!-- hided window contacts-->
+    <div id="window" style=" position: absolute; top: 100px; background-color: rgb(237, 230, 230); height: 66%; width: 90%; display: none; overflow-y: scroll; border-radius: 20px; ">
+      <div style="width: 100%; text-align: end">
+        <fa-icon (click)="hideWindow()" style="font-size: 2rem; margin-right: 10px; cursor: pointer" [icon]="x"></fa-icon>
       </div>
-      <button style="background-color: green;border: none;color: white;">Maggiori Dettagli</button>
-
-    </div>
-  </div>
-</div>
-<div class="d-flex justify-content-center mx-5">
-  <div
-  class="col-6"
-  style="
-      border: 1px solid black;
-      margin: 5px;
-      border-radius: 10px;
-      background-color: #d15800;
-      box-shadow: 2px 2px 2px 1px gray;
-      "
-  >
-  <h3 style="text-align: center; color: white">Catalogo</h3>
-  <hr>
-  <div class="d-flex justify-content-center align-items-center">
-    <button routerLink="/Catalogue" style="background-color: green; color: white;border: none;width: 300px;margin: 15%;font-size: 1.5rem;">VAI ALLA GESTIONE CATALOGO</button>
-  </div>
-</div>
-<div
-class="col-6"
-style="
-      border: 1px solid black;
-      margin: 5px;
-      border-radius: 10px;
-      background-color: #d15800;
-      box-shadow: 2px 2px 2px 1px gray;
-      "
-  >
-  <h3 style="text-align: center; color: white">Messaggi in arrivo:</h3>
-  <hr>
-  <div class="d-flex flex-column">
-    <ul
-    style="border-radius: 50px"
-    class="list-group list-group-horizontal m-3">
-    <li class="list-group-item col-2"><b>Id utente</b></li>
-    <li class="list-group-item col-4"><b>Email</b></li>
-    <li class="list-group-item col-4"><b>Oggetto</b></li>
-    <li class="list-group-item col-2"><b>Gestione messaggi</b></li>
-  </ul>
-
-  <div *ngFor="let elem of persons; let i=index">
-    <div *ngIf="i < 22">
-
-      <ul class="list-group list-group-horizontal-sm m-3">
-          <li class="list-group-item col-3">{{!elem.userId ? "utente non registrato":elem.userId}}</li>
-          <li class="list-group-item col-4">{{elem.email}}</li>
-          <li class="list-group-item col-3">{{elem.object}}</li>
-          <li style="display: flex;justify-content: space-around;" class="list-group-item col-2">
-            <fa-icon [routerLink]="['/ContactDetailPage',elem.requestId]" style="background-color: lightseagreen ;color: white; padding: 7px; border-radius: 5px; cursor: pointer;"  [icon]="eye"></fa-icon>
-            <fa-icon (click)="deleteContact(elem.requestId)" style="background-color: green;color: white; padding: 7px; border-radius: 7px; cursor: pointer;" [icon]="garbage"></fa-icon>
-          </li>
+      <div class="d-flex flex-column">
+        <ul
+          style="border-radius: 50px;text-align: center;"
+          class="list-group list-group-horizontal m-3"
+        >
+          <li class="list-group-item col-3"><b>Id utente</b></li>
+          <li class="list-group-item col-4"><b>Email</b></li>
+          <li class="list-group-item col-3"><b>Oggetto</b></li>
+          <li class="list-group-item col-2"><b>Gestione messaggi</b></li>
         </ul>
+
+        <div *ngFor="let elem of persons; let i = index">
+          <ul class="list-group list-group-horizontal-sm m-3" style="text-align: center;">
+            <li class="list-group-item col-3">
+              {{ !elem.userId ? "utente non registrato" : elem.userId }}
+            </li>
+            <li class="list-group-item col-4">{{ elem.email }}</li>
+            <li class="list-group-item col-3">{{ elem.object }}</li>
+            <li
+              style="display: flex; justify-content: space-around"
+              class="list-group-item col-2"
+            >
+              <fa-icon
+                [routerLink]="['/ContactDetailPage', elem.requestId]"
+                style="
+                  background-color: lightseagreen;
+                  color: white;
+                  padding: 7px;
+                  border-radius: 5px;
+                  cursor: pointer;
+                "
+                [icon]="eye"
+              ></fa-icon>
+              <fa-icon
+                (click)="deleteContact(elem.requestId)"
+                style="
+                  background-color: green;
+                  color: white;
+                  padding: 7px;
+                  border-radius: 7px;
+                  cursor: pointer;
+                "
+                [icon]="garbage"
+              ></fa-icon>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
+    <!-- hided window users -->
+    <div id="window2" style=" position: absolute; top: 100px; background-color: rgb(237, 230, 230); height: 66%; width: 90%; display: none; overflow-y: scroll; border-radius: 20px;">
+      <div style="width: 100%; text-align: end">
+        <fa-icon (click)="hideWindowUsers()" style="font-size: 2rem; margin-right: 10px; cursor: pointer" [icon]="x"></fa-icon>
+        <div class="d-flex flex-column">
+          <ul
+            style="border-radius: 50px;text-align: center;"
+            class="list-group list-group-horizontal m-3"
+          >
+            <li class="list-group-item col-4"><b>Email</b></li>
+            <li class="list-group-item col-4"><b>Nome</b></li>
+            <li class="list-group-item col-4"><b>Oggetto</b></li>
+          </ul>
 
+          <div *ngFor="let elem of UsersList; let i = index">
+
+              <ul class="list-group list-group-horizontal-sm m-3;"style="text-align:center">
+                <li class="list-group-item col-4">{{ elem.email }}</li>
+                <li class="list-group-item col-4">{{ elem.name }}</li>
+                <li class="list-group-item col-4">{{ elem.surname }}</li>
+              </ul>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div
+      class="col-6 transition"
+      style="
+        border: 1px solid #d15800;
+        margin: 5px;
+        border-radius: 10px;
+        padding: 50px;
+        box-shadow: 2px 2px 2px 1px gray;
+        height: fit-content;
+        cursor: pointer;
+        transition: 0.4s ease-in-out;
+      "
+      (click)="hideWindow()"
+    >
+      <h3 style="text-align: center; color: black" class="tra">
+        Messaggi in arrivo:<span class="circle">{{ persons.length }}</span>
+      </h3>
+    </div>
   </div>
-  <button style="background-color: green;border: none;color: white;">Maggiori Dettagli</button>
-
-</div>
-</div>
-</div>
 </div>
 <!-- <div style="height: 100vh;" *ngIf="tak==null">
 <h1 style="text-align: center;color: #d15800; margin-top: 100px;">Devi essere loggato per accedere alla pagina Super Admin</h1>
