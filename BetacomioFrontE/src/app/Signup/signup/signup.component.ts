@@ -8,7 +8,7 @@ import { SocialAuthService } from '@abacritt/angularx-social-login';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css'],
 })
-export class SignupComponent {
+export class SignupComponent { 
   constructor(private Http: HttpClient , private Google:SocialAuthService) {
     this.singleUser={Name:"",Surname:"",Username:"",Phone:"" ,Email:"",PasswordHash:"",PasswordSalt:"",BirthYear:"", Nationality: null}
   }
