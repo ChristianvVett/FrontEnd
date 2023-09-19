@@ -33,10 +33,10 @@ export class PaypalComponent implements AfterViewChecked {
   sommaTot: number
   totoarro: string;
   userID: number;
-  unitprice: number;
+  unitprice: any = [];
   quantity: number; 
   product: number;
- 
+  resultCarr: any[] = [];
 
   paypalconfig = {
     env: 'sandbox',
@@ -106,13 +106,15 @@ export class PaypalComponent implements AfterViewChecked {
 
     console.log(this.resultCart);
     for(const elem of this.resultCart){
-      this.userID = elem.userId
-      this.quantity = elem.quantity
-      this.product = elem.productId
-      this.unitprice = elem.unitPrice
+      // this.userID = elem.userId
+      // this.quantity = elem.quantity
+      // this.product = elem.productId
+      // this.unitprice = elem.unitPrice
+      this.resultCarr.push(elem.totalPrice)
 
-      
-    }
+      console.log(this.resultCarr)
+    } 
+    console.log(this.unitprice)
     const data ={
      Address: indirizzo.value,
      PostalCode: cpdicepostale.value,
@@ -120,15 +122,16 @@ export class PaypalComponent implements AfterViewChecked {
      Country: stato.value,
      City: city.value,
      AddressDetail: numerocivico.value,
-     CustomerID: this.userID,
-     TotalPrice: this.totPrice,   //totale di ciascun prodotto
-     UnitPrice: this.unitprice,
-     ProductID: this.product,
-     OrderQty: this.quantity,
-     SubTotal: this.totoarro
+     ResultCarr:[ {ProductId: this.totoarro}]  
     }
-    
-this.http.post<any>("https://localhost:7284/api/OrderProxies" , data).subscribe((resp) => {})
+ 
+   
+    const tot = {
+      ResultCarr:this.resultCarr,
+      addressdata: data
+    }
+    console.log(tot)
+this.http.post<any>("https://localhost:7284/api/OrderProxies" , data ).subscribe((resp) => {})
   }
  
   ngAfterViewChecked(): void {
