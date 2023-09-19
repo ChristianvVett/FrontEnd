@@ -25,7 +25,7 @@ export class SignupComponent {
   regexPass = /(?=.*[!@#$%^&*()\-_=+[\]{}|\\;:'""<>,.?/~])\S{6,15}/;  //regex password
   regexUsername = /(?=.*[a-zA-Z]{4,12})(?=.*\d.*\d).+/;  //regex username
   regexMail = /([a-z\d.-]+)@([a-z\d-]+)\.([a-z]{2,6})(\.[a-z]{2,4})?/;  //regex mail
-  allOk:boolean=false;
+  allOk:boolean=false; 
   EmailAlreadyTaken:boolean=false;
   InsertUser(elem: NgForm) {
     console.log(elem.value);
