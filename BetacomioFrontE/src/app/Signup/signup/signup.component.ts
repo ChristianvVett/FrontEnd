@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { HttpClient , HttpResponse , HttpStatusCode} from '@angular/common/http';
 import { OnChange } from 'ngx-bootstrap/utils';
-import { SocialAuthService } from '@abacritt/angularx-social-login';
+import { SocialAuthService } from "@abacritt/angularx-social-login";
+
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -55,13 +57,7 @@ checkAllField(){
       this.isNameOk=false;
     }
   }
-  google(){
-    console.log('cii');
-this.Google.authState.subscribe((user)=>{
-this.user = user
-console.log(this.user);
-})
-  }
+  
 
   checkSurname(){
     if(this.singleUser.Surname.length <= 4 || this.singleUser.Surname.includes(" ")){
@@ -128,6 +124,12 @@ console.log(this.user);
     })
   }
 
+  google(){
+    this.Google.authState.subscribe((response) => {
+      this.user = response;
+      console.log(this.user);
+    })
+  }
 
 }
 

@@ -61,8 +61,7 @@ import { GoogleLoginProvider} from '@abacritt/angularx-social-login';
     ConfirmPassComponent,
     NotfoundComponent,
     ContactDetailPageComponent
-    // Page404Component,
-    // PageNotFoundComponent
+
   ],
   imports: [
     BrowserModule,
