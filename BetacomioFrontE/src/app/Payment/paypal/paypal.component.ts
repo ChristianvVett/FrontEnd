@@ -1,10 +1,11 @@
 import { Component,AfterViewChecked } from '@angular/core';
 import { faCreditCard } from '@fortawesome/free-solid-svg-icons';
-import {HttpClient , HttpResponse , HttpStatusCode} from '@angular/common/http'
+import {HttpClient , HttpHeaders, HttpResponse , HttpStatusCode} from '@angular/common/http'
 import { TokenService } from 'src/app/Services/token.service';
 import { GetMethodsService } from 'src/app/Services/get-methods.service';
 import { SafeUrl } from '@angular/platform-browser';
 import { NgForm } from '@angular/forms';
+import { orderProducts } from 'src/app/MyProfile/myprofile/myprofile.component';
 
 
 declare let paypal:any
@@ -30,13 +31,12 @@ export class PaypalComponent implements AfterViewChecked {
   HaToken = JSON.parse(this.token.rew);
   idToken: number;
   totPrice: number;
-  sommaTot: number
-  totoarro: string;
+  taxedTot: number
+  finalCost: string;
   userID: number;
   unitprice: any = [];
   quantity: number; 
   product: number;
-  resultCarr: any[] = [];
 
   paypalconfig = {
     env: 'sandbox',
@@ -73,8 +73,8 @@ export class PaypalComponent implements AfterViewChecked {
     this.totPrice = this.getMethodsService.calculateCartTotal(this.resultCart);//calcola totale carrello
     
     if (this.totPrice != 0) {
-      this.sommaTot = this.totPrice + 50;
-      this.totoarro = this.sommaTot.toFixed(2)
+      this.taxedTot = this.totPrice + 50;
+      this.finalCost = this.taxedTot.toFixed(2)
     }
      
      
@@ -104,34 +104,46 @@ export class PaypalComponent implements AfterViewChecked {
 
   payment(indirizzo: HTMLInputElement , cpdicepostale: HTMLInputElement , city: HTMLInputElement, regione: HTMLInputElement , stato: HTMLInputElement , numerocivico: HTMLInputElement){
 
-    console.log(this.resultCart);
-    for(const elem of this.resultCart){
-      // this.userID = elem.userId
-      // this.quantity = elem.quantity
-      // this.product = elem.productId
-      // this.unitprice = elem.unitPrice
-      this.resultCarr.push(elem.totalPrice)
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-      console.log(this.resultCarr)
-    } 
-    console.log(this.unitprice)
-    const data ={
+    //array con dettagli su ciascun prodotto, per popolare OrderDetail
+    const orderDetail: OrderDetailData[] = [];
+
+    for(const val of this.resultCart){
+      const detail = {
+        ProductId: val.productId,
+        OrderQty: val.quantity,
+        UnitPrice: val.unitPrice,
+        TotalPrice: val.totalPrice
+      };
+      orderDetail.push(detail);
+    }
+    console.log(orderDetail)
+
+    //oggetto con dati unici utente e carrello, per popolare Address, OrderHeader e Users
+     const uniquedata: UniqueData = {
+     CustomerId: this.idToken,
      Address: indirizzo.value,
-     PostalCode: cpdicepostale.value,
+     AddressDetail: numerocivico.value,
+     City: city.value,
      Region: regione.value,
      Country: stato.value,
-     City: city.value,
-     AddressDetail: numerocivico.value,
-     ResultCarr:[ {ProductId: this.totoarro}]  
+     PostalCode: cpdicepostale.value,
+     SubTotal: parseFloat(this.finalCost)
     }
+
+    console.log(uniquedata);
+
+    //oggetto che racchiude oggetto con dati unici e oggetto lista
+    const orderProxy:OrderProxy = {
+      userUniqueData: uniquedata,
+      detailData: orderDetail
+    }
+
+    console.log(orderProxy);
+
  
-   
-    const tot = {
-      ResultCarr:this.resultCarr,
-      addressdata: data
-    }
-    console.log(tot)
-this.http.post<any>("https://localhost:7284/api/OrderProxies" , data ).subscribe((resp) => {})
+this.http.post<OrderProxy>("https://localhost:7284/api/OrderProxies" , (orderProxy), {headers: headers}).subscribe((resp) => {})
   }
  
   ngAfterViewChecked(): void {
@@ -163,6 +175,35 @@ export interface cartItem{
     sanitizedPhoto: SafeUrl
   }
 
+}
+
+
+// Interfaccia per i dati di dettaglio di un singolo prodotto
+export interface OrderDetailData {
+  ProductId?: number;
+  OrderQty?: number;
+  UnitPrice?: number;
+  TotalPrice?: number;
+}
+
+// Interfaccia per i dati unici dell'utente
+export interface UniqueData {
+  CustomerId?: number;
+  AddressId?: number;
+  Address?: string;
+  AddressDetail?: string;
+  City?: string;
+  Region?: string;
+  Country?: string;
+  PostalCode?: string;
+  SubTotal?: number;
+}
+
+// Interfaccia per l'oggetto OrderProxy
+export interface OrderProxy {
+  GenericId?: number;
+  userUniqueData: UniqueData;
+  detailData: OrderDetailData[]
 }
 
 
