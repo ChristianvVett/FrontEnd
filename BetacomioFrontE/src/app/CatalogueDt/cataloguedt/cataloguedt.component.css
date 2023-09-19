@@ -136,11 +136,43 @@ img
   width: inherit;
 }
 
-.url{
+/* .url{
   padding: 0px;
-  font-size: 15px;
+  font-size: 10px;
+  color: #aaa;
+  display: flex;
+  justify-content: center;
+  margin-top: 5PX;
+}
+
+a {
+  text-decoration: none;
+} */
+
+.breadcrumb>li+li:before {
+  content: ""
+}
+
+.breadcrumb {
+  padding: 0px;
+  font-size: 10px;
   color: #aaa;
 }
+
+.breadcrumb>li+li:before {
+  content: ""
+}
+
+a {
+  text-decoration: none;
+  color: #aaa ;
+}
+
+a:focus,a:active {
+  outline: none;
+  box-shadow: none;
+}
+
 .pname{
   font-size: 22px;
   font-weight: 600;
