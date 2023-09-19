@@ -64,9 +64,6 @@
   <carousel [itemsPerSlide]="itemsPerSlide" [singleSlideOffset]="false" [interval]="0" [indicatorsByChunk]="true">
     <slide class="mx-2" *ngFor="let slide of slides">
       <img [src]="slide.image" alt="image slide" style="display: block; width: 100%;max-height: 500px;">
-      <div class="carousel-caption">
-        <h4>Slide</h4>
-      </div>
     </slide>
   </carousel>
   <div class="my-5 d-flex justify-content-center">
