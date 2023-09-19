@@ -5,6 +5,8 @@ import {HttpClient , HttpResponse , HttpStatusCode} from '@angular/common/http'
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { cartItem } from 'src/app/Payment/paypal/paypal.component';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -17,7 +19,8 @@ export class CataloguedtComponent {
     private route: ActivatedRoute,
     private http: HttpClient,
     private token: TokenService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private toastr:ToastrService
   ) {}
   circle = faCircle;
   productname: string;
@@ -27,6 +30,7 @@ export class CataloguedtComponent {
   DetailList: biciycleDetail = {} as biciycleDetail;
   tokenData = JSON.parse(this.token.rew);
   lang : number;
+  updateqty:cartItem[]=[]
 
   ngOnInit() {
     this.route.paramMap.subscribe((elem) => {
@@ -101,6 +105,7 @@ export class CataloguedtComponent {
           }
         } catch (error) {}
       });
+      this.toastr.success("Prodotto aggiunto nella wishlist")
   }
 
   // Metodo per inserire un prodotto nel carrello
@@ -113,21 +118,28 @@ export class CataloguedtComponent {
       totalPrice: (this.prodQuantity * this.langDetailList[0].listPrice)
     }
 
-    console.log(cartData.userID);
-    console.log(cartData.quantity);
-    console.log(cartData.productId);
 
-    this.http
-      .post('https://localhost:7284/api/ShoppingCartTemps', cartData)
-      .subscribe((resp: HttpResponse<biciycleDetail>) => {
-        try {
-          if (resp.status === 200) {
-            console.log('invio in ShoppingCart effettuato correttamente: stato' + resp.status);
-          } else {
-            throw console.log('errorino: stato ' + resp.status);
-          }
-        } catch (error) {}
-      });
+    this.http.get<any>("https://localhost:7284/api/ShoppingCartTemps").subscribe(resp=>{
+      this.updateqty=resp;
+    })
+    for(let elem of this.updateqty ){
+      if(elem.productId == cartData.productId && cartData.userID == elem.userId){
+        console.log(elem)
+         this.http.put(`https://localhost:7284/api/ShoppingCart/${elem.userId}`,cartData).subscribe(resp=>{
+           console.log("put andata a buon fine");
+         })
+         console.log(elem)
+      }else{
+
+        this.http
+          .post('https://localhost:7284/api/ShoppingCartTemps', cartData)
+          .subscribe((resp: HttpResponse<biciycleDetail>) => {
+
+          });
+          this.toastr.success("Prodotto inserito nel carrello")
+      }
+    }
+
 
   }
 
