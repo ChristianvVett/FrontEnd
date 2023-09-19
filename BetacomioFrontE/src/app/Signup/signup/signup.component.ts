@@ -125,6 +125,8 @@ checkAllField(){
   }
 
   google(){
+    console.log("heloworld");
+
     this.Google.authState.subscribe((response) => {
       this.user = response;
       console.log(this.user);
