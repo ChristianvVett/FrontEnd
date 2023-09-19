@@ -88,7 +88,7 @@ import { GoogleLoginProvider} from '@abacritt/angularx-social-login';
             provider: new GoogleLoginProvider(
               '132481416516-rsdh02pkh0rjl1qr1qj9op179pret7dq.apps.googleusercontent.com'
             )
-          }   
+          }
         ],
         onError: (err) => {
           console.error(err);
