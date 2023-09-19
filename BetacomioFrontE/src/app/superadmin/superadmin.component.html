@@ -13,8 +13,9 @@
     <div
       class="col-6 transition"
       style=" border: 1px solid #d15800; margin: 5px; border-radius: 10px; ; box-shadow: 2px 2px 2px 1px gray; height: fit-content; padding: 50px;transition: 0.4s ease-in-out; "
+      (click)="hideWindowCatalog()"
     >
-      <h3 class="tra" style="text-align: center; color: black">Catalogo</h3>
+      <h3 class="tra" style="text-align: center; color: black" >Catalogo:<span class="circle">{{Catalog.length}}</span></h3>
     </div>
     <!-- hided window contacts-->
     <div id="window" style=" position: absolute; top: 100px; background-color: rgb(237, 230, 230); height: 66%; width: 90%; display: none; overflow-y: scroll; border-radius: 20px; ">
@@ -90,6 +91,35 @@
                 <li class="list-group-item col-4">{{ elem.email }}</li>
                 <li class="list-group-item col-4">{{ elem.name }}</li>
                 <li class="list-group-item col-4">{{ elem.surname }}</li>
+              </ul>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- hided window Catalog -->
+    <div id="window3" style=" position: absolute; top: 100px; background-color: rgb(237, 230, 230); height: 66%; width: 90%; display: none; overflow-y: scroll; border-radius: 20px;">
+      <div style="width: 100%; text-align: end">
+        <fa-icon (click)="hideWindowCatalog()" style="font-size: 2rem; margin-right: 10px; cursor: pointer" [icon]="x"></fa-icon>
+        <div class="d-flex flex-column">
+          <ul
+            style="border-radius: 50px;text-align: center;"
+            class="list-group list-group-horizontal m-3"
+          >
+            <li class="list-group-item col-1"><b>Id prodotto</b></li>
+            <li class="list-group-item col-3"><b>Nome</b></li>
+            <li class="list-group-item col-3"><b>Descrizione</b></li>
+            <li class="list-group-item col-3"><b>Prezzo</b></li>
+            <li class="list-group-item col-2"><b>Gestione</b></li>
+          </ul>
+          <div *ngFor="let elem of Catalog; let i = index">
+              <ul class="list-group list-group-horizontal-sm m-3;"style="text-align:center">
+                <li class="list-group-item col-1">{{ elem.productId }}</li>
+                <li class="list-group-item col-3">{{ elem.name }}</li>
+                <li class="list-group-item col-3">{{ elem.description }}</li>
+                <li class="list-group-item col-3">{{ elem.listPrice }}€</li>
+                <li class="list-group-item col-2"><fa-icon class="trashbutton" style="cursor: pointer;" (click)="deleteCatalog(elem.productId)" [icon]="trash"></fa-icon></li>
               </ul>
 
           </div>

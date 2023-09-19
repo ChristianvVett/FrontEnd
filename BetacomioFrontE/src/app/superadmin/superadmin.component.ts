@@ -4,6 +4,7 @@ import { TokenService } from '../Services/token.service';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-superadmin',
   templateUrl: './superadmin.component.html',
@@ -14,13 +15,19 @@ export class SuperadminComponent{
   tak=sessionStorage.getItem("dati");
   UsersList:users[]=[];
   persons:persona[]=[];
+  Catalog:Catalog[]=[];
+
   // font awesome icons
   totalmessages:number;
   garbage = faCheck;
   eye=faEye;
   x=faXmark;
+  trash=faTrash;
+
+
   isvisible:boolean;
   isvisible2:boolean;
+  isvisible3:boolean;
   constructor(private http:HttpClient, private rendered:Renderer2,token:TokenService){
   this.tok=token
   }
@@ -43,9 +50,19 @@ export class SuperadminComponent{
     }
   }
 
+  hideWindowCatalog(){
+    this.isvisible3 = !this.isvisible3
+    if(this.isvisible3){
+      document.getElementById('window3').style.display='block'
+    } else{
+      document.getElementById('window3').style.display='none'
+    }
+  }
+
   ngOnInit(){
     this.users();
     this.getMessages();
+    this.getCatalog();
   }
 
   getMessages(){
@@ -54,8 +71,21 @@ export class SuperadminComponent{
     })
   }
 
+  getCatalog(){
+    this.http.get<any>("https://localhost:7284/api/ViewAdminProducts").subscribe(request=>{
+      this.Catalog = request;
+      console.log(request)
+    })
+  }
+
   deleteContact(id:number){
     this.http.delete(`https://localhost:7284/api/UserRequestsTemps/${id}`).subscribe(resp=>{
+    })
+    location.reload()
+  }
+
+  deleteCatalog(id:number){
+    this.http.delete(`https://localhost:7284/api/Products/${id}`).subscribe(resp=>{
     })
     location.reload()
   }
@@ -99,4 +129,11 @@ interface persona{
   object:string,
   description:string,
   image:string
+}
+
+interface Catalog{
+  name:string,
+  listPrice:number,
+  productId:number,
+  description:string
 }

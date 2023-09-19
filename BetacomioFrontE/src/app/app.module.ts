@@ -30,6 +30,7 @@ import { MyprofileComponent } from './MyProfile/myprofile/myprofile.component';
 import { ConfirmPassComponent } from './confirm-pass/confirm-pass.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { ContactDetailPageComponent } from './superadmin/contact-detail-page/contact-detail-page.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -72,7 +73,8 @@ import { ContactDetailPageComponent } from './superadmin/contact-detail-page/con
     FormsModule,
     CarouselModule.forRoot(),
     AccordionModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -6,6 +6,7 @@ import { Router } from '@angular/router'; // Importa il servizio di routing
 import { CatalogueComponent } from 'src/app/Catalogue/catalogue/catalogue.component';
 import { TokenService } from 'src/app/Services/token.service';
 import { NgFor } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,7 +18,7 @@ export class LoginComponent{
   single: Person | null =  null;
   kd:Boolean;
   tk:string;
-  constructor(private http: HttpClient , private route:Router,private Token:TokenService,private ch:ChangeDetectorRef )
+  constructor(private http: HttpClient , private route:Router,private Token:TokenService,private ch:ChangeDetectorRef, private toastr:ToastrService)
   {
   }
 
@@ -50,6 +51,7 @@ export class LoginComponent{
       this.Token.loginSuccessful();
       this.tk = this.Token.result;
       this.ch.detectChanges();
+      this.toastr.success("Login effettuato con successo")
       this.route.navigateByUrl('/MyProfile');
 
 

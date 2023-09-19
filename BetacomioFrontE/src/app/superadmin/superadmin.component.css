@@ -47,3 +47,10 @@ button{
   padding: 5px;
   color: white;
 }
+
+.trashbutton{
+  background-color: red;
+  color: white;
+  font-size: 1.4rem;
+  padding: 5px;
+}
