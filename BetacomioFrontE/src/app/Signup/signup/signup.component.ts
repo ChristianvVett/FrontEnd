@@ -2,16 +2,17 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { HttpClient , HttpResponse , HttpStatusCode} from '@angular/common/http';
 import { OnChange } from 'ngx-bootstrap/utils';
+import { SocialAuthService } from '@abacritt/angularx-social-login';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent {
-  constructor(private Http: HttpClient) {
+  constructor(private Http: HttpClient , private Google:SocialAuthService) {
     this.singleUser={Name:"",Surname:"",Username:"",Phone:"" ,Email:"",PasswordHash:"",PasswordSalt:"",BirthYear:"", Nationality: null}
   }
-
+  user: any;
   Userlist: any[] = []
   singleUser: register | null = null
   isNameOk:boolean = false;
@@ -55,27 +56,11 @@ checkAllField(){
     }
   }
   google(){
-
-    const  scopes  =  [ 
-      'https://www.googleapis.com/auth/blogger' , 
-      'https://www.googleapis.com/auth/calendar' 
-    ] ; 
-
-
-    const oAtuh = {
-      clientId: '626251135878-j0bfsr9sdjcqeeijmihct78vvurc4jcl.apps.googleusercontent.com',
-      redirectUri: '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'
-    }
-
-   
-   
-
-    const clientId = '626251135878-j0bfsr9sdjcqeeijmihct78vvurc4jcl.apps.googleusercontent.com';
-    const redirectUri = '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';
-
-    const oauthUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&scope=email+profile&response_type=code`;
-    
-    
+    console.log('cii');
+this.Google.authState.subscribe((user)=>{
+this.user = user
+console.log(this.user);
+})
   }
 
   checkSurname(){

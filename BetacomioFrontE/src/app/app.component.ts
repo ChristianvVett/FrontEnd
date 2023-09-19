@@ -25,7 +25,7 @@ export class AppComponent {
    
     this.userInactive.next(undefined),
     
-    150000);
+    600000);
   
 
     
