@@ -54,6 +54,29 @@ checkAllField(){
       this.isNameOk=false;
     }
   }
+  google(){
+
+    const  scopes  =  [ 
+      'https://www.googleapis.com/auth/blogger' , 
+      'https://www.googleapis.com/auth/calendar' 
+    ] ; 
+
+
+    const oAtuh = {
+      clientId: '626251135878-j0bfsr9sdjcqeeijmihct78vvurc4jcl.apps.googleusercontent.com',
+      redirectUri: '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'
+    }
+
+   
+   
+
+    const clientId = '626251135878-j0bfsr9sdjcqeeijmihct78vvurc4jcl.apps.googleusercontent.com';
+    const redirectUri = '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';
+
+    const oauthUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&scope=email+profile&response_type=code`;
+    
+    
+  }
 
   checkSurname(){
     if(this.singleUser.Surname.length <= 4 || this.singleUser.Surname.includes(" ")){

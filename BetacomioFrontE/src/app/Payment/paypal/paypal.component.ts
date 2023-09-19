@@ -32,6 +32,11 @@ export class PaypalComponent implements AfterViewChecked {
   totPrice: number;
   sommaTot: number
   totoarro: string;
+  userID: number;
+  unitprice: number;
+  quantity: number; 
+  product: number;
+ 
 
   paypalconfig = {
     env: 'sandbox',
@@ -65,9 +70,14 @@ export class PaypalComponent implements AfterViewChecked {
     this.getMethodsService.getCartProducts(this.idToken).subscribe(response =>{
     this.resultCart = response; 
     console.log(this.resultCart)
-    this.totPrice = this.getMethodsService.calculateCartTotal(this.resultCart); //calcola totale carrello
+    this.totPrice = this.getMethodsService.calculateCartTotal(this.resultCart);//calcola totale carrello
+    
+    if (this.totPrice != 0) {
       this.sommaTot = this.totPrice + 50;
       this.totoarro = this.sommaTot.toFixed(2)
+    }
+     
+     
   
 
         for(const el of this.resultCart){
@@ -92,15 +102,33 @@ export class PaypalComponent implements AfterViewChecked {
     })
   }
 
-  payment(indirizzo: HTMLInputElement , cpdicepostale: HTMLInputElement){
+  payment(indirizzo: HTMLInputElement , cpdicepostale: HTMLInputElement , city: HTMLInputElement, regione: HTMLInputElement , stato: HTMLInputElement , numerocivico: HTMLInputElement){
 
-    console.log(cpdicepostale.value + "sono quiiiii");
-   
-    for(const el of this.resultCart){
-      console.log(el.product);
-     
+    console.log(this.resultCart);
+    for(const elem of this.resultCart){
+      this.userID = elem.userId
+      this.quantity = elem.quantity
+      this.product = elem.productId
+      this.unitprice = elem.unitPrice
+
+      
     }
-
+    const data ={
+     Address: indirizzo.value,
+     PostalCode: cpdicepostale.value,
+     Region: regione.value,
+     Country: stato.value,
+     City: city.value,
+     AddressDetail: numerocivico.value,
+     CustomerID: this.userID,
+     TotalPrice: this.totPrice,   //totale di ciascun prodotto
+     UnitPrice: this.unitprice,
+     ProductID: this.product,
+     OrderQty: this.quantity,
+     SubTotal: this.totoarro
+    }
+    
+this.http.post<any>("https://localhost:7284/api/OrderProxies" , data).subscribe((resp) => {})
   }
  
   ngAfterViewChecked(): void {
