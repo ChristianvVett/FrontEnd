@@ -31,8 +31,8 @@ import { ConfirmPassComponent } from './confirm-pass/confirm-pass.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { ContactDetailPageComponent } from './superadmin/contact-detail-page/contact-detail-page.component';
 import { ToastrModule } from 'ngx-toastr';
-import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
-import { GoogleLoginProvider} from '@abacritt/angularx-social-login';
+//import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
+//import { GoogleLoginProvider} from '@abacritt/angularx-social-login';
 
 
 
@@ -75,27 +75,27 @@ import { GoogleLoginProvider} from '@abacritt/angularx-social-login';
     CarouselModule.forRoot(),
     AccordionModule.forRoot(),
     BrowserAnimationsModule,
-    ToastrModule.forRoot(),
-    SocialLoginModule
+    ToastrModule.forRoot()
+  
   ],
   providers: [
-    {
-      provide: 'SocialAuthServiceConfig',
-      useValue: {
-        autoLogin: false,
-        providers: [
-          {
-            id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider(
-              '132481416516-rsdh02pkh0rjl1qr1qj9op179pret7dq.apps.googleusercontent.com'
-            )
-          }   
-        ],
-        onError: (err) => {
-          console.error(err);
-        }
-      } as SocialAuthServiceConfig,
-    }
+    // {
+    //   provide: 'SocialAuthServiceConfig',
+    //   useValue: {
+    //     autoLogin: false,
+    //     providers: [
+    //       {
+    //         id: GoogleLoginProvider.PROVIDER_ID,
+    //         provider: new GoogleLoginProvider(
+    //           '132481416516-rsdh02pkh0rjl1qr1qj9op179pret7dq.apps.googleusercontent.com'
+    //         )
+    //       }   
+    //     ],
+    //     onError: (err) => {
+    //       console.error(err);
+    //     }
+    //   } as SocialAuthServiceConfig,
+    // }
 
   ],
   bootstrap: [AppComponent]
