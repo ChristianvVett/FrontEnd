@@ -5,11 +5,8 @@ import {HttpClient , HttpResponse , HttpStatusCode} from '@angular/common/http'
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-<<<<<<< HEAD
 import { cartItem } from 'src/app/Payment/paypal/paypal.component';
-=======
 import { ToastrService } from 'ngx-toastr';
->>>>>>> ae4011ba8a6c81be7f24dc0fe3bb98944c5173cc
 
 
 @Component({
@@ -102,7 +99,7 @@ export class CataloguedtComponent {
       .subscribe((resp: HttpResponse<biciycleDetail>) => {
         try {
           if (HttpStatusCode.Ok) {
-            console.log('invio in Wishlist effettuato correttamente: stato' + resp.status);          
+            console.log('invio in Wishlist effettuato correttamente: stato' + resp.status);
           } else {
             throw console.log('errorino: stato ' + resp.status);
           }
@@ -122,7 +119,6 @@ export class CataloguedtComponent {
     }
 
 
-<<<<<<< HEAD
     this.http.get<any>("https://localhost:7284/api/ShoppingCartTemps").subscribe(resp=>{
       this.updateqty=resp;
     })
@@ -140,24 +136,11 @@ export class CataloguedtComponent {
           .subscribe((resp: HttpResponse<biciycleDetail>) => {
 
           });
+          this.toastr.success("Prodotto inserito nel carrello")
       }
     }
 
 
-=======
-    this.http
-      .post('https://localhost:7284/api/ShoppingCartTemps', cartData)
-      .subscribe((resp: HttpResponse<biciycleDetail>) => {
-        try {
-          if (resp.status === 200) {
-            console.log('invio in ShoppingCart effettuato correttamente: stato' + resp.status);
-          } else {
-            throw console.log('errorino: stato ' + resp.status);
-          }
-        } catch (error) {}
-      });
-      this.toastr.success("Prodotto inserito nel carrello")
->>>>>>> ae4011ba8a6c81be7f24dc0fe3bb98944c5173cc
   }
 
  // Metodi per incrementare o decrementare quantità di un prodotto per carrello
