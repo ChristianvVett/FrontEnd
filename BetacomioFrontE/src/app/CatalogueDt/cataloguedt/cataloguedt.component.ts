@@ -105,7 +105,7 @@ export class CataloguedtComponent {
           }
         } catch (error) {}
       });
-      this.toastr.success("Prodotto aggiunto nella wishlist")
+      this.toastr.success("Articolo aggiunto ai preferiti")
   }
 
   // Metodo per inserire un prodotto nel carrello
