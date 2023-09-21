@@ -6,7 +6,7 @@ import { GetMethodsService } from 'src/app/Services/get-methods.service';
 import { SafeUrl } from '@angular/platform-browser';
 import { NgForm } from '@angular/forms';
 import { orderProducts } from 'src/app/MyProfile/myprofile/myprofile.component';
-
+import { faMinus } from '@fortawesome/free-solid-svg-icons';
 
 declare let paypal:any
 
@@ -24,6 +24,7 @@ export class PaypalComponent implements AfterViewChecked {
     private getMethodsService: GetMethodsService
   ) {}
 
+  line= faMinus;
   addScript:boolean = false;
   finalAmount: number = 1;
   Creditcard=faCreditCard;
@@ -35,7 +36,7 @@ export class PaypalComponent implements AfterViewChecked {
   finalCost: string;
   userID: number;
   unitprice: any = [];
-  quantity: number; 
+  quantity: number;
   product: number;
 
   paypalconfig = {
@@ -64,33 +65,41 @@ export class PaypalComponent implements AfterViewChecked {
 
 
   ngOnInit(){
-   
+
     this.idToken = parseInt(this.HaToken.id) + 11;
 
     this.getMethodsService.getCartProducts(this.idToken).subscribe(response =>{
-    this.resultCart = response; 
+    this.resultCart = response;
     console.log(this.resultCart)
     this.totPrice = this.getMethodsService.calculateCartTotal(this.resultCart);//calcola totale carrello
-    
+
     if (this.totPrice != 0) {
       this.taxedTot = this.totPrice + 50;
       this.finalCost = this.taxedTot.toFixed(2)
     }
-     
-     
-  
+
+
+
 
         for(const el of this.resultCart){
           console.log(el.product);
           el.product.sanitizedPhoto = this.getMethodsService.getProductImage(el.product.thumbNailPhoto);
         }
-       
+
       })
 
 
   }
 
+  deleteproduct(userId:number,productId:number){
 
+      this.http.delete(`https://localhost:7284/api/ShoppingCart/${userId}/${productId}`).subscribe(resp=>{
+
+        const index = this.resultCart.findIndex(item => item.productId === productId);
+        if (index !== -1) {
+          this.resultCart.splice(index, 1);}
+      })
+}
   addPaypalScript(){
     this.addScript = true;
     return new Promise((resolve,reject)=>{
@@ -142,16 +151,10 @@ export class PaypalComponent implements AfterViewChecked {
 
     console.log(orderProxy);
 
- 
-this.http.post<OrderProxy>("https://localhost:7284/api/OrderProxies" , (orderProxy), {headers: headers}).subscribe((resp) => {
-if(HttpStatusCode.Ok){
-    console.log("pagamento effettuato correttamente " );
-}else{console.log("errore durante il pagamento ")}
 
-
-})
+this.http.post<OrderProxy>("https://localhost:7284/api/OrderProxies" , (orderProxy), {headers: headers}).subscribe((resp) => {})
   }
- 
+
   ngAfterViewChecked(): void {
     if (!this.addScript) {
         this.addPaypalScript().then(() => {
@@ -161,7 +164,7 @@ if(HttpStatusCode.Ok){
     }
   }
 
- 
+
 
 
 
@@ -170,8 +173,8 @@ if(HttpStatusCode.Ok){
 export interface cartItem{
 
   userId : number,
-  productId: number, 
-  quantity: number, 
+  productId: number,
+  quantity: number,
   unitPrice:number,
   totalPrice: number,
   product: {

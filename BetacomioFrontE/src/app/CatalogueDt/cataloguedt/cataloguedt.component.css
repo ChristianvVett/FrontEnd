@@ -299,6 +299,34 @@ a:focus,a:active {
   background-color: white;
 }
 
+.bordogrosso{
+  background-color: #D15800;
+  width:fit-content;
+  border-radius: 5px;
+}
+
+.bell{
+  margin: 5px;
+}
+
+.link-list{
+  font-size: 15px;
+  text-decoration: none;
+  position: relative;
+}
+
+.link-list::after{  
+  color: #000;
+  cursor: pointer;
+  transform-origin: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.link-list:hover::after{
+  transform: scaleX(0.9);
+
+}
+
 @media screen and (max-width: 600px) {
   .flex-box {
       flex-direction: column;

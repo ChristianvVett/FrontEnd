@@ -43,6 +43,7 @@ export class SignupComponent {
       (response: HttpResponse<register>) =>
       {
         if (HttpStatusCode.Ok) {
+          this.toastr.success("Registrazione effettuata con successo");
           console.log("registrazione effettuata con successo, stato: " + response.status)
           const resp = response.body
           userForLogin.push(resp);
@@ -84,16 +85,16 @@ const result = [];
 }
 
   checkName(){
-    if(this.singleUser.Name.length <= 4){
+    if(this.singleUser.Name.length < 3){
       this.isNameOk = true;
-    }else if(this.singleUser.Name.length > 4){
+    }else if(this.singleUser.Name.length >= 4){
       this.isNameOk=false;
     }
   }
   
 
   checkSurname(){
-    if(this.singleUser.Surname.length <= 4 || this.singleUser.Surname.includes(" ")){
+    if(this.singleUser.Surname.length < 3 || this.singleUser.Surname.includes(" ")){
       this.isSurnameOk=true;
     }else{
       this.isSurnameOk=false;
