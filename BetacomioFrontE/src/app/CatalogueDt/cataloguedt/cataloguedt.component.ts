@@ -22,7 +22,8 @@ export class CataloguedtComponent {
     private token: TokenService,
     private sanitizer: DomSanitizer,
     private getMethods: GetMethodsService,
-    private toastr:ToastrService
+    private toastr:ToastrService,
+    private Token: TokenService,
   ) {}
   circle = faCircle;
   productname: string;
@@ -32,7 +33,9 @@ export class CataloguedtComponent {
   DetailList: biciycleDetail = {} as biciycleDetail;
   tokenData = JSON.parse(this.token.rew);
   lang : number;
-  updateqty:cartItem[]=[]
+  updateqty:cartItem[]=[];
+  tok = this.Token.token();
+  IsLogged:any;
 
   ngOnInit() {
     this.route.paramMap.subscribe((elem) => {
