@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TokenService } from 'src/app/Services/token.service';
+import { GetMethodsService } from 'src/app/Services/get-methods.service';
 import {ActivatedRoute} from '@angular/router'
 import {HttpClient , HttpResponse , HttpStatusCode} from '@angular/common/http'
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
@@ -20,6 +21,7 @@ export class CataloguedtComponent {
     private http: HttpClient,
     private token: TokenService,
     private sanitizer: DomSanitizer,
+    private getMethods: GetMethodsService,
     private toastr:ToastrService
   ) {}
   circle = faCircle;
@@ -55,7 +57,7 @@ export class CataloguedtComponent {
       .get<any>(`https://localhost:7284/api/ViewAdminProducts/${productName}`)
       .subscribe((result) => {
         this.DetailList = result;
-        this.DetailList.sanitizedPhoto = this.getProductImage(this.DetailList.thumbnailPhoto);
+        this.DetailList.sanitizedPhoto = this.getMethods.getProductImage(this.DetailList.thumbnailPhoto);
 
       });
     }
@@ -66,7 +68,7 @@ export class CataloguedtComponent {
       .get<any>(`https://localhost:7284/api/ViewUserProducts/${productName}?nationality=${nationality}`)
       .subscribe((result) => {
         this.DetailList = result;
-        this.DetailList.sanitizedPhoto = this.getProductImage(this.DetailList.thumbnailPhoto);
+        this.DetailList.sanitizedPhoto = this.getMethods.getProductImage(this.DetailList.thumbnailPhoto);
 
         this.langDetailList.push(result);
         console.log(this.DetailList);
@@ -74,13 +76,7 @@ export class CataloguedtComponent {
       });
   }
 
-    //Metodo che permette di convertire array di byte in immagini
-    getProductImage(imageData: Uint8Array) {
-      const base64Image = 'data:image/jpeg;base64,' + imageData;
-      const sanitizedUrl = this.sanitizer.bypassSecurityTrustUrl(base64Image);
 
-      return sanitizedUrl;
-    }
 
   // Metodo per inserire un prodotto in wishlist
   wish() {
@@ -97,15 +93,13 @@ export class CataloguedtComponent {
     this.http
       .post('https://localhost:7284/api/WishlistTemps', wishData)
       .subscribe((resp: HttpResponse<biciycleDetail>) => {
-        try {
           if (HttpStatusCode.Ok) {
-            console.log('invio in Wishlist effettuato correttamente: stato' + resp.status);
+            this.toastr.success("Prodotto inserito nella wishlist")
+            console.log("invio in Wishlist effettuato correttamente: stato" + resp.status);
           } else {
-            throw console.log('errorino: stato ' + resp.status);
+            throw console.log("errore: stato " + resp.status);
           }
-        } catch (error) {}
-      });
-      this.toastr.success("Prodotto aggiunto nella wishlist")
+        }); 
   }
 
   // Metodo per inserire un prodotto nel carrello
@@ -118,30 +112,60 @@ export class CataloguedtComponent {
       totalPrice: (this.prodQuantity * this.langDetailList[0].listPrice)
     }
 
-
-    this.http.get<any>("https://localhost:7284/api/ShoppingCartTemps").subscribe(resp=>{
+    //CONTROLLO PER INSERIMENTO O MODIFICA PRODOTTO IN CARRELLO
+    this.getMethods.getCartProducts(cartData.userID).subscribe(resp=>{
       this.updateqty=resp;
-    })
-    for(let elem of this.updateqty ){
-      if(elem.productId == cartData.productId && cartData.userID == elem.userId){
-        console.log(elem)
-         this.http.put(`https://localhost:7284/api/ShoppingCart/${elem.userId}`,cartData).subscribe(resp=>{
-           console.log("put andata a buon fine");
-         })
-         console.log(elem)
-      }else{
+      console.log(this.updateqty);
+      if (this.updateqty.length === 0){
 
+        //INSERISCI PRODOTTO 
         this.http
-          .post('https://localhost:7284/api/ShoppingCartTemps', cartData)
-          .subscribe((resp: HttpResponse<biciycleDetail>) => {
+        .post('https://localhost:7284/api/ShoppingCartTemps', cartData)
+        .subscribe((resp: HttpResponse<cartItem>) => {
+          if(HttpStatusCode.Ok){
+            this.toastr.success("Prodotto inserito nel carrello");
+            console.log("invio in Shopping Cart effettuato correttamente");
+          }
+          else{
+            throw console.log("errore: stato " + resp.status);
+          }
+        })
 
-          });
-          this.toastr.success("Prodotto inserito nel carrello")
+
       }
-    }
-
-
+      else{
+        for(let elem of this.updateqty ){
+          if(elem.productId == cartData.productId && cartData.userID == elem.userId){
+            console.log(elem);
+            //MODIFICA PRODOTTO
+             this.http.patch(`https://localhost:7284/api/ShoppingCart/${elem.userId}`,cartData.quantity).subscribe(resp=>{
+              this.toastr.success("La quantità del prodotto è stata aggiornata");
+               console.log("il prodotto nel carrello è stato aggiornato");
+             })
+             console.log(elem)
+          }else{
+            //INSERISCI PRODOTTO
+            this.http
+              .post('https://localhost:7284/api/ShoppingCartTemps', cartData)
+              .subscribe((resp: HttpResponse<cartItem>) => {
+                if(HttpStatusCode.Ok){
+                  this.toastr.success("Prodotto inserito nel carrello");
+                  console.log("invio in Shopping Cart effettuato correttamente");
+                }
+                else{
+                  throw console.log("errore: stato " + resp.status);
+                }
+              });
+          }
+        }
+      }
+    });
+      
   }
+  
+
+
+  
 
  // Metodi per incrementare o decrementare quantità di un prodotto per carrello
   incrementQuantity() {
@@ -155,6 +179,7 @@ export class CataloguedtComponent {
     }
 
   }
+
 
 }
 
@@ -182,3 +207,7 @@ interface biciycleDetail{
   sanitizedPhoto: SafeUrl,
   weight: number
 }
+function InsertCartData() {
+  throw new Error('Function not implemented.');
+}
+
