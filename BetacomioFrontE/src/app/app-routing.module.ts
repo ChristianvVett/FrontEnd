@@ -34,8 +34,8 @@ const routes:Routes=[
   {path:'Faq',component:FaqComponent},
   {path: 'rememberPass' , component:RememberPassComponent},
   {path: 'confirmpassword' , component:ConfirmPassComponent},
-  {path: '404' , component:NotfoundComponent},
-  {path: '**' , redirectTo: '/404'},
+  // {path: '404' , component:NotfoundComponent},
+  // {path: '**' , redirectTo: '/404'},
   {path: 'ContactDetailPage/:requestId', component:ContactDetailPageComponent}
 ];
 

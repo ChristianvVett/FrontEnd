@@ -37,17 +37,17 @@
                       <nav aria-label="breadcrumb" class="second ">
                           <ol class="breadcrumb indigo lighten-6 first  ">
                               <li class="breadcrumb-item font-weight-bold"><a class="black-text text-uppercase" routerLink=""><span class="mr-md-3 mr-1">Home</span></a><i class="fa fa-angle-double-right text-uppercase " aria-hidden="true"></i></li>
-                              <li class="breadcrumb-item font-weight-bold "><a class="black-text text-uppercase " routerLink="/Catalogue"><span class="mr-md-3 mr-1">Torna al catalogo</span></a><i class="fa fa-angle-double-right " aria-hidden="true"></i></li>                          
+                              <li class="breadcrumb-item font-weight-bold "><a class="black-text text-uppercase " routerLink="/Catalogue"><span class="mr-md-3 mr-1">Torna al catalogo</span></a><i class="fa fa-angle-double-right " aria-hidden="true"></i></li>
                               <li class="breadcrumb-item font-weight-bold"><a class="black-text text-uppercase active-2" href="#"><span class="mr-md-3 mr-1">CHECKOUT</span></a></li>
                           </ol>
                       </nav>
                   </div>
               </div>
-          
+
               <div class="row justify-content-around">
 
                 <!-- SEZIONE ORDINI CARRELLO  -->
-                
+
                     <div class="col-md-5">
                         <div class="card border-0 ">
                             <div class="card-header card-2">
@@ -56,12 +56,12 @@
                             </div>
                             <div *ngIf="resultCart.length > 0; then showCartProducts else NoProducts"> </div>
                             <ng-template #showCartProducts>
-    
+
                                 <div class="card-body pt-0" >
                                     <div class="row  justify-content-between" *ngFor="let val of resultCart">
                                         <div class="col-auto col-md-7">
                                             <div class="media flex-column flex-sm-row">
-                                                <img class=" img-fluid" [src]="val.product.sanitizedPhoto" width="62" height="62">
+                                                <img  class=" img-fluid"  [src]="val.product.sanitizedPhoto" width="62" height="62">
                                                 <div class="media-body  my-auto">
                                                     <div class="row ">
                                                         <div class="col-auto"><p class="mb-0"><b>{{val.product.name}}</b></p> </div>
@@ -70,10 +70,11 @@
                                             </div>
                                         </div>
                                         <div class=" pl-0 flex-sm-col col-auto  my-auto"> <p class="boxed-1">{{val.quantity}}</p></div>
+                                        <div class="minus pl-0 flex-sm-col col-auto  my-auto" (click)="deleteproduct(val.userId, val.productId)"> <fa-icon [icon]="line"></fa-icon></div>
                                         <div class=" pl-0 flex-sm-col col-auto  my-auto "><p><b>{{val.product.listPrice}} €</b></p></div>
                                         <hr class="my-2">
                                     </div>
-                                    
+
                                     <div class="row">
                                         <div class="col">
                                             <div class="row justify-content-between">
@@ -91,16 +92,16 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                             </ng-template>
                             <ng-template #NoProducts>
                                 <p class="card-text text-muted mt-md-4  mb-2 space">Non ci sono prodotti da visualizzare, prova ad acquistare qualcosa!</p>
                             </ng-template>
-    
-    
+
+
                         </div>
                       </div>
-    
+
                     <!-- SEZIONE PAGAMENTO  -->
                       <div class="col-md-5">
                           <div class="card border-0">
@@ -162,16 +163,16 @@
                                   <div class="d-flex flex-column">
                                     <div style="margin-top:30px;" id="paycheck"></div>
                                     <div>
-                            
+
                                       <p style="font-size: 0.9rem;color: black;">+0.10€ di commissioni</p>
                                     </div>
-                                  </div>   
+                                  </div>
                               </div>
                           </div>
                       </div>
 
 
-          
+
                     <!--fine Pagamento-->
 
 

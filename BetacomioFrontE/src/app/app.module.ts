@@ -59,7 +59,7 @@ import { GoogleLoginProvider} from '@abacritt/angularx-social-login';
     ChangePassComponent,
     MyprofileComponent,
     ConfirmPassComponent,
-    NotfoundComponent,
+    // NotfoundComponent,
     ContactDetailPageComponent
 
   ],
