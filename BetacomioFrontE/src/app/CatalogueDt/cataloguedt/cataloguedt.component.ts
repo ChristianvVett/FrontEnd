@@ -31,6 +31,7 @@ export class CataloguedtComponent {
   prodQuantity: number = 1;
   DetailList: biciycleDetail = {} as biciycleDetail;
   tokenData = JSON.parse(this.token.rew);
+  IsLogged: any;
   lang : number;
   updateqty:cartItem[]=[]
 

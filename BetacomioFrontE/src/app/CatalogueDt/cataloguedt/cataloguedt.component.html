@@ -82,11 +82,11 @@
       </div>
       <div class="price">{{DetailList.listPrice}}€</div>
 
-      <div class="bordogrosso" *ngIf="tok === null">
+      <div class="bordogrosso" *ngIf="tokenData === null">
         <p class="bell">Per acquistare un prodotto <a class="link-list" routerLink="/Signup">registrati</a> o effettua il <a class="link-list" routerLink="/Login">login</a></p>
       </div>
 
-      <div *ngIf="tok !== null || IsLogged ">
+      <div *ngIf="tokenData !== null || IsLogged ">
         <div style="border: 1px dashed black; background-color: bisque; width: fit-content; padding: 20px;">
           <p> Quantità attuale: <strong> {{ prodQuantity }}</strong> </p>
           <button (click)="decreaseQuantity()" style="margin-left: 25px"> - </button>
