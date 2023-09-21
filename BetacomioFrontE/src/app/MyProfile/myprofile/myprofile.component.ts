@@ -11,7 +11,32 @@ import { SafeUrl } from '@angular/platform-browser';
 })
 export class MyprofileComponent {
 
-  constructor(private http:HttpClient, private getMethods: GetMethodsService){}
+  constructor(private http:HttpClient, private getMethods: GetMethodsService){
+
+      //id utente loggato
+      this.useridToken = parseInt(this.defJSON.id) + 11;
+      this.useridTokenNormal =  parseInt(this.defJSON.id);
+  
+      //prodotti wishlist
+      this.getMethods.getWishlistItems(this.useridToken).subscribe(response =>{
+        this.wishlistItems = response; 
+  
+        for (const el of this.wishlistItems) {
+          el.product.sanitizedPhoto = this.getMethods.getProductImage(el.product.thumbNailPhoto);
+        }
+      })
+  
+      //prodotti acquisti
+      this.getMethods.getOrderDetails(this.useridToken).subscribe(response =>{
+        this.orderItems = response;
+        console.log(this.orderItems);
+  
+  
+        for (const el of this.orderItems) {
+          el.orderDetails.product.sanitizedPhoto = this.getMethods.getProductImage(el.orderDetails.product.thumbNailPhoto);
+        }
+      })
+  }
 
   stringdata= sessionStorage.getItem("dati");
   stringJSON= this.stringdata.replace(/\[|\]/g, '');
@@ -32,29 +57,7 @@ export class MyprofileComponent {
 
   ngOnInit(){
 
-    //id utente loggato
-    this.useridToken = parseInt(this.defJSON.id) + 11;
-    this.useridTokenNormal =  parseInt(this.defJSON.id);
-
-    //prodotti wishlist
-    this.getMethods.getWishlistItems(this.useridToken).subscribe(response =>{
-      this.wishlistItems = response; 
-
-      for (const el of this.wishlistItems) {
-        el.product.sanitizedPhoto = this.getMethods.getProductImage(el.product.thumbNailPhoto);
-      }
-    })
-
-    //prodotti acquisti
-    this.getMethods.getOrderDetails(this.useridTokenNormal).subscribe(response =>{
-      this.orderItems = response;
-      console.log(this.orderItems);
-
-
-      for (const el of this.orderItems) {
-        el.orderDetails.product.sanitizedPhoto = this.getMethods.getProductImage(el.orderDetails.product.thumbNailPhoto);
-      }
-    })
+  
 
   }
 
