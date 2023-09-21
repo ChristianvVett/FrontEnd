@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { HttpClient , HttpResponse , HttpStatusCode} from '@angular/common/http';
 import { OnChange } from 'ngx-bootstrap/utils';
 import { SocialAuthService } from "@abacritt/angularx-social-login";
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { SocialAuthService } from "@abacritt/angularx-social-login";
   styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent { 
-  constructor(private Http: HttpClient , private Google:SocialAuthService) {
+  constructor(private Http: HttpClient , private Google:SocialAuthService, private toastr: ToastrService) {
     this.singleUser={Name:"",Surname:"",Username:"",Phone:"" ,Email:"",PasswordHash:"",PasswordSalt:"",BirthYear:"", Nationality: null}
   }
   user: any;
@@ -36,6 +37,7 @@ export class SignupComponent {
       (response: HttpResponse<register>) =>
       {
         if (HttpStatusCode.Ok) {
+          this.toastr.success("Registrazione effettuata con successo");
           console.log("registrazione effettuata con successo, stato: " + response.status)
         }else if(HttpStatusCode.BadRequest){ console.log("errore in fase di registrazione  " + response.status)}
       }
@@ -51,16 +53,16 @@ checkAllField(){
 
 
   checkName(){
-    if(this.singleUser.Name.length <= 4){
+    if(this.singleUser.Name.length < 3){
       this.isNameOk = true;
-    }else if(this.singleUser.Name.length > 4){
+    }else if(this.singleUser.Name.length >= 4){
       this.isNameOk=false;
     }
   }
   
 
   checkSurname(){
-    if(this.singleUser.Surname.length <= 4 || this.singleUser.Surname.includes(" ")){
+    if(this.singleUser.Surname.length < 3 || this.singleUser.Surname.includes(" ")){
       this.isSurnameOk=true;
     }else{
       this.isSurnameOk=false;

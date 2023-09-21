@@ -29,7 +29,6 @@ export class GetMethodsService {
   getCartProducts(tokenId: number): Observable<any> {
     return this.http.get<any>(
       `https://localhost:7284/api/ShoppingCart?userid=${tokenId}`,
-
     );
   }
 

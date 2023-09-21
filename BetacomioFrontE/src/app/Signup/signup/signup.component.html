@@ -15,7 +15,7 @@
                     <!-- Cognome -->
                     <input type="text" name="Surname" placeholder="inserisci un cognome" (blur)="checkSurname()" [(ngModel)]="singleUser.Surname">
                     <div style="display: flex;justify-content: center;">
-                    <p class="alert" *ngIf="isSurnameOk">Il cognome deve contenere almeno 4 caratteri</p>
+                    <p class="alert" *ngIf="isSurnameOk">Il cognome deve contenere almeno 3 caratteri</p>
                     </div>
 
                     <!-- Email -->

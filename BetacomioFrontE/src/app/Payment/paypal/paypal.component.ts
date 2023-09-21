@@ -111,7 +111,7 @@ export class PaypalComponent implements AfterViewChecked {
     })
   }
 
-  payment(indirizzo: HTMLInputElement , cpdicepostale: HTMLInputElement , city: HTMLInputElement, regione: HTMLInputElement , stato: HTMLInputElement , numerocivico: HTMLInputElement){
+  payment(indirizzo: HTMLInputElement , numerocivico: HTMLInputElement , codicepostale: HTMLInputElement, city: HTMLInputElement , regione: HTMLInputElement , stato: HTMLInputElement){
 
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
@@ -137,7 +137,7 @@ export class PaypalComponent implements AfterViewChecked {
      City: city.value,
      Region: regione.value,
      Country: stato.value,
-     PostalCode: cpdicepostale.value,
+     PostalCode: codicepostale.value,
      SubTotal: parseFloat(this.finalCost)
     }
 
