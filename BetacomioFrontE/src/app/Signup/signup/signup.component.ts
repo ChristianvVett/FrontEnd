@@ -1,8 +1,12 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { HttpClient , HttpResponse , HttpStatusCode} from '@angular/common/http';
+import { HttpClient , HttpHeaders, HttpResponse , HttpStatusCode} from '@angular/common/http';
 import { OnChange } from 'ngx-bootstrap/utils';
 import { SocialAuthService } from "@abacritt/angularx-social-login";
+import { Router } from '@angular/router';
+import { TokenService } from 'src/app/Services/token.service';
+import { ToastrService } from 'ngx-toastr';
+import { Element } from '@angular/compiler';
 
 
 @Component({
@@ -11,9 +15,11 @@ import { SocialAuthService } from "@abacritt/angularx-social-login";
   styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent { 
-  constructor(private Http: HttpClient , private Google:SocialAuthService) {
+  constructor(private Http: HttpClient , private Google:SocialAuthService , private route:Router,private Token:TokenService,private ch:ChangeDetectorRef, private toastr:ToastrService) {
     this.singleUser={Name:"",Surname:"",Username:"",Phone:"" ,Email:"",PasswordHash:"",PasswordSalt:"",BirthYear:"", Nationality: null}
   }
+  kd:Boolean;
+  tk:string;
   user: any;
   Userlist: any[] = []
   singleUser: register | null = null
@@ -31,12 +37,22 @@ export class SignupComponent {
   EmailAlreadyTaken:boolean=false;
   InsertUser(elem: NgForm) {
     console.log(elem.value);
+    const userForLogin = [];
     this.singleUser = elem.value;
     this.Http.post<register>('https://localhost:7284/api/UserCredentials', elem.value, {observe: 'response'}).subscribe(
       (response: HttpResponse<register>) =>
       {
         if (HttpStatusCode.Ok) {
           console.log("registrazione effettuata con successo, stato: " + response.status)
+          const resp = response.body
+          userForLogin.push(resp);
+          const valuesArray = Object.values(resp);
+          const email = valuesArray[0] ;
+          const passHash = valuesArray[1];
+          const base64credential = window.btoa(email + ":" + passHash);
+          const headers = new HttpHeaders({ 'Authorization': 'Basic ' + base64credential });
+          
+          this.postLogin(base64credential , headers);
         }else if(HttpStatusCode.BadRequest){ console.log("errore in fase di registrazione  " + response.status)}
       }
     );
@@ -48,7 +64,24 @@ checkAllField(){
     this.allOk=false;
   }
 }
+postLogin(base64credential , headers){
+const result = [];
+  this.Http.post<any>('https://localhost:7284/api/Login', {base64credential} , {headers} ).subscribe((resp) => {
+   
+  resp.forEach(element => {
+    console.log(element)
+    result.push(element);
+  });
+  console.log(result[0]);
+  const data = sessionStorage.setItem("dati" , JSON.stringify(result[0]));
+  this.Token.loginSuccessful();
+  this.tk = this.Token.result;
+  this.ch.detectChanges();
 
+  this.route.navigateByUrl('/MyProfile');
+  this.toastr.success("registrazione effettuata con successo")
+})
+}
 
   checkName(){
     if(this.singleUser.Name.length <= 4){
