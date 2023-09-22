@@ -95,9 +95,7 @@ export class PaypalComponent implements AfterViewChecked {
 
       this.http.delete(`https://localhost:7284/api/ShoppingCart/${userId}/${productId}`).subscribe(resp=>{
 
-        const index = this.resultCart.findIndex(item => item.productId === productId);
-        if (index !== -1) {
-          this.resultCart.splice(index, 1);}
+        location.reload();
       })
 }
   addPaypalScript(){
