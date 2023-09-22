@@ -31,6 +31,7 @@ export class CataloguedtComponent {
   prodQuantity: number = 1;
   DetailList: biciycleDetail = {} as biciycleDetail;
   tokenData = JSON.parse(this.token.rew);
+  IsLogged: any;
   lang : number;
   updateqty:cartItem[]=[]
 
@@ -86,7 +87,6 @@ export class CataloguedtComponent {
       productId: this.langDetailList[0].productId
     }
 
-
     console.log(this.tokenData.id);
     console.log(wishData.productId);
 
@@ -112,54 +112,66 @@ export class CataloguedtComponent {
       totalPrice: (this.prodQuantity * this.langDetailList[0].listPrice)
     }
 
-    //CONTROLLO PER INSERIMENTO O MODIFICA PRODOTTO IN CARRELLO
-    this.getMethods.getCartProducts(cartData.userID).subscribe(resp=>{
-      this.updateqty=resp;
-      console.log(this.updateqty);
-      if (this.updateqty.length === 0){
-
-        //INSERISCI PRODOTTO 
-        this.http
-        .post('https://localhost:7284/api/ShoppingCartTemps', cartData)
-        .subscribe((resp: HttpResponse<cartItem>) => {
-          if(HttpStatusCode.Ok){
-            this.toastr.success("Prodotto inserito nel carrello");
-            console.log("invio in Shopping Cart effettuato correttamente");
-          }
-          else{
-            throw console.log("errore: stato " + resp.status);
-          }
-        })
-
-
+    this.http
+    .post('https://localhost:7284/api/ShoppingCartTemps', cartData)
+    .subscribe((resp: HttpResponse<cartItem>) => {
+      if(HttpStatusCode.Ok){
+        this.toastr.success("Prodotto inserito nel carrello");
+        console.log("invio in Shopping Cart effettuato correttamente");
       }
       else{
-        for(let elem of this.updateqty ){
-          if(elem.productId == cartData.productId && cartData.userID == elem.userId){
-            console.log(elem);
-            //MODIFICA PRODOTTO
-             this.http.patch(`https://localhost:7284/api/ShoppingCart/${elem.userId}`,cartData.quantity).subscribe(resp=>{
-              this.toastr.success("La quantità del prodotto è stata aggiornata");
-               console.log("il prodotto nel carrello è stato aggiornato");
-             })
-             console.log(elem)
-          }else{
-            //INSERISCI PRODOTTO
-            this.http
-              .post('https://localhost:7284/api/ShoppingCartTemps', cartData)
-              .subscribe((resp: HttpResponse<cartItem>) => {
-                if(HttpStatusCode.Ok){
-                  this.toastr.success("Prodotto inserito nel carrello");
-                  console.log("invio in Shopping Cart effettuato correttamente");
-                }
-                else{
-                  throw console.log("errore: stato " + resp.status);
-                }
-              });
-          }
-        }
+        throw console.log("errore: stato " + resp.status);
       }
-    });
+    })
+
+    //CONTROLLO PER INSERIMENTO O MODIFICA PRODOTTO IN CARRELLO
+    // this.getMethods.getCartProducts(cartData.userID).subscribe(resp=>{
+    //   this.updateqty=resp;
+    //   console.log(this.updateqty);
+    //   if (this.updateqty.length === 0){
+
+    //     //INSERISCI PRODOTTO 
+    //     this.http
+    //     .post('https://localhost:7284/api/ShoppingCartTemps', cartData)
+    //     .subscribe((resp: HttpResponse<cartItem>) => {
+    //       if(HttpStatusCode.Ok){
+    //         this.toastr.success("Prodotto inserito nel carrello");
+    //         console.log("invio in Shopping Cart effettuato correttamente");
+    //       }
+    //       else{
+    //         throw console.log("errore: stato " + resp.status);
+    //       }
+    //     })
+
+
+    //   }
+    //   else{
+    //     for(let elem of this.updateqty ){
+    //       if(elem.productId == cartData.productId && cartData.userID == elem.userId){
+    //         console.log(elem);
+    //         //MODIFICA PRODOTTO
+    //          this.http.patch(`https://localhost:7284/api/ShoppingCart/${elem.userId}`, cartQuantity).subscribe(resp=>{
+    //           this.toastr.success("La quantità del prodotto è stata aggiornata");
+    //            console.log("il prodotto nel carrello è stato aggiornato");
+    //          })
+    //          console.log(elem)
+    //       }else{
+    //         //INSERISCI PRODOTTO
+    //         this.http
+    //           .post('https://localhost:7284/api/ShoppingCartTemps', cartData)
+    //           .subscribe((resp: HttpResponse<cartItem>) => {
+    //             if(HttpStatusCode.Ok){
+    //               this.toastr.success("Prodotto inserito nel carrello");
+    //               console.log("invio in Shopping Cart effettuato correttamente");
+    //             }
+    //             else{
+    //               throw console.log("errore: stato " + resp.status);
+    //             }
+    //           });
+    //       }
+    //     }
+    //   }
+    // });
       
   }
   

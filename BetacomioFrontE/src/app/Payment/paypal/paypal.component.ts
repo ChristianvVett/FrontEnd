@@ -150,7 +150,13 @@ export class PaypalComponent implements AfterViewChecked {
     console.log(orderProxy);
 
 
-this.http.post<OrderProxy>("https://localhost:7284/api/OrderProxies" , (orderProxy), {headers: headers}).subscribe((resp) => {})
+this.http.post<OrderProxy>("https://localhost:7284/api/OrderProxies" , (orderProxy), {headers: headers}).subscribe((resp) => {
+  if(HttpStatusCode.Ok){
+    console.log("pagamento effettuato con successo ");
+  }else{
+    console.log("errore nel pagamento" + HttpResponse.name)
+  }
+})
   }
 
   ngAfterViewChecked(): void {
