@@ -32,8 +32,8 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { ContactDetailPageComponent } from './superadmin/contact-detail-page/contact-detail-page.component';
 import { ToastrModule } from 'ngx-toastr';
 import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
-import { GoogleLoginProvider} from '@abacritt/angularx-social-login';
-
+import { GoogleLoginProvider} from '@abacritt/angularx-social-login'; 
+ 
 
 
 
